@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
 import { REVIEWS } from '../../data/mockData';
 import { Star, Quote } from 'lucide-react';
@@ -6,6 +6,20 @@ import { SchemaOrg } from '../common/SchemaOrg';
 
 export const ReviewsSection: React.FC = () => {
   const { lang, tr } = useApp();
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      const cardW = el.children[0] ? (el.children[0] as HTMLElement).offsetWidth + 32 : 300;
+      const idx = Math.round(el.scrollLeft / cardW);
+      setActiveIdx(Math.min(idx, REVIEWS.length - 1));
+    };
+    el.addEventListener('scroll', onScroll, { passive: true });
+    return () => el.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
     <section className="py-20 md:py-28 bg-slate-950 border-b border-slate-900">
@@ -26,7 +40,11 @@ export const ReviewsSection: React.FC = () => {
         </div>
 
         {/* 6 Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div
+          ref={scrollRef}
+          className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-8 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 md:mx-0 md:px-0 scrollbar-hide"
+          style={{ scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none' }}
+        >
           {REVIEWS.map((rev) => {
             const cityCopy = rev.city[lang] || rev.city.uk;
             const typeCopy = rev.sesType[lang] || rev.sesType.uk;
@@ -35,7 +53,7 @@ export const ReviewsSection: React.FC = () => {
             return (
               <div
                 key={rev.id}
-                className="bg-slate-900/70 rounded-3xl p-6 sm:p-8 border border-slate-800 flex flex-col justify-between shadow-lg hover:border-slate-700 transition-all space-y-6"
+                className="snap-center shrink-0 w-[85vw] md:w-auto bg-slate-900/70 rounded-3xl p-6 sm:p-8 border border-slate-800 flex flex-col justify-between shadow-lg hover:border-slate-700 transition-all space-y-6"
               >
                 <div className="space-y-4">
                   {/* Stars & Power */}
@@ -72,6 +90,16 @@ export const ReviewsSection: React.FC = () => {
               </div>
             );
           })}
+        </div>
+
+        {/* Dot indicators for mobile */}
+        <div className="flex md:hidden justify-center gap-2 pt-2">
+          {REVIEWS.map((_, i) => (
+            <span
+              key={i}
+              className={`w-2 h-2 rounded-full transition-all ${i === activeIdx ? 'bg-green-400 w-6' : 'bg-slate-700'}`}
+            />
+          ))}
         </div>
 
       </div>
