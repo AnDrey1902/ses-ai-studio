@@ -1,9 +1,116 @@
-import React from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Zap, ShieldCheck, Clock, Award, ArrowRight, CheckCircle2, FileText } from 'lucide-react';
+import { Zap, ShieldCheck, Clock, Award, ArrowRight, CheckCircle2, FileText, Sun, Cloud, CloudRain, Moon } from 'lucide-react';
+
+type WeatherState = 'sunny' | 'cloudy' | 'rainy';
+type TimeOfDay = 'morning' | 'day' | 'evening' | 'night';
+
+interface SystemState {
+  statusKey: string;
+  generation: number;
+  battery: number;
+  barPercent: number;
+  barColor: string;
+  weather: WeatherState;
+  time: TimeOfDay;
+  icon: React.ReactNode;
+}
+
+function getTimeOfDay(): TimeOfDay {
+  const h = new Date().getHours();
+  if (h >= 6 && h < 12) return 'morning';
+  if (h >= 12 && h < 18) return 'day';
+  if (h >= 18 && h < 22) return 'evening';
+  return 'night';
+}
+
+function getWeather(): WeatherState {
+  const rand = Math.random();
+  if (rand < 0.5) return 'sunny';
+  if (rand < 0.8) return 'cloudy';
+  return 'rainy';
+}
+
+function calcState(time: TimeOfDay, weather: WeatherState, prevBattery: number): SystemState {
+  const isNight = time === 'night';
+  const isEvening = time === 'evening';
+
+  // Base generation by time
+  let baseGen = isNight ? 0 : isEvening ? 4.2 : time === 'morning' ? 7.8 : 11.4;
+
+  // Weather modifier
+  const weatherMod = weather === 'sunny' ? 1 : weather === 'cloudy' ? 0.6 : 0.3;
+  const generation = Math.round(baseGen * weatherMod * 10) / 10;
+
+  // Battery
+  let battery: number;
+  if (isNight) {
+    battery = Math.max(20, prevBattery - Math.round(Math.random() * 3));
+  } else if (generation > 8) {
+    battery = Math.min(100, prevBattery + Math.round(Math.random() * 2));
+  } else if (generation > 4) {
+    battery = Math.min(100, prevBattery + 1);
+  } else {
+    battery = Math.max(30, prevBattery - Math.round(Math.random() * 2));
+  }
+
+  // Status
+  let statusKey: string;
+  let barColor: string;
+  let icon: React.ReactNode;
+
+  if (isNight) {
+    statusKey = 'hero_status_night';
+    barColor = 'from-blue-500 to-indigo-500';
+    icon = <Moon className="w-3 h-3" />;
+  } else if (generation > 9) {
+    statusKey = 'hero_status_peak';
+    barColor = 'from-green-500 to-emerald-400';
+    icon = <Sun className="w-3 h-3" />;
+  } else if (generation > 5) {
+    statusKey = 'hero_status_gen';
+    barColor = 'from-green-500 to-amber-400';
+    icon = <Sun className="w-3 h-3" />;
+  } else if (generation > 0) {
+    statusKey = 'hero_status_low';
+    barColor = 'from-amber-500 to-orange-400';
+    icon = weather === 'rainy' ? <CloudRain className="w-3 h-3" /> : <Cloud className="w-3 h-3" />;
+  } else {
+    statusKey = 'hero_status_reserve';
+    barColor = 'from-blue-500 to-slate-500';
+    icon = <Moon className="w-3 h-3" />;
+  }
+
+  return {
+    statusKey,
+    generation,
+    battery,
+    barPercent: battery,
+    barColor,
+    weather,
+    time,
+    icon,
+  };
+}
 
 export const HeroSection: React.FC = () => {
   const { tr, openLeadModal, lang } = useApp();
+
+  const [weather] = useState<WeatherState>(getWeather);
+  const [time] = useState<TimeOfDay>(getTimeOfDay);
+  const [battery, setBattery] = useState(87);
+  const [state, setState] = useState<SystemState>(() => calcState(time, weather, 87));
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setBattery(prev => {
+        const next = calcState(time, weather, prev);
+        setState(next);
+        return next.battery;
+      });
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [time, weather]);
 
   const bullets = [
     { icon: FileTextIcon, text: tr('bullet_price') },
@@ -11,6 +118,8 @@ export const HeroSection: React.FC = () => {
     { icon: ClockIcon, text: tr('bullet_days') },
     { icon: PercentIcon, text: tr('bullet_loan') }
   ];
+
+  const kwLabel = tr('prices_kw_h').replace('·год', '').replace('·ч', '');
 
   return (
     <section id="home" className="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden bg-slate-950 bg-grid-pattern border-b border-slate-900">
@@ -93,19 +202,48 @@ export const HeroSection: React.FC = () => {
 
               {/* Live Status Overlay Card */}
               <div className="absolute bottom-6 left-6 right-6 bg-slate-900/90 backdrop-blur-md p-4 rounded-2xl border border-slate-700/80 shadow-2xl space-y-2">
+                
+                {/* Status Row */}
                 <div className="flex items-center justify-between text-xs">
                   <span className="font-bold text-slate-300">{tr('hero_live_status')}</span>
                   <span className="text-green-400 font-mono font-extrabold flex items-center gap-1">
-                    <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                    {tr('hero_reserve_power')}
+                    <span className={`w-2 h-2 rounded-full ${state.time === 'night' ? 'bg-blue-400' : 'bg-green-400'} animate-pulse`} />
+                    {state.icon}
+                    {tr(state.statusKey)}
                   </span>
                 </div>
+
+                {/* Progress Bar */}
                 <div className="w-full bg-slate-950 h-2 rounded-full overflow-hidden p-0.5">
-                  <div className="bg-gradient-to-r from-green-500 to-amber-400 h-full w-[94%] rounded-full animate-pulse" />
+                  <div
+                    className={`bg-gradient-to-r ${state.barColor} h-full rounded-full transition-all duration-1000 ease-out`}
+                    style={{ width: `${state.barPercent}%` }}
+                  />
                 </div>
+
+                {/* Data Row */}
                 <div className="flex justify-between text-[11px] text-slate-400 font-mono font-semibold pt-0.5">
-                  <span>{tr('hero_generation')} <strong className="text-white">11.4 {tr('prices_kw_h').replace('·год', '').replace('·ч', '')}</strong></span>
-                  <span>{tr('hero_battery')} <strong className="text-green-400">100%</strong></span>
+                  <span className="transition-all duration-500">
+                    {tr('hero_generation')}{' '}
+                    <strong className="text-white">{state.generation} {kwLabel}</strong>
+                  </span>
+                  <span className="transition-all duration-500">
+                    {tr('hero_battery')}{' '}
+                    <strong className={state.battery > 50 ? 'text-green-400' : state.battery > 25 ? 'text-amber-400' : 'text-red-400'}>
+                      {state.battery}%
+                    </strong>
+                  </span>
+                </div>
+
+                {/* Weather tag */}
+                <div className="flex items-center gap-1.5 pt-1">
+                  <span className="text-[10px] text-slate-500 font-mono">
+                    {state.weather === 'sunny' ? '☀️ Сонячно' : state.weather === 'cloudy' ? '☁️ Хмарно' : '🌧️ Дощ'}
+                  </span>
+                  <span className="text-[10px] text-slate-600">·</span>
+                  <span className="text-[10px] text-slate-500 font-mono">
+                    {state.time === 'morning' ? 'Ранок' : state.time === 'day' ? 'День' : state.time === 'evening' ? 'Вечір' : 'Ніч'}
+                  </span>
                 </div>
               </div>
             </div>

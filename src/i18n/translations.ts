@@ -163,6 +163,11 @@ export const t: Record<Language, Record<string, string>> = {
     hours_val: 'Пн-Пт: 09:00-18:00, Сб: 10:00-15:00',
 
     hero_img_alt: 'Гібридна сонячна електростанція Deye під ключ',
+    hero_status_peak: 'Макс. генерація',
+    hero_status_gen: 'Генерація',
+    hero_status_low: 'Знижена генерація',
+    hero_status_night: 'Нічний режим',
+    hero_status_reserve: 'Резервне живлення',
 
     // Hero Extra
     hero_urgent_tag: 'Акція 2026: Дерев’яні крокви підсилюємо безкоштовно',
@@ -489,6 +494,11 @@ export const t: Record<Language, Record<string, string>> = {
     hours_val: 'Пн-Пт: 09:00-18:00, Сб: 10:00-15:00',
 
     hero_img_alt: 'Гибридная солнечная электростанция Deye под ключ',
+    hero_status_peak: 'Макс. генерация',
+    hero_status_gen: 'Генерация',
+    hero_status_low: 'Сниженная генерация',
+    hero_status_night: 'Ночной режим',
+    hero_status_reserve: 'Резервное питание',
 
     // Hero Extra
     hero_urgent_tag: 'Акция 2026: Деревянные стропила усиливаем бесплатно',
@@ -814,6 +824,11 @@ export const t: Record<Language, Record<string, string>> = {
     hours_val: 'Mon-Fri: 09:00-18:00, Sat: 10:00-15:00',
 
     hero_img_alt: 'Hybrid Deye solar power station turnkey',
+    hero_status_peak: 'Max generation',
+    hero_status_gen: 'Generating',
+    hero_status_low: 'Low generation',
+    hero_status_night: 'Night mode',
+    hero_status_reserve: 'Reserve power',
 
     // Hero Extra
     hero_urgent_tag: '2026 Promo: Wooden rafter reinforcement for free',
