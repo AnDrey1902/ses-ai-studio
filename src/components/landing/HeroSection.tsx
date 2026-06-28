@@ -133,10 +133,10 @@ export const HeroSection: React.FC = () => {
       </div>
 
       {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 -z-10 bg-grid-pattern opacity-30" />
+      <div className="absolute inset-0 -z-10 bg-grid-pattern opacity-10" />
 
       {/* Glow Orbs */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-green-500/15 to-amber-500/10 blur-[140px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-green-500/8 to-amber-500/5 blur-[140px] rounded-full pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
