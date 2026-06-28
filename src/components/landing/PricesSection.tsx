@@ -90,12 +90,12 @@ export const PricesSection: React.FC = () => {
                     key={pkg.id}
                     className={`rounded-3xl p-7 bg-slate-900 border transition-all flex flex-col justify-between relative shadow-xl ${
                       pkg.popular
-                        ? 'border-green-500 shadow-green-500/15 scale-[1.02] bg-gradient-to-b from-slate-900 via-slate-900 to-slate-900/90'
+                        ? 'border-amber-500/60 shadow-amber-500/15 scale-[1.02] bg-gradient-to-b from-slate-900 via-slate-900 to-slate-900/90'
                         : 'border-slate-800 hover:border-slate-700'
                     }`}
                   >
                     {pkg.popular && (
-                      <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#22C55E] text-slate-950 font-black text-[10px] uppercase tracking-wider shadow-lg">
+                      <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-amber-500 text-slate-950 font-black text-[10px] uppercase tracking-wider shadow-lg">
                         {tr('prices_popular_badge')}
                       </div>
                     )}
