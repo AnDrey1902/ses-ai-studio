@@ -129,7 +129,7 @@ export const HeroSection: React.FC = () => {
       {/* Background Image */}
       <div className="absolute inset-0 -z-20">
         <img src={heroBg} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-slate-950/30" />
+        <div className="absolute inset-0 bg-slate-950/10" />
       </div>
 
       {/* Grid Pattern Overlay */}
@@ -207,7 +207,7 @@ export const HeroSection: React.FC = () => {
               <img
                 src={deyeSystem}
                 alt="Deye 12kW Inverter"
-                className="w-full h-[380px] sm:h-[460px] object-contain object-center p-8 transform transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-[420px] sm:h-[520px] object-contain object-center p-6 transform transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60" />
 
