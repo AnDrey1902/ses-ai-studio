@@ -202,12 +202,12 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* Right Column: Visual Mockup */}
-          <div className="lg:col-span-5 relative lg:pt-24">
+          <div className="lg:col-span-5 relative">
             <div className="relative rounded-3xl overflow-hidden border border-slate-800 shadow-[0_20px_50px_rgba(0,0,0,0.8)] bg-slate-900 group">
               <img
                 src={deyeSystem}
                 alt="Deye 12kW Inverter"
-                className="w-full h-[480px] sm:h-[580px] object-contain object-center p-6 transform transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-[560px] sm:h-[660px] object-contain object-center p-6 transform transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60" />
 
