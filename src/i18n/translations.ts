@@ -30,6 +30,12 @@ export const t: Record<Language, Record<string, string>> = {
     // Block 2
     b2_title: 'Болі власників будинків та бізнесу в Україні vs Рішення GURU ENERGY',
     b2_sub: 'Чому 92% наших клієнтів рекомендують нас сусідам та партнерам',
+    b2_pain_label: 'Біль #',
+    b2_solution_label: 'Рішення GURU ENERGY:',
+    b2_cta: 'Отримати рішення',
+    b2_callout_title: 'Не впевнені, яка потужність потрібна саме вам?',
+    b2_callout_desc: 'Наш інженер проведе тепловізійний аналіз та розрахує споживання за 15 хвилин.',
+    b2_callout_btn: 'Безкоштовна консультація інженера',
 
     // Block 3
     b3_title: '5 основних конфігурацій сонячних станцій',
@@ -38,10 +44,18 @@ export const t: Record<Language, Record<string, string>> = {
     // Block 4
     b4_title: '8 безкомпромісних переваг GURU ENERGY',
     b4_sub: 'Ми будуємо станції, які працюють десятиліттями без втрати ККД',
+    b4_badge: 'ЧОМУ ОБИРАЮТЬ НАС',
+    b4_stat1_label: 'Змонтованих СЕС в Україні',
+    b4_stat2_label: 'Виконаних зобов\'язань у строк',
+    b4_stat3_label: 'Економії наших замовників',
+    b4_stat4_label: 'Гарантія виробітку панелей',
 
     // Block 5
     b5_title: '8 кроків роботи: від заявки до Зеленого тарифу',
     b5_sub: 'Повний супровід проекту інженерною бригадою без посередників',
+    b5_badge: 'ПРОЗОРИЙ ТАЙМЛАЙН',
+    b5_engineer_label: 'Етап супроводжує інженер',
+    b5_cta: 'Зробити Крок #1: Отримати розрахунок за 15 хв',
 
     // Block 6
     b6_title: 'Прозорі пакети та ціни під ключ',
@@ -322,15 +336,29 @@ export const t: Record<Language, Record<string, string>> = {
 
     b2_title: 'Боли владельцев домов и бизнеса в Украине vs Решение GURU ENERGY',
     b2_sub: 'Почему 92% наших клиентов рекомендуют нас соседям и партнерам',
+    b2_pain_label: 'Боль #',
+    b2_solution_label: 'Решение GURU ENERGY:',
+    b2_cta: 'Получить решение',
+    b2_callout_title: 'Не уверены, какая мощность нужна именно вам?',
+    b2_callout_desc: 'Наш инженер проведет тепловизионный анализ и рассчитает потребление за 15 минут.',
+    b2_callout_btn: 'Бесплатная консультация инженера',
 
     b3_title: '5 основных конфигураций солнечных станций',
     b3_sub: 'Подберем оптимальное решение именно под ваше потребление и крышу',
 
     b4_title: '8 бескомпромиссных преимуществ GURU ENERGY',
     b4_sub: 'Мы строим станции, которые работают десятилетиями без потери КПД',
+    b4_badge: 'ПОЧЕМУ ВЫБИРАЮТ НАС',
+    b4_stat1_label: 'Установленных СЭС в Украине',
+    b4_stat2_label: 'Выполненных обязательств в срок',
+    b4_stat3_label: 'Экономии наших заказчиков',
+    b4_stat4_label: 'Гарантия выработки панелей',
 
     b5_title: '8 шагов работы: от заявки до Зеленого тарифа',
     b5_sub: 'Полное сопровождение проекта инженерной бригадой без посредников',
+    b5_badge: 'ПРОЗРАЧНЫЙ ТАЙМЛАЙН',
+    b5_engineer_label: 'Этап сопровождает инженер',
+    b5_cta: 'Сделать Шаг #1: Получить расчет за 15 мин',
 
     b6_title: 'Прозрачные пакеты и цены под ключ',
     b6_sub: 'Честная смета: что входит в стоимость и условия оплаты 50/40/10%',
@@ -603,15 +631,29 @@ export const t: Record<Language, Record<string, string>> = {
 
     b2_title: 'Home & Business Owner Pain Points in Ukraine vs GURU ENERGY Solutions',
     b2_sub: 'Why 92% of our clients recommend us to neighbors and business partners',
+    b2_pain_label: 'Pain #',
+    b2_solution_label: 'GURU ENERGY Solution:',
+    b2_cta: 'Get Solution',
+    b2_callout_title: 'Not sure what capacity you need?',
+    b2_callout_desc: 'Our engineer will do a thermal analysis and calculate your consumption in 15 minutes.',
+    b2_callout_btn: 'Free Engineer Consultation',
 
     b3_title: '5 Main Configurations of Solar Power Plants',
     b3_sub: 'We pick the optimal engineered solution for your roof and consumption profile',
 
     b4_title: '8 Uncompromised Advantages of GURU ENERGY',
     b4_sub: 'We build solar systems designed to operate for decades without efficiency degradation',
+    b4_badge: 'WHY CHOOSE US',
+    b4_stat1_label: 'SES Installed Across Ukraine',
+    b4_stat2_label: 'Commitments Delivered On Time',
+    b4_stat3_label: 'Client Savings Generated',
+    b4_stat4_label: 'Panel Output Warranty',
 
     b5_title: '8 Steps of Work: From Inquiry to Green Tariff',
     b5_sub: 'Comprehensive engineering brigade execution with zero middlemen',
+    b5_badge: 'TRANSPARENT TIMELINE',
+    b5_engineer_label: 'Step supervised by engineer',
+    b5_cta: 'Take Step #1: Get Estimate in 15 min',
 
     b6_title: 'Transparent Turnkey Packages & Prices',
     b6_sub: 'Honest estimate: what is included and flexible 50/40/10% payment milestones',

@@ -35,7 +35,7 @@ export const PainSolutionSection: React.FC = () => {
                   {/* Badge & Stat */}
                   <div className="flex items-center justify-between">
                     <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase bg-red-500/10 text-red-400 border border-red-500/20">
-                      Біль #{idx + 1}
+                      {tr('b2_pain_label')}{idx + 1}
                     </span>
                     <span className="font-mono text-xs font-black text-[#22C55E] bg-green-500/10 px-2.5 py-1 rounded-lg">
                       {item.stat}
@@ -54,7 +54,7 @@ export const PainSolutionSection: React.FC = () => {
                   <div className="space-y-2 pt-2">
                     <div className="flex items-center gap-2 text-xs font-bold text-green-400 uppercase tracking-wide">
                       <CheckCircle2 className="w-4 h-4" />
-                      <span>Рішення GURU ENERGY:</span>
+                      <span>{tr('b2_solution_label')}</span>
                     </div>
                     <p className="text-xs sm:text-sm font-semibold text-slate-100 leading-relaxed pl-6">
                       {solCopy}
@@ -68,7 +68,7 @@ export const PainSolutionSection: React.FC = () => {
                     onClick={() => openLeadModal('10 кВт', item.badge, `Картка Болю: ${item.badge}`)}
                     className="w-full py-3 rounded-xl bg-slate-800 group-hover:bg-[#22C55E] text-slate-200 group-hover:text-slate-950 font-bold text-xs tracking-wider uppercase transition-all flex items-center justify-center gap-2"
                   >
-                    <span>Отримати рішення</span>
+                    <span>{tr('b2_cta')}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
                 </div>
@@ -80,14 +80,14 @@ export const PainSolutionSection: React.FC = () => {
         {/* Bottom Callout Banner */}
         <div className="bg-gradient-to-r from-green-500/15 via-slate-900 to-amber-500/15 rounded-3xl p-8 border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           <div className="space-y-1">
-            <h4 className="text-lg font-extrabold text-white">Не впевнені, яка потужність потрібна саме вам?</h4>
-            <p className="text-xs text-slate-400">Наш інженер проведе тепловізійний аналіз та розрахує споживання за 15 хвилин.</p>
+            <h4 className="text-lg font-extrabold text-white">{tr('b2_callout_title')}</h4>
+            <p className="text-xs text-slate-400">{tr('b2_callout_desc')}</p>
           </div>
           <button
             onClick={() => openLeadModal('10 кВт', 'Консультація інженера', 'Банер Болі Консультація')}
             className="px-6 py-3.5 bg-[#22C55E] hover:bg-[#16A34A] text-slate-950 font-extrabold text-xs rounded-xl tracking-wider shadow-lg shrink-0 transition-transform hover:scale-105"
           >
-            Безкоштовна консультація інженера
+            {tr('b2_callout_btn')}
           </button>
         </div>
 

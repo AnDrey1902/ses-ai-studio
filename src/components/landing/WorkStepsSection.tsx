@@ -13,7 +13,7 @@ export const WorkStepsSection: React.FC = () => {
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-green-500/10 text-green-400 border border-green-500/20">
-            ПРОЗОРИЙ ТАЙМЛАЙН
+            {tr('b5_badge')}
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white">
             {tr('b5_title')}
@@ -60,7 +60,7 @@ export const WorkStepsSection: React.FC = () => {
 
                   <div className="pt-2 flex items-center gap-1.5 text-[10px] font-bold text-green-400 uppercase tracking-wide">
                     <CheckCircle2 className="w-3.5 h-3.5" />
-                    <span>Етап супроводжує інженер</span>
+                    <span>{tr('b5_engineer_label')}</span>
                   </div>
                 </div>
               );
@@ -74,7 +74,7 @@ export const WorkStepsSection: React.FC = () => {
             onClick={() => openLeadModal('10 кВт', 'Почати крок #1 Заявка', 'Таймлайн Крок 1')}
             className="px-8 py-4 bg-[#22C55E] hover:bg-[#16A34A] text-slate-950 font-extrabold text-sm rounded-2xl shadow-xl shadow-green-500/25 tracking-wide transition-all hover:scale-105"
           >
-            Зробити Крок #1: Отримати розрахунок за 15 хв
+            {tr('b5_cta')}
           </button>
         </div>
 

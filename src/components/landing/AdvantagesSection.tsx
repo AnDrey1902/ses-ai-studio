@@ -13,7 +13,7 @@ export const AdvantagesSection: React.FC = () => {
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-green-500/10 text-green-400 border border-green-500/20">
-            ЧОМУ ОБИРАЮТЬ НАС
+            {tr('b4_badge')}
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white">
             {tr('b4_title')}
@@ -59,19 +59,19 @@ export const AdvantagesSection: React.FC = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-8 rounded-3xl bg-slate-900 border border-slate-800 text-center">
           <div>
             <div className="text-3xl sm:text-4xl font-black font-mono text-white">450+</div>
-            <div className="text-xs text-slate-400 font-semibold pt-1">Змонтованих СЕС в Україні</div>
+            <div className="text-xs text-slate-400 font-semibold pt-1">{tr('b4_stat1_label')}</div>
           </div>
           <div>
             <div className="text-3xl sm:text-4xl font-black font-mono text-green-400">100%</div>
-            <div className="text-xs text-slate-400 font-semibold pt-1">Виконаних зобов’язань у строк</div>
+            <div className="text-xs text-slate-400 font-semibold pt-1">{tr('b4_stat2_label')}</div>
           </div>
           <div>
             <div className="text-3xl sm:text-4xl font-black font-mono text-amber-400">$3.5M+</div>
-            <div className="text-xs text-slate-400 font-semibold pt-1">Економії наших замовників</div>
+            <div className="text-xs text-slate-400 font-semibold pt-1">{tr('b4_stat3_label')}</div>
           </div>
           <div>
             <div className="text-3xl sm:text-4xl font-black font-mono text-white">25 років</div>
-            <div className="text-xs text-slate-400 font-semibold pt-1">Гарантія виробітку панелей</div>
+            <div className="text-xs text-slate-400 font-semibold pt-1">{tr('b4_stat4_label')}</div>
           </div>
         </div>
 
