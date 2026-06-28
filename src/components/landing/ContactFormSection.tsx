@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { Phone, MessageCircle, Send, CheckCircle2, ShieldCheck, Clock, MapPin, Zap } from 'lucide-react';
+import { handlePhoneInput } from '../../utils/phone';
 
 export const ContactFormSection: React.FC = () => {
   const { addLead, tr, openLeadModal } = useApp();
@@ -127,9 +128,9 @@ export const ContactFormSection: React.FC = () => {
                     <input
                       type="tel"
                       required
-                      placeholder="+380 (99) 000-00-00"
+                      placeholder="+380 (XX) XXX-XX-XX"
                       value={phone}
-                      onChange={e => setPhone(e.target.value)}
+                      onChange={e => handlePhoneInput(e, setPhone)}
                       className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-green-500 font-mono font-bold"
                     />
                   </div>

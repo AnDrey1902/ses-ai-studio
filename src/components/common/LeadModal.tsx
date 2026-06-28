@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { X, CheckCircle2, AlertCircle, Loader2, Zap, Phone, User, ShieldAlert } from 'lucide-react';
+import { handlePhoneInput } from '../../utils/phone';
 
 export const LeadModal: React.FC = () => {
   const { leadModal, closeLeadModal, addLead, tr, lang } = useApp();
@@ -55,8 +56,7 @@ export const LeadModal: React.FC = () => {
   };
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let val = e.target.value;
-    setPhone(val);
+    handlePhoneInput(e, setPhone);
   };
 
   return (
