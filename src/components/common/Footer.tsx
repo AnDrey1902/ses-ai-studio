@@ -54,10 +54,10 @@ export const Footer: React.FC = () => {
             <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-200">{tr('footer_solutions_title')}</h4>
             <ul className="space-y-2 text-xs font-medium">
               <li><button onClick={() => { handleNav('services'); }} className="hover:text-green-400 transition-colors">{tr('calc_type_hybrid')}</button></li>
-              <li><button onClick={() => { handleNav('services'); }} className="hover:text-green-400 transition-colors">{tr('calc_type_business')}</button></li>
               <li><button onClick={() => { handleNav('services'); }} className="hover:text-green-400 transition-colors">{tr('calc_type_ongrid')}</button></li>
+              <li><button onClick={() => { handleNav('services'); }} className="hover:text-green-400 transition-colors">{tr('calc_type_offgrid')}</button></li>
+              <li><button onClick={() => { handleNav('services'); }} className="hover:text-green-400 transition-colors">{tr('calc_type_business')}</button></li>
               <li><button onClick={() => { handleNav('prices'); }} className="hover:text-green-400 transition-colors">{tr('tab_credits')}</button></li>
-              <li><button onClick={() => openLeadModal('15 kW', 'Off-grid SES', 'Footer Link')} className="hover:text-green-400 transition-colors">{tr('form_type_home')}</button></li>
             </ul>
           </div>
 
