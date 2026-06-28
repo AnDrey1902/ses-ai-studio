@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://guru-energy.com.ua/</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://guru-energy.com.ua/?lang=uk" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://guru-energy.com.ua/?lang=ru" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://guru-energy.com.ua/?lang=en" />
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Services -->
+  <url>
+    <loc>https://guru-energy.com.ua/#services</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://guru-energy.com.ua/?lang=uk#services" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://guru-energy.com.ua/?lang=ru#services" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://guru-energy.com.ua/?lang=en#services" />
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Prices -->
+  <url>
+    <loc>https://guru-energy.com.ua/#prices</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://guru-energy.com.ua/?lang=uk#prices" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://guru-energy.com.ua/?lang=ru#prices" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://guru-energy.com.ua/?lang=en#prices" />
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Cases -->
+  <url>
+    <loc>https://guru-energy.com.ua/#cases</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://guru-energy.com.ua/?lang=uk#cases" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://guru-energy.com.ua/?lang=ru#cases" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://guru-energy.com.ua/?lang=en#cases" />
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog -->
+  <url>
+    <loc>https://guru-energy.com.ua/#blog</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://guru-energy.com.ua/?lang=uk#blog" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://guru-energy.com.ua/?lang=ru#blog" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://guru-energy.com.ua/?lang=en#blog" />
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Contacts -->
+  <url>
+    <loc>https://guru-energy.com.ua/#contacts</loc>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://guru-energy.com.ua/?lang=uk#contacts" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://guru-energy.com.ua/?lang=ru#contacts" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://guru-energy.com.ua/?lang=en#contacts" />
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>
