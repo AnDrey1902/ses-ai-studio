@@ -13,7 +13,7 @@ export const GuaranteesSection: React.FC = () => {
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-green-500/10 text-green-400 border border-green-500/20">
-            ГАРАНТІЯ БЕЗПЕКИ ТА ЯКОСТІ
+            {tr('b9_badge')}
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white">
             {tr('b9_title')}
@@ -56,30 +56,30 @@ export const GuaranteesSection: React.FC = () => {
           <div className="space-y-3">
             <div className="flex items-center gap-2.5 text-white font-extrabold text-base">
               <Lock className="w-5 h-5 text-green-400" />
-              <span>Повне страхування ризиків</span>
+              <span>{tr('b9_insurance_title')}</span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Наші клієнти мають змогу оформити страховий поліс ПЗУ / ІНГО на обладнання від стихійних лих, пожежі, крадіжки та воєнних ризиків.
+              {tr('b9_insurance_desc')}
             </p>
           </div>
 
           <div className="space-y-3 border-t lg:border-t-0 lg:border-l border-slate-800 pt-6 lg:pt-0 lg:pl-8">
             <div className="flex items-center gap-2.5 text-white font-extrabold text-base">
               <FileCheck className="w-5 h-5 text-green-400" />
-              <span>Юридична відповідальність</span>
+              <span>{tr('b9_legal_title')}</span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Договір укладається з офіційно зареєстрованою в Україні компанією (ЄДРПОУ 43892110). У нас немає фірм-одноденок чи посередників.
+              {tr('b9_legal_desc')}
             </p>
           </div>
 
           <div className="space-y-3 border-t lg:border-t-0 lg:border-l border-slate-800 pt-6 lg:pt-0 lg:pl-8">
             <div className="flex items-center gap-2.5 text-white font-extrabold text-base">
               <Wrench className="w-5 h-5 text-green-400" />
-              <span>Сервісні пакети після 10 років</span>
+              <span>{tr('b9_service_title')}</span>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
-              Навіть по закінченню заводської гарантії наш диспетчерський центр підтримує вашу СЕС за спеціальними пільговими тарифами обслуговування.
+              {tr('b9_service_desc')}
             </p>
           </div>
         </div>

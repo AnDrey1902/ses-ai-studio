@@ -47,7 +47,7 @@ export const ContactFormSection: React.FC = () => {
           <div className="lg:col-span-6 space-y-8 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 text-red-400 border border-red-500/20 text-xs font-black uppercase">
               <Zap className="w-4 h-4 fill-red-400" />
-              <span>Увага! Тарифи зростають</span>
+              <span>{tr('form_urgent_badge')}</span>
             </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white leading-[1.15]">
@@ -62,7 +62,7 @@ export const ContactFormSection: React.FC = () => {
             <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-4 text-left max-w-xl mx-auto lg:mx-0">
               <div className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-1">
                 <div className="text-[10px] text-slate-500 uppercase font-bold flex items-center gap-1">
-                  <Phone className="w-3 h-3 text-green-400" /> Гаряча лінія 24/7
+                  <Phone className="w-3 h-3 text-green-400" /> {tr('form_hotline')}
                 </div>
                 <a href="tel:0800330444" className="text-lg font-black text-white hover:text-green-400 transition-colors block">0 800 330 444</a>
               </div>
@@ -92,13 +92,13 @@ export const ContactFormSection: React.FC = () => {
                     onClick={() => { setStatus('idle'); setName(''); setPhone(''); }}
                     className="mt-6 px-8 py-3.5 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-xl uppercase tracking-wider transition-all"
                   >
-                    Відправити ще одну заявку
+                    {tr('form_retry')}
                   </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <h3 className="text-xl font-extrabold text-white pb-1">
-                    Отримати розрахунок та кошторис у $
+                    {tr('form_heading')}
                   </h3>
 
                   <input
@@ -136,7 +136,7 @@ export const ContactFormSection: React.FC = () => {
 
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-[11px] font-bold text-slate-400 mb-1">Потужність СЕС</label>
+                      <label className="block text-[11px] font-bold text-slate-400 mb-1">{tr('form_power_label')}</label>
                       <select value={power} onChange={e => setPower(e.target.value)} className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs font-semibold text-slate-200">
                         <option value="5 кВт">5 кВт</option>
                         <option value="10 кВт">10 кВт (Хіт)</option>
@@ -145,7 +145,7 @@ export const ContactFormSection: React.FC = () => {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-[11px] font-bold text-slate-400 mb-1">Об'єкт</label>
+                      <label className="block text-[11px] font-bold text-slate-400 mb-1">{tr('form_object_label')}</label>
                       <select value={type} onChange={e => setType(e.target.value)} className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs font-semibold text-slate-200">
                         <option value="Приватний будинок">Приватний будинок</option>
                         <option value="Комерція">Бізнес / Комерція</option>
@@ -164,7 +164,7 @@ export const ContactFormSection: React.FC = () => {
 
                   <div className="flex items-center justify-center gap-2 text-[10px] text-slate-500 pt-1">
                     <ShieldCheck className="w-3.5 h-3.5 text-green-400" />
-                    <span>Натискаючи кнопку, ви погоджуєтесь з політикою конфіденційності</span>
+                    <span>{tr('form_consent')}</span>
                   </div>
                 </form>
               )}

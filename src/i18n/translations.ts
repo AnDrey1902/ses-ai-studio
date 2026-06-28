@@ -75,6 +75,13 @@ export const t: Record<Language, Record<string, string>> = {
     // Block 9
     b9_title: 'Офіційні гарантії, страхування та безпека',
     b9_sub: 'Сертифіковані обладнання та юридична чистота компанії',
+    b9_badge: 'ГАРАНТІЯ БЕЗПЕКИ ТА ЯКОСТІ',
+    b9_insurance_title: 'Повне страхування ризиків',
+    b9_insurance_desc: 'Наші клієнти мають змогу оформити страховий поліс ПЗУ / ІНГО на обладнання від стихійних лих, пожежі, крадіжки та воєнних ризиків.',
+    b9_legal_title: 'Юридична відповідальність',
+    b9_legal_desc: 'Договір укладається з офіційно зареєстрованою в Україні компанією (ЄДРПОУ 43892110). У нас немає фірм-одноденок чи посередників.',
+    b9_service_title: 'Сервісні пакети після 10 років',
+    b9_service_desc: 'Навіть по закінченню заводської гарантії наш диспетчерський центр підтримує вашу СЕС за спеціальними пільговими тарифами обслуговування.',
 
     // Block 10
     b10_title: 'Часті запитання (FAQ)',
@@ -113,6 +120,13 @@ export const t: Record<Language, Record<string, string>> = {
     form_submitting: 'Відправка заявки...',
     form_success_title: '✅ Дякуємо! Заявку прийнято',
     form_success_desc: 'Наш головний інженер зателефонує вам протягом 15 хвилин для уточнення деталей проекту.',
+    form_retry: 'Відправити ще одну заявку',
+    form_heading: 'Отримати розрахунок та кошторис у $',
+    form_power_label: 'Потужність СЕС',
+    form_object_label: 'Об\'єкт',
+    form_consent: 'Натискаючи кнопку, ви погоджуєтесь з політикою конфіденційності',
+    form_urgent_badge: 'Увага! Тарифи зростають',
+    form_hotline: 'Гаряча лінія 24/7',
 
     // Shop Page
     shop_title: 'Магазин сонячного обладнання GURU ENERGY — Незабаром',
@@ -374,6 +388,13 @@ export const t: Record<Language, Record<string, string>> = {
 
     b9_title: 'Официальные гарантии, страхование и безопасность',
     b9_sub: 'Сертифицированное оборудование и юридическая чистота компании',
+    b9_badge: 'ГАРАНТИЯ БЕЗОПАСНОСТИ И КАЧЕСТВА',
+    b9_insurance_title: 'Полное страхование рисков',
+    b9_insurance_desc: 'Наши клиенты могут оформить страховой полис ПЗУ / ИНГО на оборудование от стихийных бедствий, пожара, кражи и военных рисков.',
+    b9_legal_title: 'Юридическая ответственность',
+    b9_legal_desc: 'Договор заключается с официально зарегистрированной в Украине компанией (ЕДРПОУ 43892110). У нас нет фирм-однодневок или посредников.',
+    b9_service_title: 'Сервисные пакеты после 10 лет',
+    b9_service_desc: 'Даже по окончании заводской гарантии наш диспетчерский центр поддерживает вашу СЭС по специальным льготным тарифам обслуживания.',
 
     b10_title: 'Частые вопросы (FAQ)',
     b10_sub: 'Ответы главного инженера на самые популярные вопросы',
@@ -409,6 +430,13 @@ export const t: Record<Language, Record<string, string>> = {
     form_submitting: 'Отправка заявки...',
     form_success_title: '✅ Спасибо! Заявка принята',
     form_success_desc: 'Наш главный инженер перезвонит вам в течение 15 минут для уточнения деталей проекта.',
+    form_retry: 'Отправить еще одну заявку',
+    form_heading: 'Получить расчет и смету в $',
+    form_power_label: 'Мощность СЭС',
+    form_object_label: 'Объект',
+    form_consent: 'Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности',
+    form_urgent_badge: 'Внимание! Тарифы растут',
+    form_hotline: 'Горячая линия 24/7',
 
     shop_title: 'Магазин солнечного оборудования GURU ENERGY — Скоро',
     shop_desc: 'Мы готовим масштабный онлайн-каталог солнечных панелей Longi/Jinko, гибридных инверторов Deye/Huawei и аккумуляторов LiFePO4 с мгновенным заказом и бесплатной доставкой.',
@@ -669,6 +697,13 @@ export const t: Record<Language, Record<string, string>> = {
 
     b9_title: 'Official Guarantees, Insurance & Safety',
     b9_sub: 'Certified international Tier-1 hardware and complete legal compliance',
+    b9_badge: 'SAFETY & QUALITY GUARANTEED',
+    b9_insurance_title: 'Full Risk Insurance',
+    b9_insurance_desc: 'Clients can obtain PZU / INGO insurance policies covering natural disasters, fire, theft, and war-related risks.',
+    b9_legal_title: 'Legal Accountability',
+    b9_legal_desc: 'Contracts are signed with an officially registered Ukrainian company (EDRPOU 43892110). No shell companies or intermediaries.',
+    b9_service_title: 'Post-Warranty Service Packages',
+    b9_service_desc: 'Even after factory warranty expires, our dispatch center maintains your SES at preferential service rates.',
 
     b10_title: 'Frequently Asked Questions (FAQ)',
     b10_sub: 'Answers from our Chief Engineer to the most common customer questions',
@@ -704,6 +739,13 @@ export const t: Record<Language, Record<string, string>> = {
     form_submitting: 'Submitting Request...',
     form_success_title: '✅ Thank You! Inquiry Received',
     form_success_desc: 'Our Chief Engineer will call you within 15 minutes to clarify your project details.',
+    form_retry: 'Submit Another Request',
+    form_heading: 'Get Turnkey Calculation & Estimate in $',
+    form_power_label: 'SES Power',
+    form_object_label: 'Facility',
+    form_consent: 'By clicking the button, you agree to the privacy policy',
+    form_urgent_badge: 'Warning! Tariffs Are Rising',
+    form_hotline: 'Hotline 24/7',
 
     shop_title: 'GURU ENERGY Solar Hardware Store — Coming Soon',
     shop_desc: 'We are preparing a massive online catalog of Tier-1 Longi/Jinko panels, Deye/Huawei hybrid inverters, and LiFePO4 energy storage with instant checkout and free delivery.',
