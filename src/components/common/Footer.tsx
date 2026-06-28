@@ -56,7 +56,6 @@ export const Footer: React.FC = () => {
               <li><button onClick={() => { handleNav('services'); }} className="hover:text-green-400 transition-colors">{tr('calc_type_hybrid')}</button></li>
               <li><button onClick={() => { handleNav('services'); }} className="hover:text-green-400 transition-colors">{tr('calc_type_business')}</button></li>
               <li><button onClick={() => { handleNav('services'); }} className="hover:text-green-400 transition-colors">{tr('calc_type_ongrid')}</button></li>
-              <li><button onClick={() => { handleNav('services'); }} className="hover:text-green-400 transition-colors">{tr('calc_type_investor')}</button></li>
               <li><button onClick={() => { handleNav('prices'); }} className="hover:text-green-400 transition-colors">{tr('tab_credits')}</button></li>
               <li><button onClick={() => openLeadModal('15 kW', 'Off-grid SES', 'Footer Link')} className="hover:text-green-400 transition-colors">{tr('form_type_home')}</button></li>
             </ul>
