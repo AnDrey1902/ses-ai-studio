@@ -266,6 +266,10 @@ export const t: Record<Language, Record<string, string>> = {
     blog_cta_title: 'Сподобалась стаття? Запитайте інженера GURU ENERGY',
     blog_cta_desc: 'Отримайте безкоштовний аудит даху та розрахунок окупності під вашу специфіку.',
     blog_cta_btn: 'Розрахувати кошторис безкоштовно',
+    blog_sidebar_title: 'Безкоштовний розрахунок вашої СЕС',
+    blog_sidebar_desc: 'Залиште заявку — інженер звʼяжеться протягом 15 хвилин із точним кошторисом.',
+    blog_sidebar_btn: 'Отримати кошторис',
+    blog_related_title: 'Схожі статті',
 
     // Contacts Page
     contacts_badge: 'ОФІС ТА ЛОГІСТИКА',
@@ -579,6 +583,10 @@ export const t: Record<Language, Record<string, string>> = {
     blog_cta_title: 'Понравилась статья? Спросите инженера GURU ENERGY',
     blog_cta_desc: 'Получите бесплатный аудит крыши и расчет окупаемости под вашу специфику.',
     blog_cta_btn: 'Рассчитать смету бесплатно',
+    blog_sidebar_title: 'Бесплатный расчет вашей СЭС',
+    blog_sidebar_desc: 'Оставьте заявку — инженер свяжется в течение 15 минут с точной сметой.',
+    blog_sidebar_btn: 'Получить смету',
+    blog_related_title: 'Похожие статьи',
 
     // Contacts Page
     contacts_badge: 'ОФИС И ЛОГИСТИКА',
@@ -891,6 +899,10 @@ export const t: Record<Language, Record<string, string>> = {
     blog_cta_title: 'Liked the article? Ask GURU ENERGY engineer',
     blog_cta_desc: 'Get a free roof audit and ROI calculation for your specific needs.',
     blog_cta_btn: 'Calculate Estimate for Free',
+    blog_sidebar_title: 'Free Solar Plant Estimate',
+    blog_sidebar_desc: 'Leave a request — an engineer will contact you within 15 minutes with an exact estimate.',
+    blog_sidebar_btn: 'Get Estimate',
+    blog_related_title: 'Related Articles',
 
     // Contacts Page
     contacts_badge: 'OFFICE & LOGISTICS',
