@@ -494,6 +494,114 @@ export const FAQS: FAQItem[] = [
       ru: 'Сетевой инвертор работает ТОЛЬКО при наличии городской сети. Гибридный инвертор работает с аккумуляторами и дает резервное питание.',
       en: 'On-grid inverters shut down during blackouts. Hybrid inverters disconnect from the grid in 10ms and supply backup power from storage batteries.'
     }
+  },
+  {
+    question: {
+      uk: 'Які документи потрібні для підключення Зеленого тарифу?',
+      ru: 'Какие документы нужны для подключения Зеленого тарифа?',
+      en: 'What documents are needed for Green Tariff connection?'
+    },
+    answer: {
+      uk: 'Наші юристи готують повний пакет з 9 документів: заява до Обленерго, технічні умови, сертифікат відповідності інвертора, паспорт панелей, акт введення в експлуатацію, договір з постачальником послуг та інші. Вам не потрібно оббігати інстанції — ми супроводжуємо весь процес до пломбування лічильника.',
+      ru: 'Наши юристы готовят полный пакет из 9 документов: заявление в Облэнерго, технические условия, сертификат соответствия инвертора, паспорт панелей, акт ввода в эксплуатацию и другие. Вам не нужно обходить инстанции — мы сопровождаем весь процесс.',
+      en: 'Our legal team prepares all 9 required documents including grid operator application, technical specifications, inverter certificate, panel passport, commissioning act, and supply contract. We handle the entire process.'
+    }
+  },
+  {
+    question: {
+      uk: 'Скільки часу займає монтаж СЕС під ключ?',
+      ru: 'Сколько времени занимает монтаж СЭС под ключ?',
+      en: 'How long does turnkey SES installation take?'
+    },
+    answer: {
+      uk: 'Монтаж приватної гібридної станції 5–15 кВт триває 1–2 дні. Комерційні об\'єкти 30–100 кВт — 3–6 днів. Термін від моменту підписання договору до введення в експлуатацію — 5–10 робочих днів, включаючи доставку обладнання, монтаж та пусконаладку.',
+      ru: 'Монтаж частной гибридной станции 5–15 кВт занимает 1–2 дня. Коммерческие объекты 30–100 кВт — 3–6 дней. Срок от подписания договора до ввода в эксплуатацию — 5–10 рабочих дней.',
+      en: 'Residential hybrid plant installation (5-15 kW) takes 1-2 days. Commercial 30-100 kW sites take 3-6 days. Full turnaround from contract to commissioning is 5-10 business days.'
+    }
+  },
+  {
+    question: {
+      uk: 'Що входить у кошторис під ключ? Чи будуть додаткові витрати?',
+      ru: 'Что входит в смету под ключ? Будут ли дополнительные расходы?',
+      en: 'What is included in the turnkey estimate? Are there hidden costs?'
+    },
+    answer: {
+      uk: 'У кошторис входить: обладнання (панелі, інвертор, АКБ), система кріплень, кабельна продукція, доставка, монтаж, пусконаладка та оформлення документів для Зеленого тарифу. Єдині можливі додаткові витрати — це заміна лічильника (~3000 грн, робить Обленерго) та підвищення виділеної потужності на стовпі (теж Обленерго).',
+      ru: 'В смету входит: оборудование (панели, инвертор, АКБ), система креплений, кабельная продукция, доставка, монтаж, пусконаладка и оформление документов для Зеленого тарифа. Единственные возможные дополнительные расходы — замена счетчика (~3000 грн) и повышение выделенной мощности.',
+      en: 'The estimate includes: equipment (panels, inverter, battery), mounting system, cables, delivery, installation, commissioning, and Green Tariff documentation. Only potential extras are meter replacement (~$75) and power allocation upgrade by the grid operator.'
+    }
+  },
+  {
+    question: {
+      uk: 'Чи потрібен дозвіл або узгодження на встановлення сонячних панелей?',
+      ru: 'Нужно ли разрешение или согласование на установку солнечных панелей?',
+      en: 'Is a permit or approval required for solar panel installation?'
+    },
+    answer: {
+      uk: 'Для приватних будинків на власному даху дозвіл на будівництво не потрібен. Але обов\'язково потрібно узгодити підключення до мережі Обленерго та отримати технічні умови. Для комерційних об\'єктів може знадобитися проект та експертний висновок. Наші інженери беруть на себе весь процес узгодження.',
+      ru: 'Для частных домов на собственной крыше разрешение на строительство не требуется. Но обязательно нужно согласовать подключение к сети Облэнерго и получить технические условия. Для коммерческих объектов может потребоваться проект и экспертное заключение.',
+      en: 'For residential homes with own roof, no building permit is needed. Grid connection approval with the operator is mandatory. Commercial sites may require engineering project and expert assessment. Our engineers handle all coordination.'
+    }
+  },
+  {
+    question: {
+      uk: 'Як працює моніторинг станції після монтажу?',
+      ru: 'Как работает мониторинг станции после монтажа?',
+      en: 'How does the monitoring system work after installation?'
+    },
+    answer: {
+      uk: 'Кожен інвертор Deye або Huawei обладнаний Wi-Fi модулем. Через мобільний додаток ви бачите генерацію в реальному часі, заряд АКБ, накопичену економію та графік виробітку за місяць/рік. Наш сервісний центр також відстежує вашу станцію онлайн і повідомить про будь-які відхилення.',
+      ru: 'Каждый инвертор Deye или Huawei оснащен Wi-Fi модулем. Через мобильное приложение вы видите генерацию в реальном времени, заряд АКБ, накопленную экономику и график выработки. Наш сервисный центр также отслеживает вашу станцию онлайн.',
+      en: 'Every Deye or Huawei inverter has a Wi-Fi module. The mobile app shows real-time generation, battery charge, accumulated savings, and monthly/yearly production charts. Our service center also monitors your station remotely.'
+    }
+  },
+  {
+    question: {
+      uk: 'Що буде, якщо інвертор зламається під час гарантійного терміну?',
+      ru: 'Что будет, если инвертор сломается во время гарантийного срока?',
+      en: 'What happens if the inverter fails during the warranty period?'
+    },
+    answer: {
+      uk: 'Інвертори Deye та Huawei мають офіційну гарантію 10 років. У разі поломки ми організовуємо заміну або ремонт протягом 48 годин. На час ремонту, якщо у вас гібридна система з АКБ, будинок продовжує працювати від акумуляторів. Ми маємо запасні інвертори на складі для термінової заміни.',
+      ru: 'Инверторы Deye и Huawei имеют официальную гарантию 10 лет. В случае поломки мы организуем замену или ремонт в течение 48 часов. На время ремонта дом продолжает работать от аккумуляторов.',
+      en: 'Deye and Huawei inverters come with a 10-year official warranty. In case of failure, we arrange replacement or repair within 48 hours. During repair, hybrid systems keep running on battery power.'
+    }
+  },
+  {
+    question: {
+      uk: 'Чи можна встановити СЕС на багатоповерхівці або в офісній будівлі?',
+      ru: 'Можно ли установить СЭС на многоэтажке или в офисном здании?',
+      en: 'Can SES be installed on an apartment building or office?'
+    },
+    answer: {
+      uk: 'Для багатоповерхівок потрібен дозвіл від усіх власників квартир, які мають частку у даху, та від ОСБ. Для офісних та комерційних будівель — стандартна процедура з власником будівлі. Ми виконували проекти на дахах торгових центрів, складів та виробничих приміщень потужністю до 100 кВт.',
+      ru: 'Для многоэтажек нужно разрешение от всех владельцев квартир, имеющих долю в крыше, и от ОСБ. Для офисных и коммерческих зданий — стандартная процедура с владельцем.',
+      en: 'For apartment buildings, consent from all flat owners with roof share and the HOA is needed. For offices and commercial buildings, standard procedure with the building owner applies.'
+    }
+  },
+  {
+    question: {
+      uk: 'Як змінюються виплати за Зеленим тарифом протягом року?',
+      ru: 'Как меняются выплаты по Зеленому тарифу в течение года?',
+      en: 'How do Green Tariff payments change throughout the year?'
+    },
+    answer: {
+      uk: 'Виплати залежать від сезонної генерації: влітку (червень–серпень) виробіток максимум, взимку — мінімум. Ставка 0.132 євро/кВт·год фіксована, але перераховується в гривню за курсом НБУ. Середньорічний дохід станції 10 кВт у Центральній Україні — близько 990 євро на рік.',
+      ru: 'Выплаты зависят от сезонной генерации: летом выработка максимальна, зимой — минимальная. Ставка 0.132 евро/кВт·ч фиксирована, но пересчитывается в гривню по курсу НБУ.',
+      en: 'Payments depend on seasonal generation: peak in summer (June-August), lowest in winter. The 0.132 EUR/kWh rate is fixed but converted to UAH at NBU exchange rates. Average annual income for 10 kW in Central Ukraine is about 990 EUR.'
+    }
+  },
+  {
+    question: {
+      uk: 'Чи є знижки на великі обсяги або для постійних клієнтів?',
+      ru: 'Есть ли скидки на большие объемы или для постоянных клиентов?',
+      en: 'Are there volume discounts or repeat customer offers?'
+    },
+    answer: {
+      uk: 'Для комерційних об\'єктів від 30 кВт діє прогресивна знижка до 8%. Для клієнтів, які рекомендують нас друзям — бонус 200$ на сервісне обслуговування. Також діє сезонна акція на підсилення кроквеної системи — безкоштовно при замовленні станції від 10 кВт.',
+      ru: 'Для коммерческих объектов от 30 кВт действует прогрессивная скидка до 8%. Для клиентов, рекомендующих нас друзьям — бонус 200$ на сервисное обслуживание.',
+      en: 'For commercial sites from 30 kW, progressive discounts up to 8% apply. Referral bonus of $200 for service maintenance. Seasonal promo: free rafter reinforcement with orders above 10 kW.'
+    }
   }
 ];
 
