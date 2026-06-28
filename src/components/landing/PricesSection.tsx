@@ -151,8 +151,10 @@ export const PricesSection: React.FC = () => {
                       <button
                         onClick={() => openLeadModal(`${pkg.kw} kW`, nameCopy, `Price Table: ${nameCopy}`)}
                         className={`w-full py-4 rounded-xl font-extrabold text-xs tracking-wider uppercase transition-all shadow-lg ${
-                          pkg.popular
+                          pkg.badgeType === 'popular'
                             ? 'bg-[#22C55E] hover:bg-[#16A34A] text-slate-950 shadow-green-500/25'
+                            : pkg.badgeType === 'bestseller'
+                            ? 'bg-amber-500 hover:bg-amber-400 text-slate-950 shadow-amber-500/25'
                             : 'bg-slate-800 hover:bg-slate-700 text-white'
                         }`}
                       >

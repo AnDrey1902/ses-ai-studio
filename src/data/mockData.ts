@@ -213,7 +213,7 @@ export const PACKAGES: SESPackage[] = [
     battery: 'LiFePO4 Deye SE-G10.4 (10.24 кВт·год)',
     generationYear: 11500,
     popular: true,
-    badgeType: 'popular' as const
+    badgeType: 'bestseller' as const
   },
   {
     id: 'pkg-15kw',
@@ -227,8 +227,7 @@ export const PACKAGES: SESPackage[] = [
     inverter: 'Deye SUN-15K-SG01HP3-EU-AM2',
     panels: '26 шт × Longi Hi-MO 7 590W',
     battery: 'Високовольтний блок Deye BOS-G (15.3 кВт·год)',
-    generationYear: 17200,
-    badgeType: 'bestseller' as const
+    generationYear: 17200
   },
   {
     id: 'pkg-30kw',
