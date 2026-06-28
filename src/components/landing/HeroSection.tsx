@@ -124,16 +124,16 @@ export const HeroSection: React.FC = () => {
   const kwLabel = tr('prices_kw_h').replace('·год', '').replace('·ч', '');
 
   return (
-    <section id="home" className="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden border-b border-slate-900">
+    <section id="home" className="relative isolate pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden border-b border-slate-900">
       
       {/* Background Image */}
-      <div className="absolute inset-0 -z-20">
+      <div className="absolute inset-0 z-[-1]">
         <img src={heroBg} alt="" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-slate-950/10" />
       </div>
 
       {/* Glow Orbs */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-green-500/8 to-amber-500/5 blur-[140px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-green-500/8 to-amber-500/5 blur-[140px] rounded-full pointer-events-none z-[-1]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
