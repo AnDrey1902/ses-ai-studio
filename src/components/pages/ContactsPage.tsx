@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Phone, Mail, MapPin, Clock, ShieldCheck, Zap } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, ShieldCheck, Zap, Send, CheckCircle2 } from 'lucide-react';
+import { formatPhone } from '../../utils/phone';
 
 export const ContactsPage: React.FC = () => {
   const { openLeadModal, tr } = useApp();
+  const [formName, setFormName] = useState('');
+  const [formPhone, setFormPhone] = useState('');
+  const [formMsg, setFormMsg] = useState('');
+  const [formSent, setFormSent] = useState(false);
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormPhone(formatPhone(e.target.value.replace(/\D/g, '').slice(0, 12)));
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formName.trim() || !formPhone.trim()) return;
+    setFormSent(true);
+    setTimeout(() => setFormSent(false), 4000);
+    setFormName('');
+    setFormPhone('');
+    setFormMsg('');
+  };
 
   return (
     <div className="pt-28 pb-24 bg-slate-950 min-h-screen text-slate-100">
@@ -25,7 +44,7 @@ export const ContactsPage: React.FC = () => {
         {/* Grid Info + Map */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
           
-          {/* Info Cards (5) */}
+          {/* Info Cards */}
           <div className="lg:col-span-5 space-y-6">
             
             <div className="bg-slate-900 p-7 rounded-3xl border border-slate-800 space-y-4 shadow-xl">
@@ -76,14 +95,15 @@ export const ContactsPage: React.FC = () => {
 
           </div>
 
-          {/* Interactive Google Map iframe simulation (7) */}
+          {/* OpenStreetMap */}
           <div className="lg:col-span-7 rounded-3xl overflow-hidden border border-slate-800 shadow-2xl h-[480px] sm:h-[560px] bg-slate-900 relative">
             <iframe
               title={tr('contacts_map_title')}
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.540866874836!2d30.523400000000003!3d50.4501!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTDCsDI3JzAwLjQiTiAzMMKwMzEnMjQuMiJF!5e0!3m2!1suk!2sua!4v1620000000000!5m2!1suk!2sua"
-              className="w-full h-full border-0 filter grayscale invert contrast-125 opacity-80"
-              allowFullScreen={false}
+              src="https://www.openstreetmap.org/export/embed.html?bbox=30.518%2C50.447%2C30.529%2C50.454&layer=mapnik&marker=50.4501%2C30.5234"
+              className="w-full h-full border-0"
               loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              style={{ filter: 'grayscale(0.8) invert(0.92) contrast(1.1) hue-rotate(180deg)' }}
             />
             <div className="absolute bottom-6 left-6 bg-slate-950/90 backdrop-blur-md p-4 rounded-2xl border border-slate-800 shadow-xl max-w-sm">
               <div className="text-xs font-extrabold text-white flex items-center gap-2">
@@ -97,6 +117,65 @@ export const ContactsPage: React.FC = () => {
             </div>
           </div>
 
+        </div>
+
+        {/* Feedback Form */}
+        <div className="max-w-2xl mx-auto space-y-8 pt-8 border-t border-slate-800">
+          <div className="text-center space-y-3">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white">{tr('contacts_form_title')}</h2>
+            <p className="text-sm text-slate-400">{tr('contacts_form_desc')}</p>
+          </div>
+
+          {formSent ? (
+            <div className="flex flex-col items-center gap-4 py-12 text-center">
+              <CheckCircle2 className="w-16 h-16 text-green-400" />
+              <p className="text-lg font-extrabold text-white">{tr('contacts_form_success')}</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="bg-slate-900 p-8 rounded-3xl border border-slate-800 shadow-xl space-y-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">{tr('form_name')}</label>
+                  <input
+                    type="text"
+                    required
+                    value={formName}
+                    onChange={e => setFormName(e.target.value)}
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-green-500 transition-colors"
+                    placeholder={tr('form_name')}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">{tr('form_phone')}</label>
+                  <input
+                    type="tel"
+                    required
+                    value={formPhone}
+                    onChange={handlePhoneChange}
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-green-500 transition-colors font-mono"
+                    placeholder="+380 (XX) XXX-XX-XX"
+                  />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <label className="text-xs font-bold text-slate-300 uppercase tracking-wider">{tr('contacts_form_msg_label')}</label>
+                <textarea
+                  value={formMsg}
+                  onChange={e => setFormMsg(e.target.value)}
+                  rows={4}
+                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-green-500 transition-colors resize-none"
+                  placeholder={tr('contacts_form_msg_placeholder')}
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full py-4 bg-[#22C55E] hover:bg-[#16A34A] text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-green-500/25 transition-all hover:scale-[1.02] flex items-center justify-center gap-2"
+              >
+                <Send className="w-4 h-4" />
+                <span>{tr('contacts_form_btn')}</span>
+              </button>
+            </form>
+          )}
         </div>
 
       </div>

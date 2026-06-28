@@ -288,6 +288,12 @@ export const t: Record<Language, Record<string, string>> = {
     contacts_map_title: 'Мапа офісу GURU ENERGY Київ',
     contacts_stock_title: 'Центральний склад Tier-1 в Україні:',
     contacts_stock_desc: 'У наявності: <strong>140 інверторів Deye 12K</strong> та <strong>2200 панелей Longi Hi-MO 6 585W</strong>. Готові до відвантаження за 24 години.',
+    contacts_form_title: 'Залишити повідомлення',
+    contacts_form_desc: 'Напишіть нам — відповімо протягом 30 хвилин у робочий час.',
+    contacts_form_msg_label: 'Ваше повідомлення',
+    contacts_form_msg_placeholder: 'Опишіть ваше завдання або запитання...',
+    contacts_form_btn: 'Надіслати повідомлення',
+    contacts_form_success: 'Повідомлення надіслано! Ми звʼяжемося з вами найближчим часом.',
 
     // AI Widget
     ai_welcome: 'Вітаю! Я штучний інтелект-інженер GURU ENERGY. Запитайте мене про окупність сонячних панелей в Україні, підбір потужності для вашого будинку чи підключення Зеленого тарифу!',
@@ -605,6 +611,12 @@ export const t: Record<Language, Record<string, string>> = {
     contacts_map_title: 'Карта офиса GURU ENERGY Киев',
     contacts_stock_title: 'Центральный склад Tier-1 в Украине:',
     contacts_stock_desc: 'В наличии: <strong>140 инверторов Deye 12K</strong> и <strong>2200 панелей Longi Hi-MO 6 585W</strong>. Готовы к отгрузке за 24 часа.',
+    contacts_form_title: 'Оставить сообщение',
+    contacts_form_desc: 'Напишите нам — ответим в течение 30 минут в рабочее время.',
+    contacts_form_msg_label: 'Ваше сообщение',
+    contacts_form_msg_placeholder: 'Опишите вашу задачу или вопрос...',
+    contacts_form_btn: 'Отправить сообщение',
+    contacts_form_success: 'Сообщение отправлено! Мы свяжемся с вами в ближайшее время.',
 
     // AI Widget
     ai_welcome: 'Приветствую! Я искусственный интеллект-инженер GURU ENERGY. Спросите меня об окупаемости солнечных панелей в Украине, подборе мощности для вашего дома или подключении Зеленого тарифа!',
@@ -921,6 +933,12 @@ export const t: Record<Language, Record<string, string>> = {
     contacts_map_title: 'GURU ENERGY Kyiv Office Map',
     contacts_stock_title: 'Central Tier-1 Warehouse in Ukraine:',
     contacts_stock_desc: 'In stock: <strong>140 Deye 12K inverters</strong> and <strong>2200 Longi Hi-MO 6 585W panels</strong>. Ready for shipment in 24h.',
+    contacts_form_title: 'Leave a Message',
+    contacts_form_desc: 'Write to us — we respond within 30 minutes during business hours.',
+    contacts_form_msg_label: 'Your message',
+    contacts_form_msg_placeholder: 'Describe your task or question...',
+    contacts_form_btn: 'Send Message',
+    contacts_form_success: 'Message sent! We will contact you shortly.',
 
     // AI Widget
     ai_welcome: 'Greetings! I am GURU ENERGY AI Engineer. Ask me about solar panel ROI in Ukraine, capacity selection for your home, or Green Tariff connection!',
