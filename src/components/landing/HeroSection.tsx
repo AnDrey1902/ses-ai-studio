@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useApp } from '../../context/AppContext';
 import { Zap, ShieldCheck, Clock, Award, ArrowRight, CheckCircle2, FileText, Sun, Cloud, CloudRain, Moon } from 'lucide-react';
 import heroBg from '../../assets/hero.webp';
+import deyeSystem from '../../assets/deye-12kVt.webp';
 
 type WeatherState = 'sunny' | 'cloudy' | 'rainy';
 type TimeOfDay = 'morning' | 'day' | 'evening' | 'night';
@@ -128,7 +129,7 @@ export const HeroSection: React.FC = () => {
       {/* Background Image */}
       <div className="absolute inset-0 -z-20">
         <img src={heroBg} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-slate-950/70" />
+        <div className="absolute inset-0 bg-slate-950/30" />
       </div>
 
       {/* Grid Pattern Overlay */}
@@ -204,11 +205,11 @@ export const HeroSection: React.FC = () => {
           <div className="lg:col-span-5 relative">
             <div className="relative rounded-3xl overflow-hidden border border-slate-800 shadow-[0_20px_50px_rgba(0,0,0,0.8)] bg-slate-900 group">
               <img
-                src="https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=1000&q=80"
-                alt={tr('hero_img_alt')}
-                className="w-full h-[380px] sm:h-[460px] object-cover object-center transform transition-transform duration-700 group-hover:scale-105"
+                src={deyeSystem}
+                alt="Deye 12kW Inverter"
+                className="w-full h-[380px] sm:h-[460px] object-contain object-center p-8 transform transition-transform duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60" />
 
               {/* Live Status Overlay Card */}
               <div className="absolute bottom-6 left-6 right-6 bg-slate-900/90 backdrop-blur-md p-4 rounded-2xl border border-slate-700/80 shadow-2xl space-y-2">
