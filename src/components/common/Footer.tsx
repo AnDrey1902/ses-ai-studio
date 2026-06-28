@@ -39,25 +39,25 @@ export const Footer: React.FC = () => {
           {/* Col 2: Quick Links */}
           <div className="space-y-3">
             <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-200">{tr('footer_nav_title')}</h4>
-            <ul className="space-y-2 text-xs font-medium">
-              <li><button onClick={() => handleNav('home')} className="hover:text-green-400 transition-colors">{tr('nav_home')}</button></li>
-              <li><button onClick={() => handleNav('services')} className="hover:text-green-400 transition-colors">{tr('nav_services')}</button></li>
-              <li><button onClick={() => handleNav('prices')} className="hover:text-green-400 transition-colors">{tr('nav_prices')}</button></li>
-              <li><button onClick={() => handleNav('cases')} className="hover:text-green-400 transition-colors">{tr('nav_cases')}</button></li>
-              <li><button onClick={() => handleNav('blog')} className="hover:text-green-400 transition-colors">{tr('nav_blog')}</button></li>
-              <li><button onClick={() => handleNav('shop')} className="hover:text-green-400 transition-colors flex items-center gap-1"><span>{tr('nav_shop')}</span><span className="text-[9px] bg-amber-500 text-slate-950 px-1 rounded font-bold">{tr('coming_soon_badge')}</span></button></li>
+            <ul className="space-y-2.5">
+              <li><button onClick={() => handleNav('home')} className="block w-full text-left text-xs font-medium hover:text-green-400 transition-colors">{tr('nav_home')}</button></li>
+              <li><button onClick={() => handleNav('services')} className="block w-full text-left text-xs font-medium hover:text-green-400 transition-colors">{tr('nav_services')}</button></li>
+              <li><button onClick={() => handleNav('prices')} className="block w-full text-left text-xs font-medium hover:text-green-400 transition-colors">{tr('nav_prices')}</button></li>
+              <li><button onClick={() => handleNav('cases')} className="block w-full text-left text-xs font-medium hover:text-green-400 transition-colors">{tr('nav_cases')}</button></li>
+              <li><button onClick={() => handleNav('blog')} className="block w-full text-left text-xs font-medium hover:text-green-400 transition-colors">{tr('nav_blog')}</button></li>
+              <li><button onClick={() => handleNav('shop')} className="block w-full text-left text-xs font-medium hover:text-green-400 transition-colors flex items-center gap-1"><span>{tr('nav_shop')}</span><span className="text-[9px] bg-amber-500 text-slate-950 px-1 rounded font-bold">{tr('coming_soon_badge')}</span></button></li>
             </ul>
           </div>
 
           {/* Col 3: Services */}
           <div className="space-y-3">
             <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-200">{tr('footer_solutions_title')}</h4>
-            <ul className="space-y-2 text-xs font-medium">
-              <li><button onClick={() => { handleNav('services'); }} className="hover:text-green-400 transition-colors">{tr('calc_type_hybrid')}</button></li>
-              <li><button onClick={() => { handleNav('services'); }} className="hover:text-green-400 transition-colors">{tr('calc_type_ongrid')}</button></li>
-              <li><button onClick={() => { handleNav('services'); }} className="hover:text-green-400 transition-colors">{tr('calc_type_offgrid')}</button></li>
-              <li><button onClick={() => { handleNav('services'); }} className="hover:text-green-400 transition-colors">{tr('calc_type_business')}</button></li>
-              <li><button onClick={() => { handleNav('prices'); }} className="hover:text-green-400 transition-colors">{tr('tab_credits')}</button></li>
+            <ul className="space-y-2.5">
+              <li><button onClick={() => { handleNav('services'); }} className="block w-full text-left text-xs font-medium hover:text-green-400 transition-colors">{tr('calc_type_hybrid')}</button></li>
+              <li><button onClick={() => { handleNav('services'); }} className="block w-full text-left text-xs font-medium hover:text-green-400 transition-colors">{tr('calc_type_ongrid')}</button></li>
+              <li><button onClick={() => { handleNav('services'); }} className="block w-full text-left text-xs font-medium hover:text-green-400 transition-colors">{tr('calc_type_offgrid')}</button></li>
+              <li><button onClick={() => { handleNav('services'); }} className="block w-full text-left text-xs font-medium hover:text-green-400 transition-colors">{tr('calc_type_business')}</button></li>
+              <li className="pt-1 border-t border-slate-800"><button onClick={() => { handleNav('prices'); }} className="block w-full text-left text-xs font-medium hover:text-green-400 transition-colors">{tr('tab_credits')}</button></li>
             </ul>
           </div>
 
