@@ -95,6 +95,7 @@ export const t: Record<Language, Record<string, string>> = {
     calc_type_hybrid: 'Гібридна з акумулятором (Дім/Бізнес)',
     calc_type_ongrid: 'Мережева (Економія + Зелений тариф)',
     calc_type_business: 'Для підприємства (Заміщення тарифу)',
+    calc_type_investor: 'Інвесторська СЕС (Зелений тариф)',
     calc_label_region: 'Регіон України',
     calc_region_kyiv: 'Київ та Центральна Україна',
     calc_region_west: 'Львів та Західна Україна',
@@ -156,6 +157,9 @@ export const t: Record<Language, Record<string, string>> = {
     footer_rights: '© 2026 GURU ENERGY (ЕНЕРГОЖИВЛЕННЯ). Всі права захищено.',
     footer_privacy: 'Політика конфіденційності',
     footer_admin_btn: 'CMS Admin Portal',
+    footer_phone: '0 800 330 444',
+    footer_email: 'info@guru-energy.com.ua',
+    hours_val: 'Пн-Пт: 09:00-18:00, Сб: 10:00-15:00',
 
     // Hero Extra
     hero_urgent_tag: 'Акція 2026: Дерев’яні крокви підсилюємо безкоштовно',
@@ -406,6 +410,7 @@ export const t: Record<Language, Record<string, string>> = {
     calc_type_hybrid: 'Гибридная с аккумулятором (Дом/Бизнес)',
     calc_type_ongrid: 'Сетевая (Экономия + Зеленый тариф)',
     calc_type_business: 'Для предприятия (Замещение тарифа)',
+    calc_type_investor: 'Инвестиционная СЭС (Зеленый тариф)',
     calc_label_region: 'Регион Украины',
     calc_region_kyiv: 'Киев и Центральная Украина',
     calc_region_west: 'Львов и Западная Украина',
@@ -465,6 +470,9 @@ export const t: Record<Language, Record<string, string>> = {
     footer_rights: '© 2026 GURU ENERGY (ЕНЕРГОЖИВЛЕННЯ). Все права защищены.',
     footer_privacy: 'Политика конфиденциальности',
     footer_admin_btn: 'CMS Admin Portal',
+    footer_phone: '0 800 330 444',
+    footer_email: 'info@guru-energy.com.ua',
+    hours_val: 'Пн-Пт: 09:00-18:00, Сб: 10:00-15:00',
 
     // Hero Extra
     hero_urgent_tag: 'Акция 2026: Деревянные стропила усиливаем бесплатно',
@@ -715,6 +723,7 @@ export const t: Record<Language, Record<string, string>> = {
     calc_type_hybrid: 'Hybrid with Battery Backup (Home/Commercial)',
     calc_type_ongrid: 'On-grid (Max Generation + Green Tariff)',
     calc_type_business: 'For Enterprise (Self-consumption)',
+    calc_type_investor: 'Investment SES (Green Tariff)',
     calc_label_region: 'Ukrainian Region',
     calc_region_kyiv: 'Kyiv & Central Ukraine',
     calc_region_west: 'Lviv & Western Ukraine',
@@ -773,6 +782,9 @@ export const t: Record<Language, Record<string, string>> = {
     footer_rights: '© 2026 GURU ENERGY. All rights reserved.',
     footer_privacy: 'Privacy Policy',
     footer_admin_btn: 'CMS Admin Portal',
+    footer_phone: '0 800 330 444',
+    footer_email: 'info@guru-energy.com.ua',
+    hours_val: 'Mon-Fri: 09:00-18:00, Sat: 10:00-15:00',
 
     // Hero Extra
     hero_urgent_tag: '2026 Promo: Wooden rafter reinforcement for free',

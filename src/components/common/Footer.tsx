@@ -56,6 +56,7 @@ export const Footer: React.FC = () => {
               <li><button onClick={() => { handleNav('services'); }} className="hover:text-green-400 transition-colors">{tr('calc_type_hybrid')}</button></li>
               <li><button onClick={() => { handleNav('services'); }} className="hover:text-green-400 transition-colors">{tr('calc_type_business')}</button></li>
               <li><button onClick={() => { handleNav('services'); }} className="hover:text-green-400 transition-colors">{tr('calc_type_ongrid')}</button></li>
+              <li><button onClick={() => { handleNav('services'); }} className="hover:text-green-400 transition-colors">{tr('calc_type_investor')}</button></li>
               <li><button onClick={() => { handleNav('prices'); }} className="hover:text-green-400 transition-colors">{tr('tab_credits')}</button></li>
               <li><button onClick={() => openLeadModal('15 kW', 'Off-grid SES', 'Footer Link')} className="hover:text-green-400 transition-colors">{tr('form_type_home')}</button></li>
             </ul>
@@ -67,11 +68,11 @@ export const Footer: React.FC = () => {
             <ul className="space-y-2.5 text-xs font-medium">
               <li className="flex items-start gap-2">
                 <Phone className="w-3.5 h-3.5 text-green-400 shrink-0 mt-0.5" />
-                <a href="tel:0800330444" className="text-slate-200 font-bold hover:text-green-400 transition-colors">0 800 330 444</a>
+                <a href="tel:0800330444" className="text-slate-200 font-bold hover:text-green-400 transition-colors">{tr('footer_phone')}</a>
               </li>
               <li className="flex items-start gap-2">
                 <Mail className="w-3.5 h-3.5 text-green-400 shrink-0 mt-0.5" />
-                <a href="mailto:info@guru-energy.com.ua" className="hover:text-green-400 transition-colors">info@guru-energy.com.ua</a>
+                <a href="mailto:info@guru-energy.com.ua" className="hover:text-green-400 transition-colors">{tr('footer_email')}</a>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-green-400 shrink-0 mt-0.5" />

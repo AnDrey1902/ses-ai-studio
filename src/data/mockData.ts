@@ -143,6 +143,20 @@ export const SES_SERVICES = [
     equip: 'Автономний інвертор Must + АКБ Dyness 15 кВт·год + Панелі Risen',
     price: '$3 900',
     payback: 'Автономія'
+  },
+  {
+    id: 's-investor',
+    typeKey: 'ongrid',
+    title: { uk: 'Інвесторська СЕС під Зелений тариф', ru: 'Инвестиционная СЭС под Зеленый тариф', en: 'Investment SES for Green Tariff' },
+    target: { uk: 'Пасивний дохід у євро від держави', ru: 'Пассивный доход в евро от государства', en: 'Passive EUR income from state guarantees' },
+    desc: {
+      uk: 'Класична інвестиційна модель: держава купує вашу електроенергію за фіксованим тарифом 0.132 євро/кВт·год. Стабільний дохід без обслуговування.',
+      ru: 'Классическая инвестиционная модель: государство покупает вашу электроэнергию по фиксированному тарифу 0.132 евро/кВт·ч. Стабильный доход без обслуживания.',
+      en: 'Classic investment model: state buys your electricity at fixed 0.132 EUR/kWh tariff. Stable hands-off income.'
+    },
+    equip: 'Інвертор Solis 30K + Панелі Longi 580W + Двонаправлений лічильник',
+    price: '$8 200',
+    payback: '4 роки'
   }
 ];
 
