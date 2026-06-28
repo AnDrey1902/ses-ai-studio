@@ -1,4 +1,6 @@
 import { BlogPost, CaseItem, FAQItem, Lead, ReviewItem, SESPackage, WaitlistEmail } from '../types';
+import privateHouseImg from '../assets/private-house.webp';
+import supermarketImg from '../assets/supermarket.webp';
 
 export const PAIN_SOLUTIONS = [
   {
@@ -275,7 +277,7 @@ export const CASES: CaseItem[] = [
       ru: '«Забыл где лежит фонарик. Зимой во время блэкаутов котел работал сутки на аккумуляторе»',
       en: '«Haven\'t touched a generator in a year. During winter blackouts heating ran 24 hrs on batteries.»'
     },
-    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80'
+    image: privateHouseImg
   },
   {
     id: 'case-2',
@@ -292,7 +294,7 @@ export const CASES: CaseItem[] = [
       ru: '«Холодильные витрины потребляют колоссальные объемы в жару. СЭС срезала счет с 85 тыс до 14 тыс грн»',
       en: '«Refrigeration consumes huge loads in summer. Solar cut our bill from $2,100 to $350 monthly.»'
     },
-    image: 'https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=800&q=80'
+    image: supermarketImg
   },
   {
     id: 'case-3',
