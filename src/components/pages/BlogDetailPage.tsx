@@ -2,6 +2,7 @@ import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { BLOG_POSTS } from '../../data/mockData';
 import { ArrowLeft, Calendar, Clock, Share2, Tag, CheckCircle2, Zap } from 'lucide-react';
+import { SchemaOrg } from '../common/SchemaOrg';
 
 export const BlogDetailPage: React.FC = () => {
   const { selectedBlogSlug, setView, lang, openLeadModal, tr } = useApp();
@@ -15,6 +16,13 @@ export const BlogDetailPage: React.FC = () => {
 
   return (
     <div className="pt-28 pb-24 bg-slate-950 min-h-screen text-slate-100">
+      <SchemaOrg type="article" data={{
+        title: post.title[lang] || post.title.uk,
+        description: post.excerpt[lang] || post.excerpt.uk,
+        image: post.image,
+        datePublished: post.publishedAt,
+        author: post.author
+      }} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         
         {/* Back Button */}

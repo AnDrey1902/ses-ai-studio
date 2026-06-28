@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { FAQS } from '../../data/mockData';
 import { ChevronDown, HelpCircle, PhoneCall } from 'lucide-react';
+import { SchemaOrg } from '../common/SchemaOrg';
 
 export const FaqSection: React.FC = () => {
   const { lang, tr, openLeadModal } = useApp();
@@ -13,6 +14,7 @@ export const FaqSection: React.FC = () => {
 
   return (
     <section className="py-20 md:py-28 bg-slate-950 border-b border-slate-900">
+      <SchemaOrg type="faq" data={{ faqs: FAQS.map(f => ({ question: f.question[lang] || f.question.uk, answer: f.answer[lang] || f.answer.uk })) }} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* Section Heading */}

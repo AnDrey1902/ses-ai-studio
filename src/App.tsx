@@ -4,6 +4,7 @@ import { Navbar } from './components/common/Navbar';
 import { Footer } from './components/common/Footer';
 import { LeadModal } from './components/common/LeadModal';
 import { AIConsultantWidget } from './components/ai/AIConsultantWidget';
+import { SchemaOrg } from './components/common/SchemaOrg';
 
 // Landing Sections
 import { HeroSection } from './components/landing/HeroSection';
@@ -104,6 +105,7 @@ export default function App() {
   return (
     <AppProvider>
       <div className="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-green-500 selection:text-slate-950 antialiased">
+        <SchemaOrg type="organization" />
         {/* Persistent Top Navigation Bar */}
         <Navbar />
 

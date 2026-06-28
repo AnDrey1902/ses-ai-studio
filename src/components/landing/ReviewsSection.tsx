@@ -2,12 +2,14 @@ import React from 'react';
 import { useApp } from '../../context/AppContext';
 import { REVIEWS } from '../../data/mockData';
 import { Star, Quote } from 'lucide-react';
+import { SchemaOrg } from '../common/SchemaOrg';
 
 export const ReviewsSection: React.FC = () => {
   const { lang, tr } = useApp();
 
   return (
     <section className="py-20 md:py-28 bg-slate-950 border-b border-slate-900">
+      <SchemaOrg type="reviews" data={{ reviews: REVIEWS.map(r => ({ author: r.name, rating: r.rating, text: r.text[lang] || r.text.uk })) }} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* Section Heading */}
