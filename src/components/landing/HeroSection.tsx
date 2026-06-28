@@ -129,7 +129,7 @@ export const HeroSection: React.FC = () => {
       {/* Background Image */}
       <div className="absolute inset-0 z-[-1]">
         <img src={heroBg} alt="" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-slate-950/10" />
+        <div className="absolute inset-0 bg-slate-950/65" />
       </div>
 
       {/* Glow Orbs */}
