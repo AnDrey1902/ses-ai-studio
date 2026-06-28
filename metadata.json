@@ -1,0 +1,6 @@
+{
+  "name": "Guru Energy | СЕС під ключ",
+  "description": "Генерація кваліфікованих лідів для монтажу сонячних електростанцій під ключ в Україні. Лендинг з блогом, калькулятором окупності та адмінкою.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
