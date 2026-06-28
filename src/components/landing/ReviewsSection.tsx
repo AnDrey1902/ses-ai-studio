@@ -79,6 +79,7 @@ export const ReviewsSection: React.FC = () => {
                   <img
                     src={rev.avatar}
                     alt={rev.name}
+                    loading="lazy"
                     className="w-12 h-12 rounded-full object-cover border-2 border-green-500/40"
                   />
                   <div>

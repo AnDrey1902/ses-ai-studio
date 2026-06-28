@@ -126,7 +126,7 @@ export const Navbar: React.FC = () => {
               <button
                 key={l.key}
                 onClick={() => setLang(l.key)}
-                className={`px-1.5 py-1 rounded ${lang === l.key ? 'bg-slate-800 text-green-400' : 'text-slate-400'}`}
+                className={`px-2.5 py-2 min-w-[36px] min-h-[36px] rounded ${lang === l.key ? 'bg-slate-800 text-green-400' : 'text-slate-400'}`}
               >
                 {l.label}
               </button>

@@ -105,6 +105,7 @@ export const BlogPage: React.FC = () => {
                         <img
                           src={post.image}
                           alt={titleCopy}
+                          loading="lazy"
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />
                         <div className="absolute top-4 left-4 bg-slate-950/80 backdrop-blur-md px-3 py-1 rounded-lg text-[11px] font-bold text-green-400 border border-slate-800 font-mono">

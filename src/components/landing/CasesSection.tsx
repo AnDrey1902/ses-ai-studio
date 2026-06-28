@@ -43,6 +43,7 @@ export const CasesSection: React.FC = () => {
                     <img
                       src={cs.image}
                       alt={titleCopy}
+                      loading="lazy"
                       className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90" />

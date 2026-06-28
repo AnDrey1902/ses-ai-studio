@@ -3,7 +3,7 @@ import { useApp } from '../../context/AppContext';
 import { Zap, ShieldCheck, Clock, Award, ArrowRight, CheckCircle2, FileText } from 'lucide-react';
 
 export const HeroSection: React.FC = () => {
-  const { tr, openLeadModal } = useApp();
+  const { tr, openLeadModal, lang } = useApp();
 
   const bullets = [
     { icon: FileTextIcon, text: tr('bullet_price') },
@@ -86,7 +86,7 @@ export const HeroSection: React.FC = () => {
             <div className="relative rounded-3xl overflow-hidden border border-slate-800 shadow-[0_20px_50px_rgba(0,0,0,0.8)] bg-slate-900 group">
               <img
                 src="https://images.unsplash.com/photo-1509391365360-2e959784a276?auto=format&fit=crop&w=1000&q=80"
-                alt="Гібридна сонячна електростанція Deye під ключ"
+                alt={tr('hero_img_alt')}
                 className="w-full h-[380px] sm:h-[460px] object-cover object-center transform transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />

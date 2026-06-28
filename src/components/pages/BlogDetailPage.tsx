@@ -59,6 +59,7 @@ export const BlogDetailPage: React.FC = () => {
           <img
             src={post.image}
             alt={titleCopy}
+            loading="lazy"
             className="w-full h-full object-cover"
           />
         </div>
@@ -116,7 +117,7 @@ export const BlogDetailPage: React.FC = () => {
                     className="text-left bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-green-500/40 transition-all group"
                   >
                     <div className="h-36 overflow-hidden bg-slate-950">
-                      <img src={rp.image} alt={rpTitle} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <img src={rp.image} alt={rpTitle} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     </div>
                     <div className="p-4 space-y-2">
                       <span className="text-[10px] font-bold text-green-400 font-mono">{rpTag}</span>

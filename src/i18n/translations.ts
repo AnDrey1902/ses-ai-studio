@@ -162,6 +162,8 @@ export const t: Record<Language, Record<string, string>> = {
     footer_email: 'info@guru-energy.com.ua',
     hours_val: 'Пн-Пт: 09:00-18:00, Сб: 10:00-15:00',
 
+    hero_img_alt: 'Гібридна сонячна електростанція Deye під ключ',
+
     // Hero Extra
     hero_urgent_tag: 'Акція 2026: Дерев’яні крокви підсилюємо безкоштовно',
     hero_live_status: 'Статус системи Deye 12K:',
@@ -486,6 +488,8 @@ export const t: Record<Language, Record<string, string>> = {
     footer_email: 'info@guru-energy.com.ua',
     hours_val: 'Пн-Пт: 09:00-18:00, Сб: 10:00-15:00',
 
+    hero_img_alt: 'Гибридная солнечная электростанция Deye под ключ',
+
     // Hero Extra
     hero_urgent_tag: 'Акция 2026: Деревянные стропила усиливаем бесплатно',
     hero_live_status: 'Статус системы Deye 12K:',
@@ -808,6 +812,8 @@ export const t: Record<Language, Record<string, string>> = {
     footer_phone: '0 800 330 444',
     footer_email: 'info@guru-energy.com.ua',
     hours_val: 'Mon-Fri: 09:00-18:00, Sat: 10:00-15:00',
+
+    hero_img_alt: 'Hybrid Deye solar power station turnkey',
 
     // Hero Extra
     hero_urgent_tag: '2026 Promo: Wooden rafter reinforcement for free',
