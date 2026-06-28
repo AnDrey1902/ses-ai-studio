@@ -28,9 +28,9 @@ export const t: Record<Language, Record<string, string>> = {
     bullet_loan: 'Державний кредит 0% та 5-7-9%',
 
     // Block 2
-    b2_title: 'Болі власників будинків та бізнесу в Україні vs Рішення GURU ENERGY',
+    b2_title: 'Що турбує власників будинків та бізнесу в Україні vs Рішення GURU ENERGY',
     b2_sub: 'Чому 92% наших клієнтів рекомендують нас сусідам та партнерам',
-    b2_pain_label: 'Біль #',
+    b2_pain_label: 'Проблема #',
     b2_solution_label: 'Рішення GURU ENERGY:',
     b2_cta: 'Отримати рішення',
     b2_callout_title: 'Не впевнені, яка потужність потрібна саме вам?',
@@ -362,9 +362,9 @@ export const t: Record<Language, Record<string, string>> = {
     bullet_days: 'Монтаж под ключ за 1–7 дней',
     bullet_loan: 'Государственный кредит 0% и 5-7-9%',
 
-    b2_title: 'Боли владельцев домов и бизнеса в Украине vs Решение GURU ENERGY',
+    b2_title: 'Что беспокоит владельцев домов и бизнеса в Украине vs Решение GURU ENERGY',
     b2_sub: 'Почему 92% наших клиентов рекомендуют нас соседям и партнерам',
-    b2_pain_label: 'Боль #',
+    b2_pain_label: 'Проблема #',
     b2_solution_label: 'Решение GURU ENERGY:',
     b2_cta: 'Получить решение',
     b2_callout_title: 'Не уверены, какая мощность нужна именно вам?',
@@ -685,9 +685,9 @@ export const t: Record<Language, Record<string, string>> = {
     bullet_days: 'Turnkey installation in 1–7 days',
     bullet_loan: 'State 0% and 5-7-9% credit grants',
 
-    b2_title: 'Home & Business Owner Pain Points in Ukraine vs GURU ENERGY Solutions',
+    b2_title: 'Home & Business Owner Concerns in Ukraine vs GURU ENERGY Solutions',
     b2_sub: 'Why 92% of our clients recommend us to neighbors and business partners',
-    b2_pain_label: 'Pain #',
+    b2_pain_label: 'Issue #',
     b2_solution_label: 'GURU ENERGY Solution:',
     b2_cta: 'Get Solution',
     b2_callout_title: 'Not sure what capacity you need?',
