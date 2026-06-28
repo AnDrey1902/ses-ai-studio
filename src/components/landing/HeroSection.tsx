@@ -139,7 +139,7 @@ export const HeroSection: React.FC = () => {
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-green-500/15 to-amber-500/10 blur-[140px] rounded-full pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           
           {/* Left Column: Copy & CTAs */}
           <div className="lg:col-span-7 space-y-6 sm:space-y-8 text-center lg:text-left">
@@ -202,12 +202,12 @@ export const HeroSection: React.FC = () => {
           </div>
 
           {/* Right Column: Visual Mockup */}
-          <div className="lg:col-span-5 relative">
+          <div className="lg:col-span-5 relative lg:pt-24">
             <div className="relative rounded-3xl overflow-hidden border border-slate-800 shadow-[0_20px_50px_rgba(0,0,0,0.8)] bg-slate-900 group">
               <img
                 src={deyeSystem}
                 alt="Deye 12kW Inverter"
-                className="w-full h-[420px] sm:h-[520px] object-contain object-center p-6 transform transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-[480px] sm:h-[580px] object-contain object-center p-6 transform transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-60" />
 
