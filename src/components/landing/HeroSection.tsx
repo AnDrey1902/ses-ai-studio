@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useApp } from '../../context/AppContext';
 import { Zap, ShieldCheck, Clock, Award, ArrowRight, CheckCircle2, FileText, Sun, Cloud, CloudRain, Moon } from 'lucide-react';
+import heroBg from '../../assets/hero.webp';
 
 type WeatherState = 'sunny' | 'cloudy' | 'rainy';
 type TimeOfDay = 'morning' | 'day' | 'evening' | 'night';
@@ -122,8 +123,17 @@ export const HeroSection: React.FC = () => {
   const kwLabel = tr('prices_kw_h').replace('·год', '').replace('·ч', '');
 
   return (
-    <section id="home" className="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden bg-slate-950 bg-grid-pattern border-b border-slate-900">
+    <section id="home" className="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden border-b border-slate-900">
       
+      {/* Background Image */}
+      <div className="absolute inset-0 -z-20">
+        <img src={heroBg} alt="" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-slate-950/70" />
+      </div>
+
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0 -z-10 bg-grid-pattern opacity-30" />
+
       {/* Glow Orbs */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-green-500/15 to-amber-500/10 blur-[140px] rounded-full pointer-events-none -z-10" />
 
