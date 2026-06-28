@@ -196,7 +196,8 @@ export const PACKAGES: SESPackage[] = [
     panels: '14 шт × Longi Hi-MO 6 580W N-Type',
     battery: 'LiFePO4 Deye RW-M6.1 (6.14 кВт·год)',
     generationYear: 9200,
-    popular: true
+    popular: true,
+    badgeType: 'popular' as const
   },
   {
     id: 'pkg-10kw',
@@ -211,7 +212,8 @@ export const PACKAGES: SESPackage[] = [
     panels: '18 шт × Jinko Solar Tiger Neo 585W',
     battery: 'LiFePO4 Deye SE-G10.4 (10.24 кВт·год)',
     generationYear: 11500,
-    popular: true
+    popular: true,
+    badgeType: 'popular' as const
   },
   {
     id: 'pkg-15kw',
@@ -225,7 +227,8 @@ export const PACKAGES: SESPackage[] = [
     inverter: 'Deye SUN-15K-SG01HP3-EU-AM2',
     panels: '26 шт × Longi Hi-MO 7 590W',
     battery: 'Високовольтний блок Deye BOS-G (15.3 кВт·год)',
-    generationYear: 17200
+    generationYear: 17200,
+    badgeType: 'bestseller' as const
   },
   {
     id: 'pkg-30kw',

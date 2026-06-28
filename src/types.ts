@@ -32,6 +32,7 @@ export interface SESPackage {
   battery?: string;
   generationYear: number;
   popular?: boolean;
+  badgeType?: 'popular' | 'bestseller';
 }
 
 export interface CaseItem {

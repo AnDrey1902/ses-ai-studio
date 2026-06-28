@@ -189,7 +189,8 @@ export const t: Record<Language, Record<string, string>> = {
 
     // Prices Extra
     prices_badge: 'ПРОЗОРИЙ КОШТОРИС',
-    prices_popular_badge: 'Найпопулярніший вибір',
+    prices_popular_badge: 'Вигідно',
+    prices_bestseller_badge: 'Вибір 82% замовників',
     prices_contract_price: 'Ціна в договорі:',
     prices_payback_label: 'Окупність:',
     prices_inverter: 'Інвертор:',
@@ -520,7 +521,8 @@ export const t: Record<Language, Record<string, string>> = {
 
     // Prices Extra
     prices_badge: 'ПРОЗРАЧНАЯ СМЕТА',
-    prices_popular_badge: 'Самый популярный выбор',
+    prices_popular_badge: 'Выгодно',
+    prices_bestseller_badge: 'Выбор 82% заказчиков',
     prices_contract_price: 'Цена в договоре:',
     prices_payback_label: 'Окупаемость:',
     prices_inverter: 'Инвертор:',
@@ -850,7 +852,8 @@ export const t: Record<Language, Record<string, string>> = {
 
     // Prices Extra
     prices_badge: 'TRANSPARENT QUOTE',
-    prices_popular_badge: 'Most Popular Choice',
+    prices_popular_badge: 'Best Value',
+    prices_bestseller_badge: 'Chosen by 82% of customers',
     prices_contract_price: 'Contract Price:',
     prices_payback_label: 'Payback:',
     prices_inverter: 'Inverter:',
