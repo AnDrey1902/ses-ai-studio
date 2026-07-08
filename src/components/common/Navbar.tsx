@@ -1,4 +1,4 @@
-import { Calculator, Menu, PhoneCall, ShieldCheck, ShoppingBag, X, MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { Calculator, Menu, PhoneCall, X, MapPin, Phone, Mail, Clock } from 'lucide-react';
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { CurrentView, Language } from '../../types';
@@ -131,18 +131,7 @@ export const Navbar: React.FC = () => {
               <span>{tr('btn_call_me')}</span>
             </button>
 
-            {/* Admin Demo Button */}
-            <button
-              onClick={() => setView('admin')}
-              className={`p-2 rounded-full border text-xs font-semibold transition-all ${
-                view === 'admin'
-                  ? 'bg-[rgba(34,197,94,.15)] border-[#22C55E] text-[#22C55E]'
-                  : 'bg-[#F0F5F2] border-[#E2ECE6] text-[#5A6E62] hover:text-[#1A2E23]'
-              }`}
-              title="Payload CMS Admin Simulator"
-            >
-              <ShieldCheck className="w-4 h-4" />
-            </button>
+
           </div>
 
           {/* Mobile menu trigger */}
@@ -191,13 +180,7 @@ export const Navbar: React.FC = () => {
                   )}
                 </button>
               ))}
-              <button
-                onClick={() => handleNavClick('admin')}
-                className="w-full flex items-center gap-2 px-4 py-3 rounded-2xl text-sm font-semibold text-[#5A6E62] hover:text-[#22C55E] hover:bg-[#F0F5F2]"
-              >
-                <ShieldCheck className="w-4 h-4" />
-                <span>{tr('lead_admin_nav')}</span>
-              </button>
+
             </div>
 
             <div className="pt-3 border-t border-[#E2ECE6] flex flex-col gap-2.5">
