@@ -58,7 +58,7 @@ const MainContent: React.FC = () => {
 
   // Partial View Scroll / Focus Or Full Landing
   return (
-    <main className="min-h-screen pt-16 md:pt-20">
+    <main className="min-h-screen">
       {/* 1. Hero */}
       <HeroSection />
 
@@ -104,7 +104,7 @@ const MainContent: React.FC = () => {
 export default function App() {
   return (
     <AppProvider>
-      <div className="bg-slate-950 text-slate-100 min-h-screen flex flex-col font-sans selection:bg-green-500 selection:text-slate-950 antialiased">
+      <div className="bg-[#F8FAF9] text-[#1A2E23] min-h-screen flex flex-col font-sans selection:bg-green-500 selection:text-white antialiased">
         <SchemaOrg type="organization" />
         {/* Persistent Top Navigation Bar */}
         <Navbar />

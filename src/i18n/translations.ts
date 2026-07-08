@@ -20,7 +20,8 @@ export const t: Record<Language, Record<string, string>> = {
     coming_soon_badge: 'Незабаром',
 
     // Hero
-    hero_h1: 'Сонячна електростанція під ключ — світло навіть у блекаут',
+    hero_h1_pre: 'Сонячна електростанція під ключ — ',
+    hero_h1_span: 'світло навіть у блекаут',
     hero_sub: 'Монтаж по всій Україні за 2 дні · Ціни від $3 500 · Кредит 0% · Гібридні СЕС з АКБ Tier-1',
     bullet_price: 'Прозорі ціни у $ в договорі',
     bullet_hybrid: 'Гібридні СЕС з LiFePO4 АКБ',
@@ -178,14 +179,32 @@ export const t: Record<Language, Record<string, string>> = {
     hero_payback_badge: 'Окупність в Україні',
     hero_payback_val: 'від 2.8 років',
 
-    // Services Extra
-    services_badge: 'ПОСЛУГИ ТА КОНФІГУРАЦІЇ',
-    services_popular: 'Хіт 2026',
-    services_payback_badge: 'Окупність 2.8р',
-    services_equip_label: 'Основні компоненти:',
-    services_price_label: 'Орієнтир у $:',
-    services_payback_label: 'Строк окупності:',
-    services_btn: 'Розрахувати кошторис',
+    // Services
+    svc_badge: 'ПОСЛУГИ',
+    svc_heading: 'Рішення для будь-якої задачі живлення',
+    b3_sub_full: 'Від невеликого ДБЖ для роутера і котла до промислової сонячної електростанції із зеленим тарифом — підбираємо рішення під ваш бюджет і потреби.',
+    svc_popular_badge: 'НАЙПОПУЛЯРНІШЕ',
+    svc_reserve_title: 'Резервне живлення',
+    svc_reserve_desc: 'Інвертор + акумулятори, які за мілісекунди підхоплюють навантаження під час відключень. Світло, котел, інтернет та холодильник працюють як завжди.',
+    svc_reserve_stat1: 'перемикання',
+    svc_reserve_stat2: 'потужність',
+    svc_reserve_stat3: 'автономності',
+    svc_reserve_btn: 'Підібрати систему',
+    svc_ses_title: 'Сонячні електростанції',
+    svc_ses_desc: 'Мережеві, гібридні та автономні СЕС для дому й бізнесу. Зменшують рахунки за світло до 90% та окуповуються за 4–6 років.',
+    svc_ses_cta: 'Розрахувати СЕС',
+    svc_green_title: 'Зелений тариф',
+    svc_green_desc: 'Продаж надлишків енергії в мережу — проект і документи під ключ.',
+    svc_green_cta: 'Умови',
+    svc_ev_title: 'Зарядні станції EV',
+    svc_ev_desc: 'Домашні та комерційні зарядки з керуванням через додаток.',
+    svc_ev_cta: 'Монтаж',
+    svc_service_title: 'Сервіс та обслуговування',
+    svc_service_desc: 'Діагностика, чистка панелей, оновлення прошивок та виїзд інженера. Підтримуємо системи будь-яких брендів.',
+    svc_service_cta: 'Замовити сервіс',
+    svc_audit_title: 'Проектування та аудит',
+    svc_audit_desc: 'Енергоаудит об\'єкта, розрахунок навантаження та чесний підбір обладнання без зайвих переплат.',
+    svc_audit_cta: 'Замовити аудит',
 
     // Prices Extra
     prices_badge: 'ПРОЗОРИЙ КОШТОРИС',
@@ -346,7 +365,11 @@ export const t: Record<Language, Record<string, string>> = {
     cases_invest_label: 'Інвестиція:',
     cases_payback_label: 'Окупність:',
     cases_equip_label: 'Обладнання:',
-    cases_cta_btn: 'Хочу аналогічне рішення під ключ'
+    cases_cta_btn: 'Хочу аналогічне рішення під ключ',
+
+    // SEO Text
+    seo_read_more: 'Читати далі',
+    seo_collapse: 'Згорнути'
   },
   ru: {
     nav_home: 'Главная',
@@ -364,7 +387,8 @@ export const t: Record<Language, Record<string, string>> = {
     micro_trust: 'Бесплатно · без обязательств · перезвоним за 15 минут',
     coming_soon_badge: 'Скоро',
 
-    hero_h1: 'Солнечная электростанция под ключ — свет даже в блэкаут',
+    hero_h1_pre: 'Солнечная электростанция под ключ — ',
+    hero_h1_span: 'свет даже в блэкаут',
     hero_sub: 'Монтаж по всей Украине за 2 дня · Цены от $3 500 · Кредит 0% · Гибридные СЭС с АКБ Tier-1',
     bullet_price: 'Прозрачные цены в $ в договоре',
     bullet_hybrid: 'Гибридные СЭС с LiFePO4 АКБ',
@@ -510,14 +534,32 @@ export const t: Record<Language, Record<string, string>> = {
     hero_payback_badge: 'Окупаемость в Украине',
     hero_payback_val: 'от 2.8 лет',
 
-    // Services Extra
-    services_badge: 'УСЛУГИ И КОНФИГУРАЦИИ',
-    services_popular: 'Хит 2026',
-    services_payback_badge: 'Окупаемость 2.8г',
-    services_equip_label: 'Основные компоненты:',
-    services_price_label: 'Ориентир в $:',
-    services_payback_label: 'Срок окупаемости:',
-    services_btn: 'Рассчитать смету',
+    // Services
+    svc_badge: 'УСЛУГИ',
+    svc_heading: 'Решения для любой задачи питания',
+    b3_sub_full: 'От небольшого ИБП для роутера и котла до промышленной солнечной электростанции с зелёным тарифом — подберём решение под ваш бюджет и потребности.',
+    svc_popular_badge: 'САМЫЙ ПОПУЛЯРНЫЙ',
+    svc_reserve_title: 'Резервное питание',
+    svc_reserve_desc: 'Инвертор + аккумуляторы, которые за миллисекунды подхватывают нагрузку во время отключений. Свет, котёл, интернет и холодильник работают как всегда.',
+    svc_reserve_stat1: 'переключение',
+    svc_reserve_stat2: 'мощность',
+    svc_reserve_stat3: 'автономность',
+    svc_reserve_btn: 'Подобрать систему',
+    svc_ses_title: 'Солнечные электростанции',
+    svc_ses_desc: 'Сетевые, гибридные и автономные СЭС для дома и бизнеса. Уменьшают счета за свет до 90% и окупаются за 4–6 лет.',
+    svc_ses_cta: 'Рассчитать СЭС',
+    svc_green_title: 'Зелёный тариф',
+    svc_green_desc: 'Продажа излишков энергии в сеть — проект и документы под ключ.',
+    svc_green_cta: 'Условия',
+    svc_ev_title: 'Зарядные станции EV',
+    svc_ev_desc: 'Домашние и коммерческие зарядки с управлением через приложение.',
+    svc_ev_cta: 'Монтаж',
+    svc_service_title: 'Сервис и обслуживание',
+    svc_service_desc: 'Диагностика, чистка панелей, обновление прошивок и выезд инженера. Поддерживаем системы любых брендов.',
+    svc_service_cta: 'Заказать сервис',
+    svc_audit_title: 'Проектирование и аудит',
+    svc_audit_desc: 'Энергоаудит объекта, расчёт нагрузки и честный подбор оборудования без лишних переплат.',
+    svc_audit_cta: 'Заказать аудит',
 
     // Prices Extra
     prices_badge: 'ПРОЗРАЧНАЯ СМЕТА',
@@ -678,7 +720,11 @@ export const t: Record<Language, Record<string, string>> = {
     cases_invest_label: 'Инвестиция:',
     cases_payback_label: 'Окупаемость:',
     cases_equip_label: 'Оборудование:',
-    cases_cta_btn: 'Хочу аналогичное решение под ключ'
+    cases_cta_btn: 'Хочу аналогичное решение под ключ',
+
+    // SEO Text
+    seo_read_more: 'Читать далее',
+    seo_collapse: 'Свернуть'
   },
   en: {
     nav_home: 'Home',
@@ -696,7 +742,8 @@ export const t: Record<Language, Record<string, string>> = {
     micro_trust: 'Free · no obligations · call back within 15 minutes',
     coming_soon_badge: 'Coming Soon',
 
-    hero_h1: 'Turnkey Solar Power Stations — Power Even During Blackouts',
+    hero_h1_pre: 'Turnkey Solar Power Stations — ',
+    hero_h1_span: 'Power Even During Blackouts',
     hero_sub: '2-day installation across Ukraine · Prices from $3,500 · 0% Loan · Tier-1 Hybrid Stations with LiFePO4',
     bullet_price: 'Transparent prices in $ in contract',
     bullet_hybrid: 'Hybrid SES with LiFePO4 Batteries',
@@ -841,14 +888,32 @@ export const t: Record<Language, Record<string, string>> = {
     hero_payback_badge: 'Payback in Ukraine',
     hero_payback_val: 'from 2.8 years',
 
-    // Services Extra
-    services_badge: 'SERVICES & CONFIGURATIONS',
-    services_popular: 'Best Seller 2026',
-    services_payback_badge: 'ROI 2.8y',
-    services_equip_label: 'Core Components:',
-    services_price_label: 'Estimated Price:',
-    services_payback_label: 'Payback Period:',
-    services_btn: 'Calculate Estimate',
+    // Services
+    svc_badge: 'SERVICES',
+    svc_heading: 'Solutions for any power need',
+    b3_sub_full: 'From a small UPS for a router and boiler to an industrial solar power plant with a green tariff — we pick the right solution for your budget and needs.',
+    svc_popular_badge: 'MOST POPULAR',
+    svc_reserve_title: 'Backup Power',
+    svc_reserve_desc: 'Inverter + batteries that pick up the load in milliseconds during outages. Lights, boiler, internet and refrigerator work as always.',
+    svc_reserve_stat1: 'switching',
+    svc_reserve_stat2: 'capacity',
+    svc_reserve_stat3: 'autonomy',
+    svc_reserve_btn: 'Pick a system',
+    svc_ses_title: 'Solar Power Plants',
+    svc_ses_desc: 'Grid-tied, hybrid and off-grid solar systems for home and business. Reduce electricity bills by up to 90% and pay off in 4–6 years.',
+    svc_ses_cta: 'Calculate SES',
+    svc_green_title: 'Green Tariff',
+    svc_green_desc: 'Selling excess energy to the grid — project and documents turnkey.',
+    svc_green_cta: 'Terms',
+    svc_ev_title: 'EV Charging Stations',
+    svc_ev_desc: 'Home and commercial chargers with app-based control.',
+    svc_ev_cta: 'Installation',
+    svc_service_title: 'Service & Maintenance',
+    svc_service_desc: 'Diagnostics, panel cleaning, firmware updates and engineer visits. We support systems of any brand.',
+    svc_service_cta: 'Order Service',
+    svc_audit_title: 'Design & Audit',
+    svc_audit_desc: 'Energy audit of your facility, load calculation and honest equipment selection without unnecessary markups.',
+    svc_audit_cta: 'Order Audit',
 
     // Prices Extra
     prices_badge: 'TRANSPARENT QUOTE',
@@ -1009,7 +1074,11 @@ export const t: Record<Language, Record<string, string>> = {
     cases_invest_label: 'Investment:',
     cases_payback_label: 'Payback:',
     cases_equip_label: 'Equipment:',
-    cases_cta_btn: 'I want a similar turnkey solution'
+    cases_cta_btn: 'I want a similar turnkey solution',
+
+    // SEO Text
+    seo_read_more: 'Read more',
+    seo_collapse: 'Collapse'
   }
 };
 

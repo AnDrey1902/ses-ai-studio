@@ -36,32 +36,32 @@ export const BlogPage: React.FC = () => {
   };
 
   return (
-    <div className="pt-28 pb-24 bg-slate-950 min-h-screen text-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        
+    <div className="pt-[104px] pb-24 md:pb-32">
+      <div className="max-w-[1280px] mx-auto px-5 md:px-8 space-y-12">
+
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-green-500/10 text-green-400 border border-green-500/20 text-xs font-bold uppercase">
-            <BookOpen className="w-4 h-4" />
-            <span>{tr('blog_badge')}</span>
-          </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white">
+          <span className="ds-badge px-3.5 py-1.5 text-xs bg-[rgba(34,197,94,.1)] text-[#15803D] border border-[rgba(34,197,94,.2)]">
+            <BookOpen className="w-4 h-4 inline mr-1.5 -mt-0.5" />
+            {tr('blog_badge')}
+          </span>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#1A2E23]">
             {tr('blog_title')}
           </h1>
-          <p className="text-sm text-slate-400 max-w-xl mx-auto">
+          <p className="text-sm sm:text-base text-[#5A6E62] font-medium max-w-xl mx-auto">
             {tr('blog_desc')}
           </p>
 
           {/* Search & Tags */}
           <div className="pt-6 space-y-4 max-w-xl mx-auto">
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#5A6E62]" />
               <input
                 type="text"
                 placeholder={tr('blog_search_placeholder')}
                 value={query}
                 onChange={e => { setQuery(e.target.value); setPage(1); }}
-                className="w-full bg-slate-900 border border-slate-800 rounded-2xl pl-11 pr-4 py-3.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-green-500 transition-colors"
+                className="w-full bg-white border border-[#E2ECE6] rounded-[18px] pl-11 pr-4 py-3.5 text-sm text-[#1A2E23] placeholder-[#92A299] focus:outline-none focus:border-[#22C55E] transition-colors shadow-[0_2px_10px_rgba(26,46,35,.04)]"
               />
             </div>
 
@@ -70,10 +70,10 @@ export const BlogPage: React.FC = () => {
                 <button
                   key={t.id}
                   onClick={() => { setSelectedTag(t.id); setPage(1); }}
-                  className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all border ${
+                  className={`px-3.5 py-1.5 rounded-[14px] text-xs font-bold transition-all border ${
                     selectedTag === t.id
-                      ? 'bg-[#22C55E] text-slate-950 border-green-500 shadow-md shadow-green-500/20'
-                      : 'bg-slate-900 text-slate-400 border-slate-800 hover:text-white'
+                      ? 'bg-[#22C55E] text-white border-[#22C55E] shadow-[0_4px_12px_rgba(34,197,94,.25)]'
+                      : 'bg-white text-[#5A6E62] border-[#E2ECE6] hover:text-[#1A2E23] hover:border-[#22C55E] shadow-[0_2px_8px_rgba(26,46,35,.04)]'
                   }`}
                 >
                   {t.label}
@@ -85,10 +85,10 @@ export const BlogPage: React.FC = () => {
 
         {/* Main content + Sidebar */}
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
-          
+
           {/* Posts Grid (3 cols) */}
           <div className="lg:col-span-3 space-y-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {paginatedPosts.map(post => {
                 const titleCopy = post.title[lang] || post.title.uk;
                 const excCopy = post.excerpt[lang] || post.excerpt.uk;
@@ -98,33 +98,33 @@ export const BlogPage: React.FC = () => {
                 return (
                   <article
                     key={post.id}
-                    className="bg-slate-900 rounded-3xl overflow-hidden border border-slate-800 shadow-xl hover:border-green-500/40 transition-all flex flex-col justify-between group"
+                    className="bg-white rounded-[28px] overflow-hidden border border-[#E2ECE6] shadow-[0_4px_20px_rgba(26,46,35,.05)] hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(26,46,35,.1)] transition-all duration-300 flex flex-col group"
                   >
                     <div>
-                      <div className="relative h-52 overflow-hidden bg-slate-950">
+                      <div className="relative h-52 overflow-hidden bg-[#F8FAF9]">
                         <img
                           src={post.image}
                           alt={titleCopy}
                           loading="lazy"
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />
-                        <div className="absolute top-4 left-4 bg-slate-950/80 backdrop-blur-md px-3 py-1 rounded-lg text-[11px] font-bold text-green-400 border border-slate-800 font-mono">
+                        <div className="absolute top-4 left-4 px-3 py-1 rounded-[12px] text-[11px] font-bold text-[#15803D] bg-[rgba(34,197,94,.1)] border border-[rgba(34,197,94,.2)] font-mono">
                           {tagCopy}
                         </div>
                       </div>
 
                       <div className="p-6 space-y-3">
-                        <div className="flex items-center gap-3 text-[11px] text-slate-400 font-mono">
+                        <div className="flex items-center gap-3 text-[11px] text-[#92A299] font-mono">
                           <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />{post.publishedAt}</span>
                           <span>·</span>
                           <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{readTimeCopy}</span>
                         </div>
 
-                        <h3 className="text-lg font-extrabold text-white group-hover:text-green-400 transition-colors leading-snug">
+                        <h3 className="text-lg font-extrabold text-[#1A2E23] group-hover:text-[#22C55E] transition-colors leading-snug">
                           {titleCopy}
                         </h3>
 
-                        <p className="text-xs text-slate-300 leading-relaxed line-clamp-3">
+                        <p className="text-xs text-[#5A6E62] leading-relaxed line-clamp-3">
                           {excCopy}
                         </p>
                       </div>
@@ -133,7 +133,7 @@ export const BlogPage: React.FC = () => {
                     <div className="p-6 pt-0">
                       <button
                         onClick={() => handleOpenPost(post.slug)}
-                        className="w-full py-3 bg-slate-950 hover:bg-[#22C55E] text-slate-300 hover:text-slate-950 rounded-xl font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2"
+                        className="w-full py-3 bg-[#F0F5F2] hover:bg-[#22C55E] text-[#1A2E23] hover:text-white border border-[#E2ECE6] hover:border-[#22C55E] rounded-[14px] font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2"
                       >
                         <span>{tr('blog_read_btn')}</span>
                         <ArrowRight className="w-3.5 h-3.5" />
@@ -150,7 +150,7 @@ export const BlogPage: React.FC = () => {
                 <button
                   onClick={() => setPage(p => Math.max(1, p - 1))}
                   disabled={page === 1}
-                  className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                  className="p-2 rounded-[14px] bg-white border border-[#E2ECE6] text-[#5A6E62] hover:text-[#1A2E23] disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-[0_2px_8px_rgba(26,46,35,.04)]"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
@@ -158,10 +158,10 @@ export const BlogPage: React.FC = () => {
                   <button
                     key={p}
                     onClick={() => setPage(p)}
-                    className={`w-9 h-9 rounded-xl text-xs font-bold transition-all border ${
+                    className={`w-9 h-9 rounded-[14px] text-xs font-bold transition-all border ${
                       p === page
-                        ? 'bg-[#22C55E] text-slate-950 border-green-500'
-                        : 'bg-slate-900 text-slate-400 border-slate-800 hover:text-white'
+                        ? 'bg-[#22C55E] text-white border-[#22C55E] shadow-[0_4px_12px_rgba(34,197,94,.25)]'
+                        : 'bg-white text-[#5A6E62] border-[#E2ECE6] hover:text-[#1A2E23] shadow-[0_2px_8px_rgba(26,46,35,.04)]'
                     }`}
                   >
                     {p}
@@ -170,7 +170,7 @@ export const BlogPage: React.FC = () => {
                 <button
                   onClick={() => setPage(p => Math.min(totalPages, p + 1))}
                   disabled={page === totalPages}
-                  className="p-2 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                  className="p-2 rounded-[14px] bg-white border border-[#E2ECE6] text-[#5A6E62] hover:text-[#1A2E23] disabled:opacity-30 disabled:cursor-not-allowed transition-all shadow-[0_2px_8px_rgba(26,46,35,.04)]"
                 >
                   <ChevronRight className="w-4 h-4" />
                 </button>
@@ -180,15 +180,15 @@ export const BlogPage: React.FC = () => {
 
           {/* Sidebar CTA */}
           <div className="lg:col-span-1 space-y-6">
-            <div className="sticky top-32 bg-gradient-to-b from-green-500/10 to-slate-900 rounded-3xl p-6 border border-green-500/20 space-y-4">
-              <div className="w-12 h-12 rounded-2xl bg-green-500/20 flex items-center justify-center">
-                <Zap className="w-6 h-6 text-green-400" />
+            <div className="sticky top-32 bg-gradient-to-b from-[rgba(34,197,94,.06)] to-white rounded-[28px] p-6 border border-[#E2ECE6] space-y-4 shadow-[0_4px_20px_rgba(26,46,35,.05)]">
+              <div className="w-12 h-12 rounded-2xl bg-[rgba(34,197,94,.1)] flex items-center justify-center">
+                <Zap className="w-6 h-6 text-[#22C55E]" />
               </div>
-              <h3 className="text-base font-extrabold text-white leading-snug">{tr('blog_sidebar_title')}</h3>
-              <p className="text-xs text-slate-300 leading-relaxed">{tr('blog_sidebar_desc')}</p>
+              <h3 className="text-base font-extrabold text-[#1A2E23] leading-snug">{tr('blog_sidebar_title')}</h3>
+              <p className="text-xs text-[#5A6E62] leading-relaxed">{tr('blog_sidebar_desc')}</p>
               <button
                 onClick={() => openLeadModal('10 kW', 'Blog Sidebar CTA', tr('nav_blog'))}
-                className="w-full py-3 bg-[#22C55E] hover:bg-[#16A34A] text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-green-500/25 transition-transform hover:scale-105"
+                className="ds-btn-primary !text-xs !py-3 !px-5 w-full"
               >
                 {tr('blog_sidebar_btn')}
               </button>

@@ -19,7 +19,6 @@ export const LeadModal: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (honeypot) {
-      // Bot detected - silently close
       closeLeadModal();
       return;
     }
@@ -60,24 +59,24 @@ export const LeadModal: React.FC = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden p-6 sm:p-8">
-        
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#07140F]/80 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="glass-panel relative w-full max-w-lg rounded-[32px] overflow-hidden p-6 sm:p-8">
+
         {/* Close Button */}
         <button
           onClick={closeLeadModal}
-          className="absolute top-5 right-5 p-2 rounded-full bg-slate-800/80 hover:bg-slate-800 text-slate-400 hover:text-white transition-colors focus:outline-none"
+          className="absolute top-5 right-5 p-2 rounded-full bg-[rgba(255,255,255,.08)] hover:bg-[rgba(255,255,255,.12)] text-[#92A299] hover:text-white transition-colors focus:outline-none"
         >
           <X className="w-5 h-5" />
         </button>
 
         {status === 'success' ? (
           <div className="py-8 text-center space-y-4">
-            <div className="w-16 h-16 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center mx-auto animate-bounce">
+            <div className="w-16 h-16 bg-[rgba(34,197,94,.2)] text-[#22C55E] rounded-full flex items-center justify-center mx-auto animate-bounce">
               <CheckCircle2 className="w-10 h-10" />
             </div>
             <h3 className="text-xl font-extrabold text-white">{tr('form_success_title')}</h3>
-            <p className="text-sm text-slate-300 max-w-sm mx-auto leading-relaxed">
+            <p className="text-sm text-[#D5DDD8] max-w-sm mx-auto leading-relaxed">
               {tr('lead_success_desc')}
             </p>
             <button
@@ -87,7 +86,7 @@ export const LeadModal: React.FC = () => {
                 setPhone('');
                 closeLeadModal();
               }}
-              className="mt-4 px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs rounded-xl tracking-wider uppercase transition-all"
+              className="mt-4 px-6 py-3 bg-[rgba(255,255,255,.08)] hover:bg-[rgba(255,255,255,.12)] text-white font-bold text-xs rounded-full tracking-wider uppercase transition-all"
             >
               {tr('lead_close_btn')}
             </button>
@@ -96,14 +95,14 @@ export const LeadModal: React.FC = () => {
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Header */}
             <div className="space-y-2">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold bg-green-500/15 text-green-400 border border-green-500/30">
-                <Zap className="w-3.5 h-3.5 fill-green-400" />
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-extrabold bg-[rgba(34,197,94,.15)] text-[#22C55E] border border-[rgba(34,197,94,.3)]">
+                <Zap className="w-3.5 h-3.5 fill-[#22C55E]" />
                 <span>{tr('lead_modal_urgent')}</span>
               </div>
               <h3 className="text-xl font-extrabold tracking-tight text-white pr-6">
                 {tr('lead_modal_title')}
               </h3>
-              <p className="text-xs text-slate-400 leading-relaxed">
+              <p className="text-xs text-[#92A299] leading-relaxed">
                 {tr('lead_modal_desc')}
               </p>
             </div>
@@ -121,36 +120,36 @@ export const LeadModal: React.FC = () => {
 
             {/* Input Name */}
             <div className="space-y-1.5">
-              <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider">
+              <label className="block text-xs font-bold text-[#D5DDD8] uppercase tracking-wider">
                 {tr('form_name')} <span className="text-red-400">*</span>
               </label>
               <div className="relative">
-                <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                <User className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#647268]" />
                 <input
                   type="text"
                   required
                   placeholder={lang === 'en' ? 'John Doe' : 'Олександр'}
                   value={name}
                   onChange={e => setName(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-green-500 transition-colors font-medium"
+                  className="w-full pl-10 pr-4 py-3 text-sm font-medium bg-[#07140F] border border-[rgba(255,255,255,.08)] text-white placeholder-[#647268] focus:outline-none focus:border-[#22C55E] transition-colors"
                 />
               </div>
             </div>
 
             {/* Input Phone */}
             <div className="space-y-1.5">
-              <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider">
+              <label className="block text-xs font-bold text-[#D5DDD8] uppercase tracking-wider">
                 {tr('form_phone')} <span className="text-red-400">*</span>
               </label>
               <div className="relative">
-                <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-500" />
+                <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#647268]" />
                 <input
                   type="tel"
                   required
                   placeholder="+380 (99) 000-00-00"
                   value={phone}
                   onChange={handlePhoneChange}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-green-500 transition-colors font-mono tracking-wide font-bold"
+                  className="w-full pl-10 pr-4 py-3 text-sm font-mono tracking-wide font-bold bg-[#07140F] border border-[rgba(255,255,255,.08)] text-white placeholder-[#647268] focus:outline-none focus:border-[#22C55E] transition-colors"
                 />
               </div>
             </div>
@@ -158,12 +157,13 @@ export const LeadModal: React.FC = () => {
             {/* Select Power & Type */}
             <div className="grid grid-cols-2 gap-3 pt-1">
               <div>
-                <label className="block text-[11px] font-bold text-slate-400 mb-1">{tr('lead_modal_power')}</label>
+                <label className="block text-[11px] font-bold text-[#92A299] mb-1">{tr('lead_modal_power')}</label>
                 <select
                   value={power}
                   onChange={e => setPower(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs font-semibold text-slate-200 focus:outline-none focus:border-green-500"
-                >
+                  className="w-full px-4 py-3 text-sm font-medium text-white bg-[#07140F] border border-[rgba(255,255,255,.08)] focus:outline-none focus:border-[#22C55E] transition-colors appearance-none cursor-pointer"
+                  style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%2712%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23647268%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpolyline points=%276 9 12 15 18 9%27%3E%3C/polyline%3E%3C/svg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 14px center', paddingRight: '36px' }}
+                  >
                   <option value="5 kW">5 kW ({lang === 'en' ? 'House' : (lang === 'uk' ? 'Дім' : 'Дом')})</option>
                   <option value="8 kW">8 kW ({lang === 'en' ? 'Standard' : (lang === 'uk' ? 'Стандарт' : 'Стандарт')})</option>
                   <option value="10 kW">10 kW ({lang === 'en' ? 'Premium' : (lang === 'uk' ? 'Преміум' : 'Премиум')})</option>
@@ -174,12 +174,13 @@ export const LeadModal: React.FC = () => {
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold text-slate-400 mb-1">{tr('lead_modal_type')}</label>
+                <label className="block text-[11px] font-bold text-[#92A299] mb-1">{tr('lead_modal_type')}</label>
                 <select
                   value={sesType}
                   onChange={e => setSesType(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2.5 text-xs font-semibold text-slate-200 focus:outline-none focus:border-green-500"
-                >
+                  className="w-full px-4 py-3 text-sm font-medium text-white bg-[#07140F] border border-[rgba(255,255,255,.08)] focus:outline-none focus:border-[#22C55E] transition-colors appearance-none cursor-pointer"
+                  style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%2712%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%23647268%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpolyline points=%276 9 12 15 18 9%27%3E%3C/polyline%3E%3C/svg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 14px center', paddingRight: '36px' }}
+                  >
                   <option value="Hybrid">{tr('calc_type_hybrid')}</option>
                   <option value="Business">{tr('calc_type_business')}</option>
                   <option value="On-Grid">{tr('calc_type_ongrid')}</option>
@@ -190,7 +191,7 @@ export const LeadModal: React.FC = () => {
 
             {/* Error Message */}
             {status === 'error' && (
-              <div role="alert" aria-live="assertive" className="flex items-center gap-2 p-3 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-medium animate-shake">
+              <div role="alert" aria-live="assertive" className="flex items-center gap-2 p-3 rounded-2xl bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-medium animate-shake">
                 <AlertCircle className="w-4 h-4 shrink-0" />
                 <span>{errorMsg}</span>
               </div>
@@ -200,7 +201,7 @@ export const LeadModal: React.FC = () => {
             <button
               type="submit"
               disabled={status === 'submitting'}
-              className="w-full py-4 rounded-xl bg-[#22C55E] hover:bg-[#16A34A] disabled:opacity-50 text-slate-950 font-extrabold text-sm tracking-wide shadow-xl shadow-green-500/25 transition-all flex items-center justify-center gap-2 hover:scale-[1.01] active:scale-[0.99]"
+              className="ds-btn-primary w-full !text-sm disabled:opacity-50"
             >
               {status === 'submitting' ? (
                 <>
@@ -213,8 +214,8 @@ export const LeadModal: React.FC = () => {
             </button>
 
             {/* Microcopy Security Guarantee */}
-            <div className="flex items-center justify-center gap-1.5 text-[10px] text-slate-500 text-center">
-              <ShieldAlert className="w-3.5 h-3.5 text-green-400 shrink-0" />
+            <div className="flex items-center justify-center gap-1.5 text-[10px] text-[#647268] text-center">
+              <ShieldAlert className="w-3.5 h-3.5 text-[#22C55E] shrink-0" />
               <span>{tr('lead_modal_security')}</span>
             </div>
           </form>

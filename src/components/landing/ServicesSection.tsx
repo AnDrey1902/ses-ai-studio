@@ -1,118 +1,209 @@
 import React from 'react';
 import { useApp } from '../../context/AppContext';
-import { SES_SERVICES } from '../../data/mockData';
-import { Shield, Zap, TrendingUp, Sun, ArrowRight, CheckCircle } from 'lucide-react';
+import { Zap, Sun, Leaf, BatteryCharging, Wrench, FileSearch, ArrowRight } from 'lucide-react';
 
 export const ServicesSection: React.FC = () => {
-  const { lang, tr, openLeadModal } = useApp();
+  const { tr, openLeadModal } = useApp();
 
   return (
-    <section id="services" className="py-20 md:py-28 bg-slate-950 border-b border-slate-900 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        
+    <section id="services" className="ds-section bg-[#F8FAF9] border-b border-[#E2ECE6] scroll-mt-20">
+      <div className="max-w-[1280px] mx-auto px-5 md:px-8 space-y-[48px]">
+
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-green-500/10 text-green-400 border border-green-500/20">
-            {tr('services_badge')}
+          <span className="ds-badge px-3.5 py-1.5 text-xs bg-[rgba(34,197,94,.1)] text-[#15803D] border border-[rgba(34,197,94,.2)]">
+            {tr('svc_badge')}
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white">
-            {tr('b3_title')}
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#1A2E23]">
+            {tr('svc_heading')}
           </h2>
-          <p className="text-sm sm:text-base text-slate-400 font-medium">
-            {tr('b3_sub')}
+          <p className="text-sm sm:text-base text-[#5A6E62] font-medium leading-relaxed">
+            {tr('b3_sub_full')}
           </p>
         </div>
 
-        {/* Services Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {SES_SERVICES.map((srv) => {
-            const titleCopy = srv.title[lang] || srv.title.uk;
-            const targetCopy = srv.target[lang] || srv.target.uk;
-            const descCopy = srv.desc[lang] || srv.desc.uk;
+        {/* Cards Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-5">
 
-            const isHybrid = srv.typeKey === 'hybrid';
-            const isBiz = srv.typeKey === 'business';
+          {/* ===== РЕЗЕРВНЕ ЖИВЛЕННЯ — large left card spanning 2 rows ===== */}
+          <div className="lg:col-span-2 lg:row-span-2 group bg-gradient-to-br from-[rgba(34,197,94,.03)] to-[rgba(251,191,36,.07)] rounded-[28px] border border-[#E2ECE6] p-[32px] flex flex-col justify-between shadow-[0_4px_20px_rgba(26,46,35,.05)] relative hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(34,197,94,.1)] transition-all duration-300">
+            {/* Badge */}
+            <div className="absolute top-5 right-6 px-3 py-1 rounded-full bg-[#FBBF24] text-[#07140F] font-black text-[10px] uppercase tracking-wider shadow-md">
+              {tr('svc_popular_badge')}
+            </div>
 
-            return (
-              <div
-                key={srv.id}
-                className={`rounded-3xl p-7 flex flex-col justify-between border transition-all duration-300 relative shadow-xl hover:-translate-y-1 group ${
-                  isHybrid
-                    ? 'bg-slate-900/90 border-green-500/50 shadow-green-500/10'
-                    : isBiz
-                    ? 'bg-slate-900/90 border-amber-500/50 shadow-amber-500/10'
-                    : 'bg-slate-900/60 border-slate-800 hover:border-slate-700'
-                }`}
-              >
-                {/* Popular Badge */}
-                {isHybrid && (
-                  <div className="absolute -top-3.5 right-6 px-3 py-1 rounded-full bg-[#22C55E] text-slate-950 font-black text-[10px] uppercase tracking-wider shadow-md">
-                    {tr('services_popular')}
-                  </div>
-                )}
-                {isBiz && (
-                  <div className="absolute -top-3.5 right-6 px-3 py-1 rounded-full bg-amber-500 text-slate-950 font-black text-[10px] uppercase tracking-wider shadow-md">
-                    {tr('services_payback_badge')}
-                  </div>
-                )}
-
-                <div className="space-y-5">
-                  {/* Target Audience Badge */}
-                  <div className="text-[11px] font-bold text-slate-400 bg-slate-950 px-3 py-1.5 rounded-xl inline-block border border-slate-800">
-                    {targetCopy}
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-xl font-extrabold text-white tracking-tight leading-snug">
-                    {titleCopy}
-                  </h3>
-
-                  {/* Description */}
-                  <p className="text-xs text-slate-300 leading-relaxed">
-                    {descCopy}
-                  </p>
-
-                  {/* Equipment summary box */}
-                  <div className="p-3.5 rounded-2xl bg-slate-950/80 border border-slate-800/80 text-[11px] space-y-1.5 font-mono">
-                    <div className="text-slate-500 font-bold uppercase text-[9px] tracking-wider">{tr('services_equip_label')}</div>
-                    <div className="text-slate-200 font-semibold leading-normal">{srv.equip}</div>
-                  </div>
-
-                  {/* Financial KPIs */}
-                  <div className="grid grid-cols-2 gap-3 pt-2 border-t border-slate-800">
-                    <div>
-                      <div className="text-[10px] text-slate-500 uppercase font-bold">{tr('services_price_label')}</div>
-                      <div className="text-lg font-extrabold text-white">{srv.price}</div>
-                    </div>
-                    <div>
-                      <div className="text-[10px] text-slate-500 uppercase font-bold">{tr('services_payback_label')}</div>
-                      <div className="text-lg font-extrabold text-green-400">{srv.payback}</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Action CTA */}
-                <div className="pt-6">
-                  <button
-                    onClick={() => openLeadModal(isBiz ? '30 kW' : '10 kW', titleCopy, `${tr('nav_services')}: ${titleCopy}`)}
-                    className={`w-full py-3.5 rounded-xl font-bold text-xs tracking-wider uppercase transition-all flex items-center justify-center gap-2 ${
-                      isHybrid
-                        ? 'bg-[#22C55E] hover:bg-[#16A34A] text-slate-950 shadow-lg shadow-green-500/20'
-                        : isBiz
-                        ? 'bg-amber-500 hover:bg-amber-600 text-slate-950 shadow-lg shadow-amber-500/20'
-                        : 'bg-slate-800 hover:bg-slate-700 text-white'
-                    }`}
-                  >
-                    <span>{tr('services_btn')}</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-
+            <div className="space-y-5">
+              {/* Icon */}
+              <div className="w-14 h-14 rounded-2xl bg-[#22C55E] flex items-center justify-center shadow-[0_4px_14px_rgba(34,197,94,.3)] group-hover:scale-110 group-hover:shadow-[0_6px_20px_rgba(34,197,94,.4)] transition-all duration-300">
+                <Zap className="w-7 h-7 text-white" />
               </div>
-            );
-          })}
-        </div>
 
+              {/* Title */}
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#1A2E23] tracking-tight leading-snug">
+                {tr('svc_reserve_title')}
+              </h3>
+
+              {/* Description */}
+              <p className="text-sm text-[#5A6E62] leading-relaxed">
+                {tr('svc_reserve_desc')}
+              </p>
+            </div>
+
+            {/* Stats */}
+            <div className="grid grid-cols-3 gap-4 mt-8 pt-6 border-t border-[#E2ECE6]">
+              <div>
+                <div className="text-xl sm:text-2xl font-extrabold text-[#22C55E]">&lt; 10 мс</div>
+                <div className="text-[11px] text-[#5A6E62] font-medium mt-0.5">{tr('svc_reserve_stat1')}</div>
+              </div>
+              <div>
+                <div className="text-xl sm:text-2xl font-extrabold text-[#22C55E]">5–20 кВт</div>
+                <div className="text-[11px] text-[#5A6E62] font-medium mt-0.5">{tr('svc_reserve_stat2')}</div>
+              </div>
+              <div>
+                <div className="text-xl sm:text-2xl font-extrabold text-[#22C55E]">6+ год</div>
+                <div className="text-[11px] text-[#5A6E62] font-medium mt-0.5">{tr('svc_reserve_stat3')}</div>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="mt-8">
+              <button
+                onClick={() => openLeadModal('10 kW', tr('svc_reserve_title'), `${tr('nav_services')}: ${tr('svc_reserve_title')}`)}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 border-[#22C55E] text-[#22C55E] font-extrabold text-sm hover:bg-[#22C55E] hover:text-white transition-all duration-300"
+              >
+                <span>{tr('svc_reserve_btn')}</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+
+          {/* ===== СОНЯЧНІ ЕЛЕКТРОСТАНЦІЇ — top right ===== */}
+          <div className="lg:col-span-3 group bg-gradient-to-bl from-[rgba(251,191,36,.08)] to-[rgba(34,197,94,.03)] rounded-[28px] border border-[#E2ECE6] p-[28px] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-[0_4px_20px_rgba(26,46,35,.05)] hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(251,191,36,.18)] transition-all duration-300">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-[#FBBF24] flex items-center justify-center shrink-0 shadow-[0_4px_14px_rgba(251,191,36,.3)] group-hover:scale-110 group-hover:shadow-[0_6px_20px_rgba(251,191,36,.4)] transition-all duration-300">
+                <Sun className="w-6 h-6 text-white" />
+              </div>
+              <div className="space-y-2">
+                <h3 className="text-xl font-extrabold text-[#1A2E23] tracking-tight">
+                  {tr('svc_ses_title')}
+                </h3>
+                <p className="text-sm text-[#5A6E62] leading-relaxed max-w-md">
+                  {tr('svc_ses_desc')}
+                </p>
+              </div>
+            </div>
+            <button
+              onClick={() => openLeadModal('10 kW', tr('svc_ses_title'), `${tr('nav_services')}: ${tr('svc_ses_title')}`)}
+              className="shrink-0 inline-flex items-center gap-1.5 text-sm font-extrabold text-[#22C55E] hover:text-[#16A34A] transition-colors"
+            >
+              <span>{tr('svc_ses_cta')}</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* ===== ЗЕЛЕНИЙ ТАРИФ + ЗАРЯДНІ СТАНЦІЇ EV — middle right ===== */}
+          <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+            {/* Зелений тариф */}
+            <div className="group bg-gradient-to-br from-[rgba(34,197,94,.03)] to-[rgba(251,191,36,.10)] rounded-[28px] border border-[#E2ECE6] p-[28px] flex flex-col justify-between shadow-[0_4px_20px_rgba(26,46,35,.05)] hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(34,197,94,.1)] transition-all duration-300">
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-2xl bg-[#22C55E] flex items-center justify-center shadow-[0_4px_14px_rgba(34,197,94,.3)] group-hover:scale-110 group-hover:shadow-[0_6px_20px_rgba(34,197,94,.4)] transition-all duration-300">
+                  <Leaf className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-lg font-extrabold text-[#1A2E23] tracking-tight">
+                  {tr('svc_green_title')}
+                </h3>
+                <p className="text-sm text-[#5A6E62] leading-relaxed">
+                  {tr('svc_green_desc')}
+                </p>
+              </div>
+              <button
+                onClick={() => openLeadModal('10 kW', tr('svc_green_title'), `${tr('nav_services')}: ${tr('svc_green_title')}`)}
+                className="mt-6 inline-flex items-center gap-1.5 text-sm font-extrabold text-[#22C55E] hover:text-[#16A34A] transition-colors"
+              >
+                <span>{tr('svc_green_cta')}</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Зарядні станції EV */}
+            <div className="group bg-gradient-to-bl from-white to-[rgba(251,191,36,.13)] rounded-[28px] border border-[#E2ECE6] p-[28px] flex flex-col justify-between shadow-[0_4px_20px_rgba(26,46,35,.05)] hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(251,191,36,.18)] transition-all duration-300">
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-2xl bg-[#FBBF24] flex items-center justify-center shadow-[0_4px_14px_rgba(251,191,36,.3)] group-hover:scale-110 group-hover:shadow-[0_6px_20px_rgba(251,191,36,.4)] transition-all duration-300">
+                  <BatteryCharging className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-lg font-extrabold text-[#1A2E23] tracking-tight">
+                  {tr('svc_ev_title')}
+                </h3>
+                <p className="text-sm text-[#5A6E62] leading-relaxed">
+                  {tr('svc_ev_desc')}
+                </p>
+              </div>
+              <button
+                onClick={() => openLeadModal('10 kW', tr('svc_ev_title'), `${tr('nav_services')}: ${tr('svc_ev_title')}`)}
+                className="mt-6 inline-flex items-center gap-1.5 text-sm font-extrabold text-[#22C55E] hover:text-[#16A34A] transition-colors"
+              >
+                <span>{tr('svc_ev_cta')}</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+
+          </div>
+
+          {/* ===== СЕРВІС + АУДИТ — bottom row ===== */}
+          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+            {/* Сервіс та обслуговування */}
+            <div className="group bg-gradient-to-br from-white to-[rgba(251,191,36,.12)] rounded-[28px] border border-[#E2ECE6] p-[28px] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-[0_4px_20px_rgba(26,46,35,.05)] hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(251,191,36,.18)] transition-all duration-300">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-[#FBBF24] flex items-center justify-center shrink-0 shadow-[0_4px_14px_rgba(251,191,36,.3)] group-hover:scale-110 group-hover:shadow-[0_6px_20px_rgba(251,191,36,.4)] transition-all duration-300">
+                  <Wrench className="w-6 h-6 text-white" />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-lg font-extrabold text-[#1A2E23] tracking-tight">
+                    {tr('svc_service_title')}
+                  </h3>
+                  <p className="text-sm text-[#5A6E62] leading-relaxed">
+                    {tr('svc_service_desc')}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => openLeadModal('10 kW', tr('svc_service_title'), `${tr('nav_services')}: ${tr('svc_service_title')}`)}
+                className="shrink-0 inline-flex items-center gap-1.5 text-sm font-extrabold text-[#22C55E] hover:text-[#16A34A] transition-colors"
+              >
+                <span>{tr('svc_service_cta')}</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+
+            {/* Проектування та аудит */}
+            <div className="group bg-gradient-to-bl from-white to-[rgba(251,191,36,.12)] rounded-[28px] border border-[#E2ECE6] p-[28px] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-[0_4px_20px_rgba(26,46,35,.05)] hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(251,191,36,.18)] transition-all duration-300">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-[#FBBF24] flex items-center justify-center shrink-0 shadow-[0_4px_14px_rgba(251,191,36,.3)] group-hover:scale-110 group-hover:shadow-[0_6px_20px_rgba(251,191,36,.4)] transition-all duration-300">
+                  <FileSearch className="w-6 h-6 text-white" />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="text-lg font-extrabold text-[#1A2E23] tracking-tight">
+                    {tr('svc_audit_title')}
+                  </h3>
+                  <p className="text-sm text-[#5A6E62] leading-relaxed">
+                    {tr('svc_audit_desc')}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => openLeadModal('10 kW', tr('svc_audit_title'), `${tr('nav_services')}: ${tr('svc_audit_title')}`)}
+                className="shrink-0 inline-flex items-center gap-1.5 text-sm font-extrabold text-[#22C55E] hover:text-[#16A34A] transition-colors"
+              >
+                <span>{tr('svc_audit_cta')}</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+
+          </div>
+
+        </div>
       </div>
     </section>
   );

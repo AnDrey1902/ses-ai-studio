@@ -2,16 +2,147 @@
 
 @theme {
   --font-sans: "Manrope", "Inter", system-ui, sans-serif;
+
+  /* Design System — SES AI Studio */
   --color-brand-green: #22C55E;
-  --color-brand-dark: #0F172A;
-  --color-brand-accent: #F59E0B;
+  --color-brand-hover: #16A34A;
+  --color-brand-dark: #15803D;
+  --color-brand-glow: rgba(34, 197, 94, 0.35);
+
+  --color-bg-primary: #07140F;
+  --color-bg-secondary: #0B1F16;
+  --color-bg-section: #10261C;
+  --color-bg-card: rgba(24, 44, 33, 0.92);
+  --color-bg-glass: rgba(42, 63, 49, 0.72);
+
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #D5DDD8;
+  --color-text-muted: #92A299;
+  --color-text-disabled: #647268;
+
+  --color-accent-yellow: #FBBF24;
+
+  /* Light Section Palette */
+  --color-light-bg: #F8FAF9;
+  --color-light-text: #1A2E23;
+  --color-light-muted: #5A6E62;
+  --color-light-card: #FFFFFF;
+  --color-light-border: #E2ECE6;
+  --color-light-hover: #EEF5F1;
 }
 
+/* ========== Glass Panel Utility ========== */
+.glass-panel {
+  background: rgba(42, 63, 49, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+}
+
+/* ========== Light Section Glass Panel ========== */
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid #E2ECE6;
+  box-shadow: 0 24px 80px rgba(26, 46, 35, 0.1);
+}
+
+/* ========== Unified Card System ========== */
+.ds-card {
+  background: rgba(24, 44, 33, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: 32px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+}
+.ds-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.5);
+}
+
+/* ========== Button System ========== */
+.ds-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #22C55E;
+  color: #07140F;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 16px 34px;
+  border-radius: 999px;
+  transition: all 250ms ease;
+  box-shadow: 0 12px 30px rgba(34, 197, 94, 0.35);
+}
+.ds-btn-primary:hover {
+  background: #16A34A;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(34, 197, 94, 0.45);
+}
+.ds-btn-primary:active {
+  transform: translateY(0);
+}
+
+.ds-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: transparent;
+  color: #D5DDD8;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 16px 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  transition: all 250ms ease;
+}
+.ds-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* ========== Input System ========== */
+.ds-input {
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #07140F;
+  padding: 12px 16px;
+  color: #FFFFFF;
+  transition: border-color 200ms ease;
+}
+.ds-input:focus {
+  outline: none;
+  border-color: #22C55E;
+}
+.ds-input::placeholder {
+  color: #647268;
+}
+
+/* ========== Badge System ========== */
+.ds-badge {
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ========== Section Spacing ========== */
+.ds-section {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+/* ========== BG Grid Pattern ========== */
 @layer utilities {
   .bg-grid-pattern {
     background-size: 40px 40px;
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-image: linear-gradient(to right, rgba(26, 46, 35, 0.04) 1px, transparent 1px),
+                      linear-gradient(to bottom, rgba(26, 46, 35, 0.04) 1px, transparent 1px);
   }
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
@@ -22,14 +153,14 @@
   }
 }
 
-/* Focus ring utility */
+/* ========== Focus Ring ========== */
 *:focus-visible {
   outline: 2px solid #22C55E;
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* Reduced motion */
+/* ========== Reduced Motion ========== */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

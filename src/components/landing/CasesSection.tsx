@@ -7,24 +7,24 @@ export const CasesSection: React.FC = () => {
   const { lang, tr, openLeadModal } = useApp();
 
   return (
-    <section id="cases" className="py-20 md:py-28 bg-slate-950 border-b border-slate-900 scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
-        
+    <section id="cases" className="ds-section bg-[#F8FAF9] border-b border-[#E2ECE6] scroll-mt-20">
+      <div className="max-w-[1280px] mx-auto px-5 md:px-8 space-y-[64px]">
+
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-green-500/10 text-green-400 border border-green-500/20">
+          <span className="ds-badge px-3.5 py-1.5 text-xs bg-[rgba(34,197,94,.1)] text-[#15803D] border border-[rgba(34,197,94,.2)]">
             {tr('cases_badge')}
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#1A2E23]">
             {tr('b7_title')}
           </h2>
-          <p className="text-sm sm:text-base text-slate-400 font-medium">
+          <p className="text-sm sm:text-base text-[#5A6E62] font-medium">
             {tr('b7_sub')}
           </p>
         </div>
 
         {/* 4 Cases Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {CASES.map((cs) => {
             const titleCopy = cs.title[lang] || cs.title.uk;
             const locCopy = cs.location[lang] || cs.location.uk;
@@ -35,7 +35,7 @@ export const CasesSection: React.FC = () => {
             return (
               <div
                 key={cs.id}
-                className="bg-slate-900 rounded-3xl overflow-hidden border border-slate-800 shadow-2xl hover:border-slate-700 transition-all flex flex-col justify-between group"
+                className="bg-gradient-to-bl from-white to-[rgba(251,191,36,.04)] rounded-[28px] border border-[#E2ECE6] overflow-hidden group shadow-[0_4px_20px_rgba(26,46,35,.05)] hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(251,191,36,.08)] transition-all duration-300"
               >
                 <div>
                   {/* Photo Top */}
@@ -46,19 +46,19 @@ export const CasesSection: React.FC = () => {
                       loading="lazy"
                       className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent opacity-90" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A2E23] via-transparent to-transparent opacity-90" />
 
                     {/* Badge Overlay */}
-                    <div className="absolute top-4 left-4 bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-800 text-xs font-extrabold text-green-400 font-mono">
+                    <div className="absolute top-4 left-4 glass-panel-light !rounded-2xl px-3 py-1.5 text-xs font-extrabold text-[#22C55E] font-mono">
                       {cs.power}
                     </div>
 
                     <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-white">
-                      <span className="text-xs font-bold text-slate-200 flex items-center gap-1">
-                        <MapPin className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+                      <span className="text-xs font-bold text-white flex items-center gap-1">
+                        <MapPin className="w-3.5 h-3.5 text-[#FBBF24] shrink-0" />
                         {locCopy}
                       </span>
-                      <span className="text-xs font-mono font-extrabold bg-[#22C55E] text-slate-950 px-2.5 py-1 rounded-lg">
+                      <span className="text-xs font-mono font-extrabold bg-[#22C55E] text-white px-2.5 py-1 rounded-xl">
                         {tr('cases_install_days').replace('{days}', cs.installDays.toString())}
                       </span>
                     </div>
@@ -67,31 +67,31 @@ export const CasesSection: React.FC = () => {
                   {/* Copy content */}
                   <div className="p-6 sm:p-8 space-y-6">
                     <div className="space-y-1">
-                      <h3 className="text-xl font-extrabold text-white leading-snug">
+                      <h3 className="text-xl font-extrabold text-[#1A2E23] leading-snug">
                         {titleCopy}
                       </h3>
-                      <p className="text-xs font-bold text-slate-400">{typeCopy}</p>
+                      <p className="text-xs font-bold text-[#5A6E62]">{typeCopy}</p>
                     </div>
 
                     {/* Specs & Fin model */}
-                    <div className="grid grid-cols-2 gap-4 p-4 rounded-2xl bg-slate-950 border border-slate-800/80 text-xs font-mono">
+                    <div className="grid grid-cols-2 gap-4 p-4 rounded-2xl bg-[#F8FAF9] border border-[#E2ECE6] text-xs font-mono">
                       <div>
-                        <div className="text-[10px] text-slate-500 font-bold uppercase">{tr('cases_invest_label')}</div>
-                        <div className="text-base font-extrabold text-white">${cs.investmentUsd.toLocaleString()}</div>
+                        <div className="text-[10px] text-[#5A6E62] font-bold uppercase">{tr('cases_invest_label')}</div>
+                        <div className="text-base font-extrabold text-[#1A2E23]">${cs.investmentUsd.toLocaleString()}</div>
                       </div>
                       <div>
-                        <div className="text-[10px] text-slate-500 font-bold uppercase">{tr('cases_payback_label')}</div>
-                        <div className="text-base font-extrabold text-green-400">{paybackCopy}</div>
+                        <div className="text-[10px] text-[#5A6E62] font-bold uppercase">{tr('cases_payback_label')}</div>
+                        <div className="text-base font-extrabold text-[#22C55E]">{paybackCopy}</div>
                       </div>
-                      <div className="col-span-2 pt-2 border-t border-slate-900 text-[11px] text-slate-300 leading-normal">
-                        <strong className="text-slate-500">{tr('cases_equip_label')}</strong> {cs.equipment}
+                      <div className="col-span-2 pt-2 border-t border-[#E2ECE6] text-[11px] text-[#5A6E62] leading-normal">
+                        <strong className="text-[#5A6E62]">{tr('cases_equip_label')}</strong> {cs.equipment}
                       </div>
                     </div>
 
                     {/* Quote */}
                     <div className="flex items-start gap-3 pt-1">
-                      <Quote className="w-5 h-5 text-green-400/40 shrink-0 mt-1" />
-                      <p className="text-xs italic text-slate-300 leading-relaxed">
+                      <Quote className="w-5 h-5 text-[rgba(34,197,94,.4)] shrink-0 mt-1" />
+                      <p className="text-xs italic text-[#5A6E62] leading-relaxed">
                         {quoteCopy}
                       </p>
                     </div>
@@ -102,7 +102,7 @@ export const CasesSection: React.FC = () => {
                 <div className="p-6 sm:p-8 pt-0">
                   <button
                     onClick={() => openLeadModal(cs.power, cs.title.uk, `Case: ${cs.title.uk}`)}
-                    className="w-full py-3.5 rounded-xl bg-slate-800 hover:bg-[#22C55E] text-slate-200 hover:text-slate-950 font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2"
+                    className="w-full inline-flex items-center justify-center gap-2.5 bg-[#F0F5F2] hover:bg-[#22C55E] text-[#1A2E23] hover:text-white font-extrabold text-xs uppercase tracking-wide py-3.5 rounded-full border border-[#E2ECE6] hover:border-[#22C55E] transition-all"
                   >
                     <span>{tr('cases_cta_btn')}</span>
                     <ArrowRight className="w-3.5 h-3.5" />
