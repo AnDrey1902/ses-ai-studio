@@ -15,3 +15,7 @@ server.cjs.map
 .kanban/
 
 .vercel
+
+# Local tooling (Claude Code / impeccable skill)
+.claude/
+.impeccable/
