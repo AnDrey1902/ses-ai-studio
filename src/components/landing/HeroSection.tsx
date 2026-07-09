@@ -20,7 +20,7 @@ export const HeroSection: React.FC = () => {
   ];
 
   return (
-    <section id="home" className="relative isolate pt-[104px] pb-16 md:pt-[136px] md:pb-24 overflow-hidden border-b border-[rgba(255,255,255,.08)]">
+    <section id="home" className="relative isolate pt-[88px] pb-10 md:pt-[92px] md:pb-14 overflow-hidden border-b border-[rgba(255,255,255,.08)]">
 
       {/* Background Image */}
       <div className="absolute inset-0 z-[-1]">
@@ -35,7 +35,7 @@ export const HeroSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
           {/* Left Column: Copy & CTAs */}
-          <div className="lg:col-span-6 space-y-4 sm:space-y-6 text-center lg:text-left">
+          <div className="lg:col-span-6 space-y-3 sm:space-y-4 text-center lg:text-left">
 
             {/* Urgent Tag */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-ink-2 border border-[rgba(255,255,255,.08)] shadow-md">
@@ -46,7 +46,7 @@ export const HeroSection: React.FC = () => {
             </div>
 
             {/* Main H1 */}
-            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.12]">
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.04]">
               {tr('hero_h1_pre')}<span className="text-sun">{tr('hero_h1_span')}</span>
             </h1>
 
@@ -56,7 +56,7 @@ export const HeroSection: React.FC = () => {
             </p>
 
             {/* 4 Bullets */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-left max-w-2xl mx-auto lg:mx-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-left max-w-2xl mx-auto lg:mx-0">
               {bullets.map((b, i) => (
                 <div key={i} className="flex items-center gap-3 p-3 rounded-2xl bg-[rgba(13,53,39,.92)] border border-[rgba(255,255,255,.08)] backdrop-blur-sm w-full">
                   <div className="w-8 h-8 rounded-xl bg-[rgba(24,165,88,.15)] text-emerald flex items-center justify-center shrink-0">
@@ -68,7 +68,7 @@ export const HeroSection: React.FC = () => {
             </div>
 
             {/* CTAs — each button = 1 mini-block width */}
-            <div className="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto lg:mx-0">
+            <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto lg:mx-0">
               <button
                 onClick={() => openLeadModal('10 kW', 'Hybrid SES', tr('lead_source_header'))}
                 className="ds-btn-primary !py-3 !px-7 !text-[13px]"
