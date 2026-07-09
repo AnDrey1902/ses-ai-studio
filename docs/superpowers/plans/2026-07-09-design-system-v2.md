@@ -70,7 +70,7 @@ Apply as **exact-string** replacements inside `className` values only. Left = cu
 **Interfaces:**
 - Produces (Tailwind utilities generated from `@theme`): `emerald`, `emerald-deep`, `sun`, `amber`, `ink`, `ink-2`, `surface`, `soft`, `line`, `body`, `muted`, `cloud`, `muted-dark`, `disabled` (each valid as `text-*`/`bg-*`/`border-*`); font utilities `font-sans`, `font-display`, `font-mono`.
 - Produces (component classes): `.ds-btn-primary`, `.ds-btn-secondary`, `.ds-btn-outline`, `.ds-btn-ghost`, `.ds-btn-sun`, `.ds-card` (dark), `.ds-card-light`, `.ds-input`, `.ds-badge`, `.ds-section`, `.ds-section--soft`, `.ds-section--dark`, `.glass-panel`, `.glass-panel-light`.
-- Produces (CSS vars): `--r-sm/md/lg/pill`, `--gap`, `--section-pad`, `--maxw`, `--title-fs`, `--shadow-sm/md/lg`, `--grad-emerald`, `--grad-sun`, `--grad-dark`.
+- Produces (CSS vars): `--r-sm/md/lg/pill`, `--gap`, `--section-pad`, `--maxw`, `--title-fs`, `--ds-shadow-sm/md/lg`, `--ds-shadow-emerald`, `--grad-emerald`, `--grad-sun`, `--grad-dark`. (Shadow vars are `--ds-shadow-*`, not `--shadow-*`, to avoid clobbering Tailwind's shadow utilities.)
 
 - [ ] **Step 1: Replace the entire file with the v2 token system**
 
@@ -117,10 +117,13 @@ Apply as **exact-string** replacements inside `className` values only. Left = cu
   --section-pad: clamp(1.8rem, 2.6vw + 2.8vh, 5rem);
   --maxw: 1200px;
   --title-fs: clamp(1.55rem, 1.4vw + 1.6vh + .6rem, 2.7rem);
-  --shadow-sm: 0 2px 10px rgba(7,20,15,.06);
-  --shadow-md: 0 14px 40px rgba(7,20,15,.10);
-  --shadow-lg: 0 30px 70px rgba(7,20,15,.16);
-  --shadow-emerald: 0 12px 30px rgba(24,165,88,.28);
+  /* NOTE: prefixed --ds-shadow-* (NOT --shadow-*) so we don't override
+     Tailwind v4's own --shadow-* theme namespace that backs shadow-md/-lg
+     utilities used by non-flagship sections (Navbar, etc.). */
+  --ds-shadow-sm: 0 2px 10px rgba(7,20,15,.06);
+  --ds-shadow-md: 0 14px 40px rgba(7,20,15,.10);
+  --ds-shadow-lg: 0 30px 70px rgba(7,20,15,.16);
+  --ds-shadow-emerald: 0 12px 30px rgba(24,165,88,.28);
   --grad-emerald: linear-gradient(135deg, #22b865 0%, #0f7a40 100%);
   --grad-sun: linear-gradient(135deg, #ffd23f 0%, #f59e0b 100%);
   --grad-dark: linear-gradient(160deg, #11402f 0%, #0a2a1e 72%);
@@ -153,7 +156,7 @@ Apply as **exact-string** replacements inside `className` values only. Left = cu
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--r-lg);
   padding: 28px;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--ds-shadow-lg);
   transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
 }
 .ds-card:hover {
@@ -165,12 +168,12 @@ Apply as **exact-string** replacements inside `className` values only. Left = cu
   border: 1px solid var(--color-line);
   border-radius: var(--r-lg);
   padding: 28px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--ds-shadow-sm);
   transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
 }
 .ds-card-light:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--ds-shadow-md);
 }
 
 /* ========== Buttons ========== */
@@ -181,7 +184,7 @@ Apply as **exact-string** replacements inside `className` values only. Left = cu
   font-weight: 800; letter-spacing: 0.02em;
   padding: 16px 34px; border-radius: var(--r-pill);
   transition: transform 200ms cubic-bezier(.22,1,.36,1), box-shadow 200ms ease, background 200ms ease;
-  box-shadow: var(--shadow-emerald);
+  box-shadow: var(--ds-shadow-emerald);
 }
 .ds-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(24,165,88,.4); }
 .ds-btn-primary:active { transform: translateY(0); }
