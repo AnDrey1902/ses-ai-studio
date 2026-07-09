@@ -19,7 +19,6 @@ server.cjs.map
 # Local tooling (Claude Code / impeccable skill)
 .claude/
 .impeccable/
-.jolli/
 dev-server.err
 
 # Build/source artifacts that shouldn't be versioned
