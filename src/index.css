@@ -1,170 +1,198 @@
 @import "tailwindcss";
 
 @theme {
+  /* ── Typography ── */
   --font-sans: "Manrope", "Inter", system-ui, sans-serif;
+  --font-display: "Sora", "Manrope", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Consolas, monospace;
 
-  /* Design System — SES AI Studio */
-  --color-brand-green: #22C55E;
-  --color-brand-hover: #16A34A;
-  --color-brand-dark: #15803D;
-  --color-brand-glow: rgba(34, 197, 94, 0.35);
+  /* ── Brand ── */
+  --color-emerald: #18A558;
+  --color-emerald-deep: #0F7A40;
+  --color-sun: #FFC742;
+  --color-amber: #F59E0B;
 
-  --color-bg-primary: #07140F;
-  --color-bg-secondary: #0B1F16;
-  --color-bg-section: #10261C;
-  --color-bg-card: rgba(24, 44, 33, 0.92);
-  --color-bg-glass: rgba(42, 63, 49, 0.72);
+  /* ── Ink / dark surfaces ── */
+  --color-ink: #0A2A1E;
+  --color-ink-2: #0D3527;
 
-  --color-text-primary: #FFFFFF;
-  --color-text-secondary: #D5DDD8;
-  --color-text-muted: #92A299;
-  --color-text-disabled: #647268;
+  /* ── Light surfaces ── */
+  --color-surface: #FFFFFF;
+  --color-soft: #EEF5F0;
+  --color-line: #DDE8E2;
 
-  --color-accent-yellow: #FBBF24;
+  /* ── Text ── */
+  --color-body: #16271F;        /* body / headings on light (~14:1 on white) */
+  --color-muted: #54665D;       /* muted on light (~5.4:1) */
+  --color-cloud: #CFE0D7;       /* body text on dark */
+  --color-muted-dark: #9FBCAE;  /* muted on dark */
+  --color-disabled: #6F857A;    /* placeholder / disabled */
 
-  /* Light Section Palette */
-  --color-light-bg: #F8FAF9;
-  --color-light-text: #1A2E23;
-  --color-light-muted: #5A6E62;
-  --color-light-card: #FFFFFF;
-  --color-light-border: #E2ECE6;
-  --color-light-hover: #EEF5F1;
+  /* Back-compat aliases (old token names still referenced anywhere) */
+  --color-brand-green: #18A558;
+  --color-accent-yellow: #FFC742;
 }
 
-/* ========== Glass Panel Utility ========== */
+/* ── Non-Tailwind scales (consumed by .ds-* classes) ── */
+:root {
+  --r-sm: 12px; --r-md: 18px; --r-lg: 26px; --r-pill: 999px;
+  --gap: clamp(1rem, 3vw, 2rem);
+  --section-pad: clamp(1.8rem, 2.6vw + 2.8vh, 5rem);
+  --maxw: 1200px;
+  --title-fs: clamp(1.55rem, 1.4vw + 1.6vh + .6rem, 2.7rem);
+  /* NOTE: prefixed --ds-shadow-* (NOT --shadow-*) so we don't override
+     Tailwind v4's own --shadow-* theme namespace that backs shadow-md/-lg
+     utilities used by non-flagship sections (Navbar, etc.). */
+  --ds-shadow-sm: 0 2px 10px rgba(7,20,15,.06);
+  --ds-shadow-md: 0 14px 40px rgba(7,20,15,.10);
+  --ds-shadow-lg: 0 30px 70px rgba(7,20,15,.16);
+  --ds-shadow-emerald: 0 12px 30px rgba(24,165,88,.28);
+  --grad-emerald: linear-gradient(135deg, #22b865 0%, #0f7a40 100%);
+  --grad-sun: linear-gradient(135deg, #ffd23f 0%, #f59e0b 100%);
+  --grad-dark: linear-gradient(160deg, #11402f 0%, #0a2a1e 72%);
+}
+
+/* ── Display font on headings (system-wide, presentation-only) ── */
+@layer base {
+  h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; }
+}
+
+/* ========== Glass Panels ========== */
 .glass-panel {
-  background: rgba(42, 63, 49, 0.72);
+  background: rgba(13, 53, 39, 0.72);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
 }
-
-/* ========== Light Section Glass Panel ========== */
 .glass-panel-light {
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid #E2ECE6;
-  box-shadow: 0 24px 80px rgba(26, 46, 35, 0.1);
+  border: 1px solid var(--color-line);
+  box-shadow: 0 24px 80px rgba(7, 20, 15, 0.1);
 }
 
-/* ========== Unified Card System ========== */
+/* ========== Cards ========== */
 .ds-card {
-  background: rgba(24, 44, 33, 0.92);
+  background: rgba(13, 53, 39, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 28px;
-  padding: 32px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  box-shadow: var(--ds-shadow-lg);
   transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
 }
 .ds-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 28px 80px rgba(0, 0, 0, 0.5);
 }
+.ds-card-light {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  box-shadow: var(--ds-shadow-sm);
+  transition: transform 250ms ease, box-shadow 250ms ease, border-color 250ms ease;
+}
+.ds-card-light:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--ds-shadow-md);
+}
 
-/* ========== Button System ========== */
+/* ========== Buttons ========== */
 .ds-btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: #22C55E;
-  color: #07140F;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  padding: 16px 34px;
-  border-radius: 999px;
-  transition: all 250ms ease;
-  box-shadow: 0 12px 30px rgba(34, 197, 94, 0.35);
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--grad-emerald);
+  color: #04130b;
+  font-weight: 800; letter-spacing: 0.02em;
+  padding: 16px 34px; border-radius: var(--r-pill);
+  transition: transform 200ms cubic-bezier(.22,1,.36,1), box-shadow 200ms ease, background 200ms ease;
+  box-shadow: var(--ds-shadow-emerald);
 }
-.ds-btn-primary:hover {
-  background: #16A34A;
-  transform: translateY(-2px);
-  box-shadow: 0 16px 40px rgba(34, 197, 94, 0.45);
-}
-.ds-btn-primary:active {
-  transform: translateY(0);
-}
+.ds-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(24,165,88,.4); }
+.ds-btn-primary:active { transform: translateY(0); }
 
 .ds-btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: transparent;
-  color: #D5DDD8;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  padding: 16px 34px;
-  border-radius: 999px;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: transparent; color: var(--color-cloud);
+  font-weight: 700; letter-spacing: 0.02em;
+  padding: 16px 34px; border-radius: var(--r-pill);
   border: 1px solid rgba(255, 255, 255, 0.35);
   transition: all 250ms ease;
 }
-.ds-btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.5);
+.ds-btn-secondary:hover { background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.5); }
+
+.ds-btn-outline {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: transparent; color: var(--color-emerald-deep);
+  font-weight: 800; padding: 14px 28px; border-radius: var(--r-pill);
+  border: 1.5px solid var(--color-emerald);
+  transition: all 200ms ease;
+}
+.ds-btn-outline:hover { background: rgba(24,165,88,.1); }
+
+.ds-btn-ghost {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: transparent; color: currentColor; opacity: .85;
+  font-weight: 700; padding: 14px 28px; border-radius: var(--r-pill);
+  border: 1.5px solid currentColor;
+  transition: opacity 200ms ease;
+}
+.ds-btn-ghost:hover { opacity: 1; }
+
+.ds-btn-sun {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  background: var(--grad-sun); color: #2a1a00;
+  font-weight: 800; padding: 16px 34px; border-radius: var(--r-pill);
+  transition: all 200ms ease;
 }
 
-/* ========== Input System ========== */
+/* ========== Input ========== */
 .ds-input {
-  border-radius: 18px;
+  border-radius: var(--r-md);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  background: #07140F;
-  padding: 12px 16px;
-  color: #FFFFFF;
-  transition: border-color 200ms ease;
+  background: var(--color-ink);
+  padding: 12px 16px; color: #FFFFFF;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
 }
 .ds-input:focus {
-  outline: none;
-  border-color: #22C55E;
+  outline: none; border-color: var(--color-emerald);
+  box-shadow: 0 0 0 3px rgba(24,165,88,.18);
 }
-.ds-input::placeholder {
-  color: #647268;
-}
+.ds-input::placeholder { color: var(--color-disabled); }
 
-/* ========== Badge System ========== */
+/* ========== Badge ========== */
 .ds-badge {
-  border-radius: 999px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  border-radius: var(--r-pill); font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase;
 }
 
-/* ========== Section Spacing ========== */
-.ds-section {
-  padding-top: 120px;
-  padding-bottom: 120px;
-}
+/* ========== Section spacing (fluid — enforces "≤ 1 viewport") ========== */
+.ds-section { padding-top: var(--section-pad); padding-bottom: var(--section-pad); }
+.ds-section--soft { background: var(--color-soft); }
+.ds-section--dark { background: var(--grad-dark); color: #fff; }
 
-/* ========== BG Grid Pattern ========== */
+/* ========== Utilities ========== */
 @layer utilities {
   .bg-grid-pattern {
     background-size: 40px 40px;
     background-image: linear-gradient(to right, rgba(26, 46, 35, 0.04) 1px, transparent 1px),
                       linear-gradient(to bottom, rgba(26, 46, 35, 0.04) 1px, transparent 1px);
   }
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
-  }
-  .scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 }
 
 /* ========== Focus Ring ========== */
 *:focus-visible {
-  outline: 2px solid #22C55E;
+  outline: 2px solid var(--color-emerald);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
 /* ========== Reduced Motion ========== */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
