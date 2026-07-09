@@ -1,67 +1,81 @@
-# Design System — SES AI Studio (GURU ENERGY)
+# Design System v2 — SES AI Studio (GURU ENERGY)
 
-## 1. Цвета
+> Source of truth: [`src/index.css`](../src/index.css). Every value in this document is copied
+> from that file (or, where noted, from what the shipped flagship components actually render).
+> If the two ever disagree, `src/index.css` wins — update this doc, not the other way around.
 
-### Brand
+**Status:** v2 (light-first, emerald + solar-gold). Shipped on the 4 flagship landing sections
+(Hero, Services, Prices, Contact). See [§10 Migration status](#10-migration-status) for what's
+still on the old dark-green/`#22C55E` palette.
 
-| Токен | Hex | Назначение |
+---
+
+## 1. Цвета (`@theme` в `src/index.css`)
+
+### Brand primitives
+
+| Токен | Hex | Роль |
 |---|---|---|
-| `--color-brand-green` | `#22C55E` | Основной CTA, акценты, ссылки |
-| `--color-brand-hover` | `#16A34A` | Hover-состояние зелёного |
-| `--color-brand-dark` | `#15803D` | Тёмный зелёный для текста на светлом |
-| `--color-brand-glow` | `rgba(34, 197, 94, 0.35)` | Glow-эффекты, тени |
+| `--color-emerald` | `#18A558` | Основной CTA / интерактив / ссылки |
+| `--color-emerald-deep` | `#0F7A40` | Hover, обводки, акцентный текст на светлом |
+| `--color-sun` | `#FFC742` | Золото: ключевые цифры, бейджи, вторичный CTA |
+| `--color-amber` | `#F59E0B` | Hover-состояние жёлтого / "внимание" |
 
-### Фоны (тёмная тема)
+> **Изменилось с v1:** было `#22C55E` (brand-green) / `#FBBF24` (yellow accent). В v2 это
+> `#18A558` (emerald) и `#FFC742` (sun) — более глубокие, менее "неоновые" тона под light-first
+> тему. Любой `#22C55E`/`#FBBF24`, ещё встречающийся в коде, — это немигрированный v1-остаток
+> (см. §10), а не текущий токен.
 
-| Токен | Hex | Назначение |
+### Ink / тёмные поверхности
+
+| Токен | Hex | Роль |
 |---|---|---|
-| `--color-bg-primary` | `#07140F` | Основной тёмный фон |
-| `--color-bg-secondary` | `#0B1F16` | Вторичная поверхность |
-| `--color-bg-section` | `#10261C` | Секции, карточки |
-| `--color-bg-card` | `rgba(24, 44, 33, 0.92)` | Карточки (`.ds-card`) |
-| `--color-bg-glass` | `rgba(42, 63, 49, 0.72)` | Glassmorphism (`.glass-panel`) |
+| `--color-ink` | `#0A2A1E` | База тёмных секций (dark surface) |
+| `--color-ink-2` | `#0D3527` | Второй слой на тёмном (табы, вложенные панели, таблицы) |
 
-### Фоны (светлая тема)
+### Светлые поверхности
 
-| Токен | Hex | Назначение |
+| Токен | Hex | Роль |
 |---|---|---|
-| `--color-light-bg` | `#F8FAF9` | Светлые секции |
-| `--color-light-card` | `#FFFFFF` | Белые карточки |
-| `--color-light-hover` | `#EEF5F1` | Hover-состояние |
+| `--color-surface` | `#FFFFFF` | Страница / карточки на белом |
+| `--color-soft` | `#EEF5F0` | Мягкая чередующаяся светлая секция |
+| `--color-line` | `#DDE8E2` | Границы / разделители на светлом |
 
 ### Текст
 
-| Токен | Hex | Назначение |
+| Токен | Hex | Роль |
 |---|---|---|
-| `--color-text-primary` | `#FFFFFF` | Основной текст на тёмном |
-| `--color-text-secondary` | `#D5DDD8` | Текст body |
-| `--color-text-muted` | `#92A299` | Приглушённый текст |
-| `--color-text-disabled` | `#647268` | Disabled, placeholder |
-| `--color-light-text` | `#1A2E23` | Текст на светлом фоне |
-| `--color-light-muted` | `#5A6E62` | Приглушённый на светлом |
+| `--color-body` | `#16271F` | Body / заголовки на светлом (~14:1 на белом) |
+| `--color-muted` | `#54665D` | Вторичный текст на светлом (~5.4:1) |
+| `--color-cloud` | `#CFE0D7` | Body-текст на тёмном |
+| `--color-muted-dark` | `#9FBCAE` | Вторичный текст на тёмном |
+| `--color-disabled` | `#6F857A` | Placeholder / disabled |
 
-### Акценты
+### Back-compat aliases
 
-| Цвет | Назначение |
+`src/index.css` also defines two legacy-named aliases that resolve to the v2 values, kept so any
+stray old-token reference doesn't silently break:
+
+| Токен | Значение |
 |---|---|
-| `#FBBF24` | Вторичный акцент (бейджи, звёзды, цены) |
-| `#B8860B` | Тёмное золото (метки времени/стоимости) |
-| `#F59E0B` | Hover-состояние жёлтого |
+| `--color-brand-green` | `#18A558` (= `--color-emerald`) |
+| `--color-accent-yellow` | `#FFC742` (= `--color-sun`) |
 
-### Границы
+All of the above are declared inside Tailwind's `@theme` block, so each generates the usual
+`text-*` / `bg-*` / `border-*` utilities (`text-emerald`, `bg-ink`, `border-line`, …) — that's
+the only way flagship components consume them (see §6).
 
-| Значение | Назначение |
-|---|---|
-| `rgba(255, 255, 255, 0.08)` | Границы на тёмном фоне |
-| `rgba(255, 255, 255, 0.35)` | Вторичные кнопки |
-| `rgba(255, 255, 255, 0.5)` | Hover вторичных кнопок |
-| `#E2ECE6` | Границы на светлом фоне |
+### Gradients (`:root`, not `@theme`)
 
-### Семантические паттерны
+| Токен | Value | Роль |
+|---|---|---|
+| `--grad-emerald` | `linear-gradient(135deg, #22b865 0%, #0f7a40 100%)` | `.ds-btn-primary` fill |
+| `--grad-sun` | `linear-gradient(135deg, #ffd23f 0%, #f59e0b 100%)` | `.ds-btn-sun` fill |
+| `--grad-dark` | `linear-gradient(160deg, #11402f 0%, #0a2a1e 72%)` | `.ds-section--dark` background |
 
-- **Успех/Актив**: `#22C55E` + `rgba(34,197,94,.1)` фон + `rgba(34,197,94,.2)` граница
-- **Внимание**: `#FBBF24` + `rgba(251,191,36,.12)` фон + `rgba(251,191,36,.25)` граница
-- **Ошибка**: `red-400` текст + `red-500/10` фон + `red-500/30` граница
+These are plain CSS custom properties (not Tailwind theme colors), so they're consumed via
+`background: var(--grad-emerald)` in the `.ds-*` component classes below, not via a `bg-*`
+utility.
 
 ---
 
@@ -70,384 +84,259 @@
 ### Шрифты
 
 ```css
---font-sans: "Manrope", "Inter", system-ui, sans-serif;
+--font-sans: "Manrope", "Inter", system-ui, sans-serif;      /* body */
+--font-display: "Sora", "Manrope", system-ui, sans-serif;    /* headings */
+--font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Consolas, monospace; /* numbers / service */
 ```
 
-- **Manrope** (основной): 400, 500, 600, 700, 800
-- **Inter** (фоллбэк): 300–700
-- **Sora** (цифры в Energy Monitor)
+- **Manrope** — body text, weights 400/500/600/700/800.
+- **Sora** — display face for headings, weights 600/700/800.
+- **JetBrains Mono** — numbers/prices/service copy (`font-mono` on kWh figures, `$`/₴ prices,
+  payback periods, phone-style meta in `PricesSection`/`ContactFormSection`).
 
-### Размеры шрифта
+**"Sora phantom" is resolved.** The old doc noted Sora was referenced in Tailwind config but
+never loaded, so `font-display` silently fell back to Manrope everywhere. That's fixed:
+`index.html` now loads it — the font `<link>` is
 
-| Класс | Размер | Назначение |
-|---|---|---|
-| `text-[9px]` | 9px | Микро-бейджи |
-| `text-[10px]` | 10px | Метки статистик |
-| `text-[11px]` | 11px | Мета-данные |
-| `text-xs` | 12px | Лейблы, навигация |
-| `text-sm` | 14px | Body, описания |
-| `text-base` | 16px | Заголовки карточек |
-| `text-lg` | 18px | Заголовки секций |
-| `text-xl` | 20px | Подзаголовки |
-| `text-2xl` | 24px | Основные заголовки |
-| `text-3xl` | 30px | Hero (мобайл) |
-| `text-4xl` | 36px | Hero (планшет) |
-| `text-5xl` | 48px | Hero (десктоп) |
-| `text-6xl` | 60px | Hero (большой десктоп) |
+```html
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+```
 
-### Насыщенность
+Sora renders on every `h1`/`h2`/`h3` via the base layer (below); DevTools → Network shows the
+Sora woff2 request, and computed `font-family` on headings resolves to Sora.
 
-| Класс | Вес | Назначение |
-|---|---|---|
-| `font-normal` | 400 | Body |
-| `font-medium` | 500 | Подписи |
-| `font-semibold` | 600 | Акцент |
-| `font-bold` | 700 | Лейблы, навигация |
-| `font-extrabold` | 800 | Заголовки |
-| `font-black` | 900 | Hero, цифры |
+**New gap to know about:** `JetBrains Mono` is **not** in that font link — only Manrope and Sora
+are loaded from Google Fonts. `font-mono` (Tailwind utility, generated from `--font-mono`) is
+already used across the codebase (price figures, kWh labels), but until JetBrains Mono is added
+to the `<link>`, it silently falls back to the stack's next entry — the browser's system
+monospace (`ui-monospace` / `SF Mono` / Consolas). Visually acceptable, but not yet the
+intended typeface; flag this if picking up font-loading work next.
 
-### Трансформация и интервал
-
-- `uppercase` — бейджи, секции, кнопки
-- `tracking-wide` — кнопки, навигация
-- `tracking-wider` — метки uppercase
-- `tracking-widest` — заголовки секций
-
----
-
-## 3. Отступы
-
-### Секции
+### Display face on headings
 
 ```css
-.ds-section { padding-top: 120px; padding-bottom: 120px; }
+@layer base {
+  h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.02em; }
+}
 ```
 
-Внутренний: `space-y-[64px]` (основные) или `space-y-[48px]`
+Every `h1`–`h3` gets Sora + tightened tracking automatically, system-wide — components don't
+need to add `font-display` by hand unless a conflicting utility overrides `font-family` on that
+element (a few flagship spots add it explicitly for clarity; both work).
 
-### Горизонтальные отступы контейнера
+---
 
-| Класс | Значение |
-|---|---|
-| `px-5` | 20px (мобайл) |
-| `md:px-8` | 32px (десктоп) |
+## 3. Шкалы (non-Tailwind `:root` tokens)
 
-### Gap (наиболее частые)
+Declared outside `@theme` because they're consumed by the `.ds-*` component classes, not by
+generated Tailwind utilities.
 
-| Класс | Значение | Назначение |
+### Radius
+
+| Токен | Value | Назначение |
 |---|---|---|
-| `gap-12`–`gap-16` | 48–64px | Hero сетка |
-| `gap-8` | 32px | Сетки кейсов, формы |
-| `gap-6` | 24px | Сетки карточек (3 кол.) |
-| `gap-5` | 20px | Сетки услуг, формы |
-| `gap-4` | 16px | Двухколоночные |
-| `gap-3` | 12px | Элементы сетки |
-| `gap-2` | 8px | Инлайн-элементы |
-| `gap-1.5` | 6px | Навигация, flex |
+| `--r-sm` | `12px` | Small elements |
+| `--r-md` | `18px` | `.ds-input` |
+| `--r-lg` | `26px` | `.ds-card`, `.ds-card-light` |
+| `--r-pill` | `999px` | Buttons, badges |
 
----
+### Shadows — `--ds-shadow-*`, deliberately not `--shadow-*`
 
-## 4. Border Radius
-
-| Радиус | Класс | Назначение |
+| Токен | Value | Назначение |
 |---|---|---|
-| Pill | `rounded-full` | Кнопки, бейджи, пили навигации |
-| 32px | `rounded-[32px]` | Модалки, glass-панели |
-| 28px | `rounded-[28px]` | Карточки (`.ds-card`) |
-| 18px | `rounded-[18px]` | Инпуты (`.ds-input`) |
-| 16px | `rounded-2xl` | Контейнеры иконок |
-| 14px | `rounded-[14px]` | Теги, пагинация |
-| 12px | `rounded-xl` | Малые бейджи |
-| 8px | `rounded-lg` | Малые элементы |
+| `--ds-shadow-sm` | `0 2px 10px rgba(7,20,15,.06)` | `.ds-card-light` resting |
+| `--ds-shadow-md` | `0 14px 40px rgba(7,20,15,.10)` | `.ds-card-light:hover` |
+| `--ds-shadow-lg` | `0 30px 70px rgba(7,20,15,.16)` | `.ds-card` resting |
+| `--ds-shadow-emerald` | `0 12px 30px rgba(24,165,88,.28)` | `.ds-btn-primary` resting |
 
----
+**Why the `ds-` prefix:** Tailwind v4 owns its own `--shadow-*` namespace internally to back the
+built-in `shadow-md`/`shadow-lg`/`shadow-xl` utilities, which non-flagship sections (Navbar,
+still-unmigrated sections) rely on. Defining `--shadow-md` ourselves would silently redefine
+those utilities' output everywhere in the app — an invisible, hard-to-diagnose regression. The
+`--ds-shadow-*` prefix keeps the design-system scale additive and namespace-safe.
 
-## 5. Тени
+### Spacing / layout
 
-### CSS-определённые
-
-| Тень | Контекст |
-|---|---|
-| `0 24px 80px rgba(0, 0, 0, 0.45)` | `.glass-panel` |
-| `0 24px 80px rgba(26, 46, 35, 0.1)` | `.glass-panel-light` |
-| `0 20px 60px rgba(0, 0, 0, 0.35)` | `.ds-card` |
-| `0 28px 80px rgba(0, 0, 0, 0.5)` | `.ds-card:hover` |
-| `0 12px 30px rgba(34, 197, 94, 0.35)` | `.ds-btn-primary` |
-| `0 16px 40px rgba(34, 197, 94, 0.45)` | `.ds-btn-primary:hover` |
-
-### Tailwind inline
-
-| Класс | Назначение |
-|---|---|
-| `shadow-[0_4px_20px_rgba(26,46,35,.05)]` | Карточки на светлом |
-| `shadow-[0_4px_14px_rgba(34,197,94,.3)]` | Зелёные иконки |
-| `shadow-[0_4px_14px_rgba(251,191,36,.3)]` | Жёлтые иконки |
-| `shadow-[0_10px_35px_rgba(34,197,94,0.45)]` | FAB кнопка AI |
-| `shadow-[0_20px_60px_rgba(34,197,94,.15)]` | Популярный пакет |
-| `shadow-[0_20px_60px_rgba(251,191,36,.15)]` | Бестселлер пакет |
-| `shadow-md` | Активные элементы навигации |
-| `shadow-xl` | Карточки, оверлеи |
-| `shadow-2xl` | Таблицы, мобильное меню |
-
----
-
-## 6. Компоненты
-
-### Кнопки
-
-#### `.ds-btn-primary`
-```
-bg: #22C55E | text: #07140F | font: 800
-letter-spacing: 0.02em | padding: 16px 34px | radius: pill
-shadow: 0 12px 30px rgba(34, 197, 94, 0.35)
-hover: bg #16A34A, translateY(-2px), shadow-更强
-active: translateY(0)
-```
-Оверрайды: `!py-3`, `!px-5`, `!px-7`, `!text-xs`, `!text-sm`, `w-full`
-
-#### `.ds-btn-secondary`
-```
-bg: transparent | text: #D5DDD8 | font: 700
-border: 1px solid rgba(255,255,255,0.35) | radius: pill
-hover: bg rgba(255,255,255,.05), border rgba(255,255,255,.5)
-```
-
-#### FAB (AI Widget)
-```
-px-5 py-4 rounded-full
-bg-gradient-to-r from-[#22C55E] to-emerald-500
-text-[#07140F] font-black text-xs uppercase tracking-wider
-shadow-[0_10px_35px_rgba(34,197,94,0.45)]
-hover:scale-105 active:scale-95 transition-all
-```
-
-### Карточки
-
-#### `.ds-card` (тёмная)
-```
-bg: rgba(24, 44, 33, 0.92)
-border: 1px solid rgba(255,255,255,0.08)
-radius: 28px | padding: 32px
-shadow: 0 20px 60px rgba(0,0,0,0.35)
-hover: translateY(-4px), shadow-更强
-```
-
-#### Светлая карточка (inline)
-```
-bg-gradient-to-br from-white to-[rgba(251,191,36,.13)]
-rounded-[28px] border border-[#E2ECE6] p-[28px]
-shadow-[0_4px_20px_rgba(26,46,35,.05)]
-hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(251,191,36,.14)]
-```
-
-### Glass-панели
-
-#### `.glass-panel` (тёмная)
-```
-bg: rgba(42, 63, 49, 0.72)
-backdrop-filter: blur(20px)
-border: 1px solid rgba(255,255,255,0.08)
-shadow: 0 24px 80px rgba(0,0,0,0.45)
-radius: 32px
-```
-
-#### `.glass-panel-light` (светлая)
-```
-bg: rgba(255, 255, 255, 0.8)
-backdrop-filter: blur(20px)
-border: 1px solid #E2ECE6
-shadow: 0 24px 80px rgba(26,46,35,0.1)
-radius: 32px
-```
-
-### Инпуты
-
-#### `.ds-input` (тёмный)
-```
-border-radius: 18px
-border: 1px solid rgba(255,255,255,0.08)
-bg: #07140F | padding: 12px 16px | color: #FFF
-focus: border-color #22C55E, outline: none
-placeholder: #647268
-```
-
-#### Светлый инпут
-```
-bg-white border border-[#E2ECE6] rounded-[14px]
-px-4 py-3.5 text-sm text-[#1A2E23]
-placeholder-[#92A299] focus:border-[#22C55E]
-```
-
-### Бейджи
-
-#### `.ds-badge`
-```
-radius: pill | font: 700 | letter-spacing: 0.05em
-text-transform: uppercase
-```
-
-#### Варианты
-
-| Тип | Классы |
-|---|---|
-| Зелёный акцент | `bg-[rgba(34,197,94,.1)] text-[#22C55E] border border-[rgba(34,197,94,.2)]` |
-| Жёлтый urgency | `bg-[#FBBF24] text-[#07140F]` |
-| Amber subtle | `bg-[rgba(251,191,36,.12)] text-[#FBBF24] border border-[rgba(251,191,36,.25)]` |
-| Тёмный тег | `bg-[#10261C] text-[#D5DDD8] border border-[rgba(255,255,255,.08)]` |
-
-### Навигация
-
-#### Пили навигации
-```
-bg-[#F0F5F2] p-1.5 rounded-full border border-[#E2ECE6]
-Active: bg-[#22C55E] text-white shadow-md shadow-[rgba(34,197,94,.2)]
-```
-
-#### Таб-свитчер
-```
-inline-flex p-1.5 rounded-full bg-[#10261C]
-border border-[rgba(255,255,255,.08)] shadow-inner
-Active: bg-[#22C55E] text-[#07140F]
-```
-
-### Контейнеры иконок
-
-| Тип | Классы |
-|---|---|
-| Зелёный | `w-12 h-12 rounded-2xl bg-[#22C55E]` или `bg-[rgba(34,197,94,.15)] text-[#22C55E] shadow-[0_4px_14px_rgba(34,197,94,.3)]` |
-| Жёлтый | `w-12 h-12 rounded-2xl bg-[#FBBF24]` или `bg-[rgba(251,191,36,.12)] text-[#FBBF24] shadow-[0_4px_14px_rgba(251,191,36,.3)]` |
-
-Hover: `group-hover:scale-110 group-hover:shadow-[...更强]`
-
-### Ошибки
-
-```
-flex items-center gap-2 p-3 rounded-2xl
-bg-red-500/10 border border-red-500/30 text-red-400 text-xs font-medium
-```
-
----
-
-## 7. Breakpoints
-
-| Класс | Ширина | Назначение |
+| Токен | Value | Назначение |
 |---|---|---|
-| `sm` | 640px | Мелкие правки |
-| `md` | 768px | Планшет, 2-колоночные сетки |
-| `lg` | 1024px | Десктоп, 12-колоночные сетки |
-| `xl` | 1280px | Полный десктоп, навигация |
+| `--gap` | `clamp(1rem, 3vw, 2rem)` | Fluid gap scale |
+| `--section-pad` | `clamp(1.8rem, 2.6vw + 2.8vh, 5rem)` | `.ds-section` top/bottom padding — this fluid, vh-aware clamp is *how* the "≤ 1 viewport" rule (§8) is enforced, replacing the old fixed `120px` |
+| `--maxw` | `1200px` | Intended container max-width token |
+| `--title-fs` | `clamp(1.55rem, 1.4vw + 1.6vh + .6rem, 2.7rem)` | Fluid section-title size |
 
-### Типичные паттерны
+> **`--maxw` is defined but not yet wired up.** No component currently reads `var(--maxw)`;
+> every section container still uses the literal Tailwind arbitrary value `max-w-[1280px]`
+> (1280px, not 1200px) — including the 4 already-migrated flagships. Treat `--maxw: 1200px` as
+> a reserved token for a future container-width pass, not the current rendered container width.
 
-```bash
-# Сетки
-grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5
-grid-cols-1 md:grid-cols-2 lg:grid-cols-3
-grid-cols-1 lg:grid-cols-12
+---
 
-# Видимость
-hidden md:block          # контакт-бар
-hidden xl:flex           # десктоп навигация
-xl:hidden                # мобильное меню
+## 4. Компоненты — `.ds-*` classes
 
-# Типографика
-text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-6xl
+The `.ds-*` classes in `src/index.css` **are** the source of the v2 look for cards, buttons,
+inputs, badges, and section chrome. Flagship components apply them directly instead of
+reproducing the styling inline; where a one-off variant is needed, components layer Tailwind
+utilities *built from the same tokens* on top (never raw hex).
 
-# Секции
-py-16 md:py-24
-py-20 md:py-32
+### Buttons
+
+| Class | Look | Notes |
+|---|---|---|
+| `.ds-btn-primary` | `background: var(--grad-emerald)`, `color: #04130b`, `font-weight: 800`, pill radius, `box-shadow: var(--ds-shadow-emerald)` | Hover: `translateY(-2px)` + `0 16px 40px rgba(24,165,88,.4)`. Active: `translateY(0)`. |
+| `.ds-btn-secondary` | transparent bg, `color: var(--color-cloud)`, `border: 1px solid rgba(255,255,255,.35)`, pill | Hover: `bg rgba(255,255,255,.05)`, border `rgba(255,255,255,.5)` |
+| `.ds-btn-outline` | transparent bg, `color: var(--color-emerald-deep)`, `border: 1.5px solid var(--color-emerald)`, pill | Hover: `bg rgba(24,165,88,.1)` |
+| `.ds-btn-ghost` | transparent bg, `color: currentColor`, `opacity: .85`, `border: 1.5px solid currentColor`, pill | Hover: `opacity: 1` |
+| `.ds-btn-sun` | `background: var(--grad-sun)`, `color: #2a1a00`, `font-weight: 800`, pill | Solar-gold CTA variant |
+
+### Cards
+
+| Class | Look | Notes |
+|---|---|---|
+| `.ds-card` (dark) | `background: rgba(13,53,39,.92)`, `border: 1px solid rgba(255,255,255,.08)`, `border-radius: var(--r-lg)` (26px), `padding: 28px`, `box-shadow: var(--ds-shadow-lg)` | Hover: `translateY(-4px)` + `0 28px 80px rgba(0,0,0,.5)` |
+| `.ds-card-light` | `background: var(--color-surface)`, `border: 1px solid var(--color-line)`, same radius/padding, `box-shadow: var(--ds-shadow-sm)` | Hover: `translateY(-4px)` + `var(--ds-shadow-md)` |
+
+### Input
+
+`.ds-input` — `border-radius: var(--r-md)` (18px), `border: 1px solid rgba(255,255,255,.08)`,
+`background: var(--color-ink)`, `color: #fff`, `padding: 12px 16px`. Focus: `border-color:
+var(--color-emerald)` + `box-shadow: 0 0 0 3px rgba(24,165,88,.18)`. Placeholder color:
+`var(--color-disabled)`.
+
+### Badge
+
+`.ds-badge` — `border-radius: var(--r-pill)`, `font-weight: 700`, `letter-spacing: .05em`,
+`text-transform: uppercase`. Color/background are supplied per-instance by semantic utilities
+(e.g. `bg-sun text-ink`), not baked into the class.
+
+### Section chrome
+
+```css
+.ds-section         { padding-top: var(--section-pad); padding-bottom: var(--section-pad); }
+.ds-section--soft   { background: var(--color-soft); }
+.ds-section--dark   { background: var(--grad-dark); color: #fff; }
 ```
 
+`.ds-section` alone is surface-neutral fluid padding; append `--soft` or `--dark` for the
+alternating-surface pattern (see §5). A section on `.ds-section` with neither modifier stays on
+the default `surface` (white) background.
+
+### Glass panels
+
+| Class | Look |
+|---|---|
+| `.glass-panel` (dark) | `background: rgba(13,53,39,.72)`, `backdrop-filter: blur(20px)`, `border: 1px solid rgba(255,255,255,.08)`, `box-shadow: 0 24px 80px rgba(0,0,0,.45)` |
+| `.glass-panel-light` | `background: rgba(255,255,255,.8)`, `backdrop-filter: blur(20px)`, `border: 1px solid var(--color-line)`, `box-shadow: 0 24px 80px rgba(7,20,15,.1)` |
+
+### Rule: semantic utilities, never inline hex
+
+Flagship component `className` strings use tokens through Tailwind's generated semantic
+utilities — `text-emerald`, `bg-ink`, `border-line`, `text-cloud`, `bg-soft`, etc. — and RGBA
+arbitrary values built from the v2 RGB triples (e.g. `bg-[rgba(24,165,88,.15)]`) for opacity
+variants the `@theme` block doesn't generate a utility for. **No raw brand hex** (`#18A558`,
+`#0A2A1E`, …) appears inline in the 4 migrated files; any hex you find there is either a
+non-brand one-off (`text-red-400` error state, `#04130b`/`#2a1a00` button label colors baked
+into the `.ds-*` classes themselves) or a leftover from an unmigrated section.
+
 ---
 
-## 8. Анимации
+## 5. Тема: light-first, три типа поверхности
 
-### CSS transitions (из `index.css`)
+v2 is **light-first** — the default surface is white/`surface`, not the v1 dark-by-default
+theme. Sections alternate between three surface types rather than using one global dark theme:
 
-| Переход | Длительность | Контекст |
+| Surface | Background | Text | `.ds-section` modifier |
+|---|---|---|---|
+| `surface` | `#FFFFFF` (`--color-surface`) | `body` / `muted` | none (default) |
+| `soft` | `#EEF5F0` (`--color-soft`) | `body` / `muted` | `.ds-section--soft` |
+| `dark` | `--grad-dark` (`#11402f → #0a2a1e`) or flat `ink`/`ink-2` | `cloud` / `muted-dark` / white | `.ds-section--dark` (or component-level `bg-ink`) |
+
+### Which flagship uses which
+
+| Section | Surface | Evidence |
 |---|---|---|
-| `transform, box-shadow, border-color` | 250ms ease | `.ds-card` |
-| `all` | 250ms ease | Кнопки |
-| `border-color` | 200ms ease | `.ds-input` |
+| Hero | dark | `bg-ink/65` overlay, `bg-ink-2` chip, dark hero background |
+| Services | soft / light | `<section id="services" className="ds-section bg-soft border-b border-line …">` |
+| Prices | dark | `<section id="prices" className="ds-section bg-ink border-b …">`, tabs on `bg-ink-2` |
+| Contact | dark | `bg-gradient-to-b from-ink via-ink-2 to-ink` |
 
-### Tailwind анимации
-
-| Класс | Назначение |
-|---|---|
-| `animate-pulse` | Live-индикаторы |
-| `animate-ping` | Urgency-точка (hero) |
-| `animate-bounce` | Иконка успеха |
-| `animate-spin` | Загрузка, AI sparkle |
-| `animate-in fade-in duration-200` | Модалки, FAQ |
-| `animate-in slide-in-from-top-4 duration-200` | Мобильное меню |
-| `animate-in slide-in-from-bottom-5 duration-300` | AI чат виджет |
-
-### Hover/Active паттерны
-
-| Класс | Контекст |
-|---|---|
-| `hover:-translate-y-1` | Светлые карточки |
-| `hover:-translate-y-2` | Тёмные карточки (`.ds-card`) |
-| `hover:scale-105` | FAB, иконки |
-| `hover:scale-110` | Контейнеры иконок |
-| `active:scale-95` | Кнопки, FAB |
-| `group-hover:scale-105` | Изображения блога/кейсов |
+Three of the four flagships are dark (Hero, Prices, Contact) with Services as the light/soft
+counterpoint — this is the deliberate alternating rhythm the v2 spec calls for, not an
+accident of migration order.
 
 ---
 
-## 9. Layout
+## 6. Layout scaffolding (unchanged by v2)
 
-### Контейнер
+These are Tailwind defaults / pre-existing conventions, not new v2 tokens — kept here for
+completeness since components combine them with the tokens above.
+
+### Container
 
 ```
 max-w-[1280px] mx-auto px-5 md:px-8
 ```
 
-| Вариант | Класс |
-|---|---|
-| Стандарт | `max-w-[1280px]` |
-| Узкий | `max-w-4xl` |
-| Средний | `max-w-6xl` |
-| Широкий | `max-w-7xl` |
+Still the literal arbitrary value everywhere (see the `--maxw` note in §3 — the 1200px token
+isn't wired up yet).
 
-### 12-колоночные сетки
+### Breakpoints (Tailwind defaults)
+
+| Класс | Ширина |
+|---|---|
+| `sm` | 640px |
+| `md` | 768px |
+| `lg` | 1024px |
+| `xl` | 1280px |
+
+### 12-column grids in the flagships
 
 | Раскладка | Колонки |
 |---|---|
 | Hero | `lg:col-span-6` + `lg:col-span-6` |
-| Калькулятор | `lg:col-span-7` + `lg:col-span-5` |
-| Контакты | `lg:col-span-5` + `lg:col-span-7` |
-| Услуги (асимметрия) | `lg:col-span-2` + `lg:col-span-3` + `lg:col-span-5` |
-
-### Секции
-
-```
-.ds-section { padding: 120px 0; }
-Inner: space-y-[64px]
-```
-
-### Scroll Snap (отзывы)
-
-```
-flex overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide
-Items: snap-center shrink-0 w-[85vw] md:w-auto
-```
+| Contacts | `lg:col-span-5` + `lg:col-span-7` |
+| Services (bento, asymmetric) | `lg:col-span-2` + `lg:col-span-3` + `lg:col-span-5` |
 
 ---
 
-## 10. Тема
+## 7. Motion
 
-Проект использует **разделение тёмная/светлая по секциям**, а не глобальный toggle:
+Unchanged mechanics from v1, now driven by the v2 tokens where relevant:
 
-| Секция | Тема |
-|---|---|
-| Hero, Боль, Преимущества, Цены, Отзывы, FAQ, Форма, Футер | Тёмная (`#07140F`) |
-| Услуги, Этапы, Кейсы, Гарантии, Калькулятор, SEO | Светлая (`#F8FAF9`) |
-| Блог (деталь), Политика, Админ | Тёмная (`slate-950`) |
+| Transition | Duration | Where |
+|---|---|---|
+| `transform, box-shadow, border-color` | 250ms ease | `.ds-card`, `.ds-card-light` |
+| `transform, box-shadow, background` | 200ms `cubic-bezier(.22,1,.36,1)` / ease | `.ds-btn-primary` |
+| `border-color, box-shadow` | 200ms ease | `.ds-input` |
+| `all` | 200–250ms ease | `.ds-btn-secondary`, `.ds-btn-outline`, `.ds-btn-ghost`, `.ds-btn-sun` |
+
+`prefers-reduced-motion: reduce` collapses all animation/transition durations to `0.01ms` and
+disables smooth scroll — defined once in `src/index.css`, applies globally, untouched by v2.
+Focus ring (`*:focus-visible`) uses `var(--color-emerald)`, 2px, 2px offset, 4px border-radius.
 
 ---
 
-## 11. Зависимости
+## 8. HARD rule: section ≤ 1 viewport
+
+**Rule:** the content of each main narrative section must fit one laptop screen (~768px window
+≈ 650–700px usable height) with no scroll *inside* the section.
+
+**Verification criterion:** at **1366×768** and **1440×900**, the section's top heading AND
+its primary CTA must both be visible without in-section scroll.
+
+**Mechanism:** `--section-pad` is a `vh`-aware fluid clamp (`clamp(1.8rem, 2.6vw + 2.8vh, 5rem)`)
+rather than a fixed pixel value — this is what replaced the old fixed `.ds-section { padding:
+120px 0 }` rule. Media inside sections should be capped via `height: clamp(…, …vh, …); object-fit:
+cover`, not a tall fixed `aspect-ratio`.
+
+**Documented exception:** Prices/comparison sections may exceed one viewport by design — a
+pricing grid or comparison table is a "read/compare" surface, not a narrative scroll stop. For
+`PricesSection`, the fit criterion applies to the tab switcher + the start of the card row (the
+decision point, above the fold); the detail below (full card contents, the credit comparison
+table) is allowed to extend past one screen.
+
+---
+
+## 9. Dependencies
 
 | Библиотека | Версия | Назначение |
 |---|---|---|
@@ -457,3 +346,28 @@ Items: snap-center shrink-0 w-[85vw] md:w-auto
 | `motion` | ^12.23.24 | Анимации |
 | `react` / `react-dom` | ^19.0.1 | UI фреймворк |
 | `vite` | ^6.2.3 | Билд-тул |
+
+---
+
+## 10. Migration status
+
+**On v2 (shipped):** `src/index.css` token layer + `.ds-*` classes (Task 1), Sora font loading
+(Task 2), and the 4 flagship landing sections — `HeroSection.tsx`, `ServicesSection.tsx`,
+`PricesSection.tsx`, `ContactFormSection.tsx` — fully de-hardcoded to semantic utilities per
+§4's "no inline hex" rule.
+
+**Still on v1 (pending):** every other section/page — `PainSolutionSection`, `AdvantagesSection`,
+`CasesSection`, `WorkStepsSection`, `GuaranteesSection`, `CalculatorSection`, `ReviewsSection`,
+plus `Navbar`, `Footer`, `LeadModal`, `AIConsultantWidget`, `AdminPage`, `BlogPage`,
+`BlogDetailPage`, `ShopPage`, `ContactsPage`, and the raw `<body>` classes in `index.html`
+(`bg-[#07140F] text-[#D5DDD8] … selection:bg-[#22C55E] selection:text-[#07140F]`). These still
+use v1 inline hex (`#22C55E`, `#FBBF24`, `#07140F`, `#10261C`, `#F8FAF9`, `#1A2E23`, `#5A6E62`,
+`#E2ECE6`, `#D5DDD8`, `#92A299`, `#647268`, …) and are visually inconsistent with the flagships
+until migrated.
+
+**How to migrate a remaining section:** apply the exact-string color migration map in
+[`docs/superpowers/plans/2026-07-09-design-system-v2.md`](superpowers/plans/2026-07-09-design-system-v2.md)
+(shared reference section near the top of that file) — it maps every v1 hex/RGBA literal to its
+v2 utility or RGB triple, one-for-one, plus per-file guidance for dark vs. light sections. The
+same plan file's Task 1–6 write-ups show worked examples (Hero/Contact = dark-section map,
+Services = light-section map, Prices = both).
