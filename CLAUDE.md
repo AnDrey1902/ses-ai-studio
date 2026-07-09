@@ -76,3 +76,4 @@ Tailwind CSS **v4** via `@tailwindcss/vite` (no `tailwind.config.js`). Theme tok
 - `vite.config.ts` disables HMR/file-watching when `DISABLE_HMR=true` (an AI Studio agent-edit concern). Don't remove this guard.
 - `.env*` is git-ignored except `.env.example`; `.claude/` and `.impeccable/` (local tooling) are ignored too.
 - No `.npmrc`: a plain `npm install` pulls the platform-native optional deps (lightningcss, rollup) automatically, so installs work as-is on Windows, Linux, and Vercel.
+- **Do not rewrite [AGENTS.md](AGENTS.md)** — it is the OpenCode agent's config, maintained by a collaborator, and intentionally independent of this file. `CLAUDE.md` is the Claude Code equivalent; keep the two separate.
