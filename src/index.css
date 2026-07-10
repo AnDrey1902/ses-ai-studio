@@ -38,7 +38,7 @@
   --r-sm: 12px; --r-md: 18px; --r-lg: 26px; --r-pill: 999px;
   --gap: clamp(1rem, 3vw, 2rem);
   --section-pad: clamp(1.8rem, 2.6vw + 2.8vh, 5rem);
-  --maxw: 1200px;
+  --maxw: 1280px;
   --title-fs: clamp(1.55rem, 1.4vw + 1.6vh + .6rem, 2.7rem);
   /* NOTE: prefixed --ds-shadow-* (NOT --shadow-*) so we don't override
      Tailwind v4's own --shadow-* theme namespace that backs shadow-md/-lg

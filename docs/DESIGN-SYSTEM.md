@@ -161,13 +161,12 @@ those utilities' output everywhere in the app — an invisible, hard-to-diagnose
 |---|---|---|
 | `--gap` | `clamp(1rem, 3vw, 2rem)` | Fluid gap scale |
 | `--section-pad` | `clamp(1.8rem, 2.6vw + 2.8vh, 5rem)` | `.ds-section` top/bottom padding — this fluid, vh-aware clamp is *how* the "≤ 1 viewport" rule (§8) is enforced, replacing the old fixed `120px` |
-| `--maxw` | `1200px` | Intended container max-width token |
+| `--maxw` | `1280px` | Container max-width token (matches the `max-w-[1280px]` used by containers) |
 | `--title-fs` | `clamp(1.55rem, 1.4vw + 1.6vh + .6rem, 2.7rem)` | Fluid section-title size |
 
-> **`--maxw` is defined but not yet wired up.** No component currently reads `var(--maxw)`;
-> every section container still uses the literal Tailwind arbitrary value `max-w-[1280px]`
-> (1280px, not 1200px) — including the 4 already-migrated flagships. Treat `--maxw: 1200px` as
-> a reserved token for a future container-width pass, not the current rendered container width.
+> **`--maxw` is not yet wired up.** Its value (`1280px`) matches the literal
+> `max-w-[1280px]` every section container currently uses, but no component reads `var(--maxw)`
+> yet — it's reserved for a future pass that replaces the arbitrary value with the token.
 
 ---
 
