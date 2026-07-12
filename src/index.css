@@ -144,7 +144,18 @@
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
   background: var(--grad-sun); color: #2a1a00;
   font-weight: 800; padding: 16px 34px; border-radius: var(--r-pill);
-  transition: all 200ms ease;
+  transition: transform 200ms cubic-bezier(.22,1,.36,1), box-shadow 200ms ease;
+  box-shadow: 0 10px 26px rgba(245,158,11,.28);
+}
+.ds-btn-sun:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(245,158,11,.38); }
+.ds-btn-sun:active { transform: translateY(0); }
+
+/* ========== Active nav pill ========== */
+/* Emerald gradient fill (same as the primary CTA) with white label. */
+.ds-nav-active {
+  background: var(--grad-emerald);
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(24,165,88,.30);
 }
 
 /* ========== Input ========== */
@@ -172,6 +183,25 @@
 .ds-section--soft { background: var(--color-soft); }
 .ds-section--dark { background: var(--grad-dark); color: #fff; }
 
+/* ========== Viewport-fit section ========== */
+/* Opt-in: a marketing section whose content should fit one screen on laptops/
+   desktops. At ≥lg it fills the viewport minus the 80px sticky header (h-20) and
+   vertically centers its content; below lg it falls back to natural stacked height.
+   Do NOT use on large/content-heavy sections that legitimately span 1.5–2 screens. */
+.ds-fit {
+  padding-top: 1.5rem;    /* 24px — mobile (8-pt grid) */
+  padding-bottom: 1.5rem;
+}
+@media (min-width: 1024px) {
+  .ds-fit {
+    min-height: calc(100svh - 84px); /* 80px sticky header (h-20) + 1px border + hairline buffer */
+    display: flex;
+    align-items: flex-start;         /* content anchored to top → predictable, grid-clean offset */
+    padding-top: 2rem;               /* 32px (8-pt grid) */
+    padding-bottom: 2rem;
+  }
+}
+
 /* ========== Utilities ========== */
 @layer utilities {
   .bg-grid-pattern {
@@ -182,6 +212,13 @@
   .scrollbar-hide::-webkit-scrollbar { display: none; }
   .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 }
+
+/* ========== Pulse ring (mirrors the energy-monitor ONLINE indicator) ========== */
+@keyframes ds-pulse-ring {
+  0%        { box-shadow: 0 0 0 0 rgba(245,158,11,.5); }
+  70%, 100% { box-shadow: 0 0 0 14px rgba(245,158,11,0); }
+}
+.ds-pulse-ring { animation: ds-pulse-ring 1.8s ease-out infinite; }
 
 /* ========== Focus Ring ========== */
 *:focus-visible {

@@ -185,7 +185,15 @@ utilities *built from the same tokens* on top (never raw hex).
 | `.ds-btn-secondary` | transparent bg, `color: var(--color-cloud)`, `border: 1px solid rgba(255,255,255,.35)`, pill | Hover: `bg rgba(255,255,255,.05)`, border `rgba(255,255,255,.5)` |
 | `.ds-btn-outline` | transparent bg, `color: var(--color-emerald-deep)`, `border: 1.5px solid var(--color-emerald)`, pill | Hover: `bg rgba(24,165,88,.1)` |
 | `.ds-btn-ghost` | transparent bg, `color: currentColor`, `opacity: .85`, `border: 1.5px solid currentColor`, pill | Hover: `opacity: 1` |
-| `.ds-btn-sun` | `background: var(--grad-sun)`, `color: #2a1a00`, `font-weight: 800`, pill | Solar-gold CTA variant |
+| `.ds-btn-sun` | `background: var(--grad-sun)`, `color: #2a1a00`, `font-weight: 800`, pill, `box-shadow: 0 10px 26px rgba(245,158,11,.28)` | Solar-gold CTA variant. Hover: `translateY(-2px)` + `0 16px 36px rgba(245,158,11,.38)`. Dark icon/text inherit from `color`. Used by the header **Окупність** shortcut (override size with `!px-4 !py-3 !text-xs`). |
+
+### Active nav pill
+
+`.ds-nav-active` — `background: var(--grad-emerald)`, `color: #ffffff`, `box-shadow: 0 6px 18px
+rgba(24,165,88,.30)`. The active state for the desktop nav pill: emerald gradient fill (same as
+`.ds-btn-primary`) with a white label. Apply on top of the pill's own layout utilities
+(`px-3.5 py-2 rounded-full …`). The language-switcher active pills use inline `bg-emerald text-white`
+(not this class), since they sit on the dark top bar.
 
 ### Cards
 
@@ -218,6 +226,28 @@ var(--color-emerald)` + `box-shadow: 0 0 0 3px rgba(24,165,88,.18)`. Placeholder
 `.ds-section` alone is surface-neutral fluid padding; append `--soft` or `--dark` for the
 alternating-surface pattern (see §5). A section on `.ds-section` with neither modifier stays on
 the default `surface` (white) background.
+
+### Viewport-fit section — `.ds-fit`
+
+```css
+.ds-fit { padding-top: 1.5rem; padding-bottom: 1.5rem; }        /* 24px — mobile */
+@media (min-width: 1024px) {
+  .ds-fit {
+    min-height: calc(100svh - 84px);   /* 80px h-20 header + 1px border + hairline */
+    display: flex; align-items: flex-start;
+    padding-top: 2rem; padding-bottom: 2rem;   /* 32px — 8-pt grid */
+  }
+}
+```
+
+Opt-in helper for the **"section ≤ 1 viewport"** rule (§8). At **≥lg** it fills the viewport minus
+the sticky header and **top-anchors** content with a grid-clean `32px` offset (predictable, unlike
+flex centering whose top gap floats with viewport height); below lg it collapses to `24px` padding
+and natural stacked height (mobile is allowed to be taller than one screen). Content must still be
+authored to fit — pair with vh-aware clamps on the heavy bits (Hero H1
+`text-[clamp(2.2rem,1rem+1vw+1.6vh,3.6rem)]`, the energy-monitor's compact `--em-*` vars). **Do
+NOT** put `.ds-fit` on large/content-heavy sections that legitimately span 1.5–2 screens. The
+container inside must be `w-full` (it becomes the flex item).
 
 ### Glass panels
 
@@ -307,6 +337,11 @@ Unchanged mechanics from v1, now driven by the v2 tokens where relevant:
 | `transform, box-shadow, background` | 200ms `cubic-bezier(.22,1,.36,1)` / ease | `.ds-btn-primary` |
 | `border-color, box-shadow` | 200ms ease | `.ds-input` |
 | `all` | 200–250ms ease | `.ds-btn-secondary`, `.ds-btn-outline`, `.ds-btn-ghost`, `.ds-btn-sun` |
+
+**Pulse ring** — `.ds-pulse-ring` runs `@keyframes ds-pulse-ring` (`1.8s ease-out infinite`): an
+expanding, fading gold `box-shadow` ring (`0 0 0 0 rgba(245,158,11,.5)` → `0 0 0 14px …,0`). Apply
+to an `absolute inset-0 rounded-full pointer-events-none` span behind an element to give it the
+same "live" pulse as the energy-monitor's ONLINE dot. Used by the AI-consultant FAB.
 
 `prefers-reduced-motion: reduce` collapses all animation/transition durations to `0.01ms` and
 disables smooth scroll — defined once in `src/index.css`, applies globally, untouched by v2.
