@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
-import { Sparkles, Send, X, Bot, User, Loader2, ArrowRight, Zap, Minimize2, MessageSquareText } from 'lucide-react';
+import { Send, Bot, User, Loader2, Minimize2, MessageCircle } from 'lucide-react';
 
 interface ChatMessage {
   sender: 'ai' | 'user';
@@ -182,20 +182,17 @@ export const AIConsultantWidget: React.FC = () => {
         </div>
       )}
 
-      {/* Floating Trigger Button */}
+      {/* Floating Trigger Button — round FAB, solar-gold, chat icon, pulsing ring */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="pointer-events-auto group relative flex items-center gap-3 px-5 py-4 rounded-full bg-gradient-to-r from-[#22C55E] to-emerald-500 text-[#07140F] font-black text-xs uppercase tracking-wider shadow-[0_10px_35px_rgba(34,197,94,0.45)] hover:scale-105 active:scale-95 transition-all duration-300"
+        aria-label={tr('ai_floating_btn')}
+        title={tr('ai_floating_btn')}
+        style={{ background: 'var(--grad-sun)' }}
+        className="pointer-events-auto group relative flex items-center justify-center w-14 h-14 rounded-full text-[#2a1a00] shadow-[0_12px_30px_rgba(245,158,11,.45)] hover:scale-105 active:scale-95 transition-transform duration-300"
       >
-        <div className="relative">
-          <Sparkles className="w-5 h-5 fill-[#07140F] animate-spin duration-[4000ms]" />
-          <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white"></span>
-          </span>
-        </div>
-        <span className="hidden sm:inline">{tr('ai_floating_btn')}</span>
-        <MessageSquareText className="w-5 h-5 sm:hidden" />
+        {/* pulsing ring — same idea as the monitor's ONLINE indicator */}
+        <span aria-hidden className="ds-pulse-ring absolute inset-0 rounded-full pointer-events-none" />
+        <MessageCircle className="relative w-6 h-6 stroke-[2.5]" />
       </button>
 
     </div>
