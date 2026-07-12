@@ -1,0 +1,36 @@
+[
+  {
+    "id": "station-home",
+    "title": "Станція · дім",
+    "type": "home",
+    "power": 10,
+    "tariffHome": 4.32,
+    "tariffBiz": 16,
+    "powersHome": "5,10,30",
+    "powersBiz": "30,50,100",
+    "hourMs": 650,
+    "autoplay": true,
+    "locale": "uk-UA",
+    "currency": "₴",
+    "unit": "кВт",
+    "accent": "#ffc742",
+    "accent2": "#f59e0b"
+  },
+  {
+    "id": "station-biz",
+    "title": "Станція · бізнес",
+    "type": "biz",
+    "power": 50,
+    "tariffHome": 4.32,
+    "tariffBiz": 16,
+    "powersHome": "5,10,30",
+    "powersBiz": "30,50,100",
+    "hourMs": 500,
+    "autoplay": true,
+    "locale": "uk-UA",
+    "currency": "₴",
+    "unit": "кВт",
+    "accent": "#2dd4bf",
+    "accent2": "#0d9488"
+  }
+]

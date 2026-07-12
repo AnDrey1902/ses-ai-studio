@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>&lt;energy-monitor&gt; — конструктор віджетів</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a2a1e; --panel: rgba(255,255,255,.05); --line: rgba(255,255,255,.14);
+      --text: #fff; --muted: #9fbcae; --green: #22b865; --green2: #0f7a40; --amber: #ffc742;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: clamp(1rem, 3vw, 2.4rem); font-family: 'Manrope', system-ui, sans-serif;
+      background: radial-gradient(130% 130% at 85% -10%, #114433 0%, #0a2a1e 70%); color: var(--text); min-height: 100vh; }
+    h1 { font-family: 'Sora', sans-serif; font-size: clamp(1.4rem, 3vw, 2rem); margin: 0 0 .25rem; }
+    .lead { color: var(--muted); max-width: 70ch; margin: 0 0 1.4rem; font-size: .95rem; }
+    .toolbar { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 1.6rem; align-items: center; }
+    .btn { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: .9rem; border: 1px solid var(--line);
+      background: var(--panel); color: var(--text); padding: .6rem 1rem; border-radius: 12px; cursor: pointer; transition: .15s; }
+    .btn:hover { border-color: rgba(255,255,255,.4); }
+    .btn--primary { background: linear-gradient(135deg, var(--green), var(--green2)); border-color: transparent; color: #04130b; }
+    .btn--ghost { background: transparent; }
+    .btn--sm { padding: .42rem .7rem; font-size: .8rem; }
+    .hint { color: var(--muted); font-size: .82rem; }
+
+    .widgets { display: grid; gap: 1.6rem; }
+    .wcard { display: grid; grid-template-columns: minmax(280px, 360px) 1fr; gap: 1.4rem;
+      background: var(--panel); border: 1px solid var(--line); border-radius: 20px; padding: 1.2rem; align-items: start; }
+    @media (max-width: 760px) { .wcard { grid-template-columns: 1fr; } }
+    .wcard__head { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: .6rem;
+      border-bottom: 1px solid var(--line); padding-bottom: .8rem; }
+    .wcard__head strong { font-family: 'Sora', sans-serif; font-size: 1.05rem; }
+    .form { display: grid; gap: .7rem; }
+    .row { display: grid; gap: .25rem; }
+    .row.two { grid-template-columns: 1fr 1fr; gap: .6rem; }
+    label { font-size: .76rem; color: var(--muted); font-weight: 600; }
+    input, select { font-family: 'Manrope', sans-serif; font-size: .88rem; color: var(--text); background: rgba(0,0,0,.25);
+      border: 1px solid var(--line); border-radius: 9px; padding: .5rem .6rem; width: 100%; }
+    input[type="color"] { padding: .2rem; height: 38px; cursor: pointer; }
+    input[type="checkbox"] { width: auto; }
+    .check { display: flex; align-items: center; gap: .5rem; }
+    .check label { color: var(--text); font-size: .86rem; }
+    .preview { display: grid; gap: .6rem; }
+    .preview__actions { display: flex; gap: .5rem; flex-wrap: wrap; }
+    .empty { color: var(--muted); border: 1px dashed var(--line); border-radius: 16px; padding: 2rem; text-align: center; }
+    .gen { margin-top: 2rem; border-top: 1px solid var(--line); padding-top: 1.2rem; }
+    .gen code { background: rgba(0,0,0,.35); border: 1px solid var(--line); border-radius: 8px; padding: .15rem .45rem; font-size: .85rem; }
+    .toast { position: fixed; bottom: 1.2rem; left: 50%; transform: translateX(-50%); background: #0d3527;
+      border: 1px solid var(--green); color: #fff; padding: .7rem 1.1rem; border-radius: 12px; opacity: 0;
+      transition: opacity .2s; pointer-events: none; font-size: .9rem; }
+    .toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+  <h1>Конструктор віджетів &lt;energy-monitor&gt;</h1>
+  <p class="lead">Додавайте, видаляйте й налаштовуйте віджети через форму — праворуч живий перегляд.
+    Кожен віджет незалежний. Кнопка <b>«Зберегти configs.json»</b> завантажує налаштування; далі
+    <code>node generate.mjs</code> створить для кожного віджета окрему папку з готовим кодом.</p>
+
+  <div class="toolbar">
+    <button class="btn btn--primary" id="add">+ Додати віджет</button>
+    <button class="btn" id="save">💾 Зберегти configs.json</button>
+    <button class="btn btn--ghost" id="load">📂 Завантажити configs.json</button>
+    <input type="file" id="file" accept="application/json" hidden />
+    <button class="btn btn--ghost" id="reset">↺ Скинути</button>
+    <span class="hint" id="count"></span>
+  </div>
+
+  <div class="widgets" id="widgets"></div>
+
+  <div class="gen">
+    <p class="hint">📦 <b>Генерація окремих папок:</b> збережіть <code>configs.json</code> у цю теку
+      (<code>widgets/energy-monitor/</code>), потім виконайте <code>node generate.mjs</code> —
+      зʼявиться <code>dist/&lt;slug&gt;/</code> для кожного віджета з <code>index.html</code> +
+      <code>energy-monitor.js</code>. Таку папку можна копіювати на будь-який сайт.</p>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="energy-monitor.js" defer></script>
+  <script>
+  (function () {
+    'use strict';
+    var STORE = 'em-configs-v1';
+    var widgetsEl = document.getElementById('widgets');
+    var countEl = document.getElementById('count');
+    var toastEl = document.getElementById('toast');
+    var seq = 0;
+
+    /* ---- shared config schema (also consumed by generate.mjs) ---- */
+    function blank() {
+      seq++;
+      return {
+        id: 'station-' + seq, title: 'Станція №' + seq,
+        type: 'home', power: 10,
+        tariffHome: 4.32, tariffBiz: 16,
+        powersHome: '5,10,30', powersBiz: '30,50,100',
+        hourMs: 650, autoplay: true,
+        locale: 'uk-UA', currency: '₴', unit: 'кВт',
+        accent: '#ffc742', accent2: '#f59e0b'
+      };
+    }
+
+    /* map the form schema → the widget's .config object */
+    function toWidgetConfig(c) {
+      var pl = function (s) {
+        return String(s).split(',').map(function (x) { return parseFloat(x.trim()); })
+          .filter(function (n) { return isFinite(n); });
+      };
+      return {
+        title: c.title, type: c.type, power: +c.power,
+        hourMs: +c.hourMs, autoplay: !!c.autoplay,
+        locale: c.locale, currency: c.currency, unit: c.unit,
+        types: {
+          home: { label: 'Дім', tariff: +c.tariffHome, powers: pl(c.powersHome) },
+          biz:  { label: 'Бізнес', tariff: +c.tariffBiz, powers: pl(c.powersBiz) }
+        }
+      };
+    }
+    function applyTheme(el, c) {
+      el.style.setProperty('--em-accent', c.accent);
+      el.style.setProperty('--em-accent-2', c.accent2 || c.accent);
+      el.style.setProperty('--em-grad-sun', 'linear-gradient(135deg,' + c.accent + ',' + (c.accent2 || c.accent) + ')');
+    }
+    function embedCode(c) {
+      var w = toWidgetConfig(c);
+      return '<script src="energy-monitor.js" defer><\/script>\n' +
+        '<energy-monitor id="' + c.id + '" style="--em-accent:' + c.accent + '"></energy-monitor>\n' +
+        '<script>\n  document.getElementById(\'' + c.id + '\').config = ' +
+        JSON.stringify(w, null, 2).replace(/\n/g, '\n  ') + ';\n<\/script>';
+    }
+
+    var FIELDS = [
+      { k: 'title', label: 'Назва', type: 'text' },
+      { k: 'id', label: 'Папка (slug)', type: 'text' },
+      { k: 'type', label: 'Тип за замовчуванням', type: 'select', opts: [['home', 'Дім'], ['biz', 'Бізнес']] },
+      { k: 'power', label: 'Потужність, кВт', type: 'number' },
+      { k: 'tariffHome', label: 'Тариф «Дім», ₴', type: 'number', step: '0.01' },
+      { k: 'tariffBiz', label: 'Тариф «Бізнес», ₴', type: 'number', step: '0.01' },
+      { k: 'powersHome', label: 'Потужності «Дім»', type: 'text' },
+      { k: 'powersBiz', label: 'Потужності «Бізнес»', type: 'text' },
+      { k: 'hourMs', label: 'Швидкість, мс/год', type: 'number' },
+      { k: 'locale', label: 'Локаль', type: 'text' },
+      { k: 'currency', label: 'Валюта', type: 'text' },
+      { k: 'unit', label: 'Одиниця', type: 'text' },
+      { k: 'accent', label: 'Колір акценту', type: 'color' }
+    ];
+    var TWO = { tariffHome: 1, tariffBiz: 1, powersHome: 1, powersBiz: 1, locale: 1, currency: 1, type: 1, power: 1 };
+
+    var configs = [];
+
+    function toast(msg) {
+      toastEl.textContent = msg; toastEl.classList.add('show');
+      clearTimeout(toast._t); toast._t = setTimeout(function () { toastEl.classList.remove('show'); }, 2400);
+    }
+    function persist() {
+      try { localStorage.setItem(STORE, JSON.stringify(configs)); } catch (e) {}
+      countEl.textContent = configs.length + ' віджет(ів)';
+    }
+
+    function buildPanel(cfg) {
+      var card = document.createElement('div');
+      card.className = 'wcard';
+
+      var head = document.createElement('div');
+      head.className = 'wcard__head';
+      var name = document.createElement('strong');
+      name.textContent = cfg.title;
+      var del = document.createElement('button');
+      del.className = 'btn btn--ghost btn--sm';
+      del.textContent = '🗑 Видалити';
+      del.onclick = function () {
+        configs = configs.filter(function (c) { return c !== cfg; });
+        card.remove(); persist();
+      };
+      head.appendChild(name); head.appendChild(del);
+      card.appendChild(head);
+
+      /* form */
+      var form = document.createElement('div');
+      form.className = 'form';
+      var rowTwo = null;
+      FIELDS.forEach(function (f) {
+        var row = document.createElement('div');
+        row.className = 'row';
+        var lab = document.createElement('label');
+        lab.textContent = f.label;
+        var input;
+        if (f.type === 'select') {
+          input = document.createElement('select');
+          f.opts.forEach(function (o) {
+            var op = document.createElement('option');
+            op.value = o[0]; op.textContent = o[1];
+            input.appendChild(op);
+          });
+        } else {
+          input = document.createElement('input');
+          input.type = f.type;
+          if (f.step) input.step = f.step;
+        }
+        input.value = cfg[f.k];
+        input.addEventListener('input', function () {
+          cfg[f.k] = input.value;
+          if (f.k === 'title') name.textContent = input.value;
+          refresh(cfg, preview);
+          persist();
+        });
+        row.appendChild(lab); row.appendChild(input);
+
+        /* pack some fields two-per-row */
+        if (TWO[f.k]) {
+          if (!rowTwo) { rowTwo = document.createElement('div'); rowTwo.className = 'row two'; form.appendChild(rowTwo); }
+          row.className = '';
+          rowTwo.appendChild(row);
+          if (rowTwo.children.length === 2) rowTwo = null;
+        } else { rowTwo = null; form.appendChild(row); }
+      });
+
+      /* autoplay checkbox */
+      var chk = document.createElement('div');
+      chk.className = 'check';
+      var cb = document.createElement('input'); cb.type = 'checkbox'; cb.id = cfg.id + '-ap'; cb.checked = !!cfg.autoplay;
+      var cl = document.createElement('label'); cl.htmlFor = cb.id; cl.textContent = 'Автозапуск анімації';
+      cb.addEventListener('change', function () { cfg.autoplay = cb.checked; refresh(cfg, preview); persist(); });
+      chk.appendChild(cb); chk.appendChild(cl);
+      form.appendChild(chk);
+      card.appendChild(form);
+
+      /* preview */
+      var prev = document.createElement('div');
+      prev.className = 'preview';
+      var preview = document.createElement('energy-monitor');
+      var actions = document.createElement('div');
+      actions.className = 'preview__actions';
+      var copy = document.createElement('button');
+      copy.className = 'btn btn--sm';
+      copy.textContent = '⧉ Скопіювати embed-код';
+      copy.onclick = function () {
+        var code = embedCode(cfg);
+        if (navigator.clipboard) navigator.clipboard.writeText(code).then(function () { toast('Embed-код скопійовано'); });
+        else { prompt('Embed-код:', code); }
+      };
+      actions.appendChild(copy);
+      prev.appendChild(preview);
+      prev.appendChild(actions);
+      card.appendChild(prev);
+
+      widgetsEl.appendChild(card);
+      refresh(cfg, preview);
+      return card;
+    }
+
+    function refresh(cfg, preview) {
+      applyTheme(preview, cfg);
+      preview.config = toWidgetConfig(cfg);
+    }
+
+    function renderAll() {
+      widgetsEl.innerHTML = '';
+      if (!configs.length) {
+        var e = document.createElement('div'); e.className = 'empty';
+        e.textContent = 'Немає віджетів. Натисніть «+ Додати віджет».';
+        widgetsEl.appendChild(e);
+      } else {
+        configs.forEach(buildPanel);
+      }
+      persist();
+    }
+
+    /* ---- toolbar ---- */
+    document.getElementById('add').onclick = function () {
+      var c = blank(); configs.push(c);
+      if (configs.length === 1) renderAll(); else buildPanel(c);
+      persist();
+    };
+    document.getElementById('save').onclick = function () {
+      var blob = new Blob([JSON.stringify(configs, null, 2)], { type: 'application/json' });
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob); a.download = 'configs.json';
+      a.click(); URL.revokeObjectURL(a.href);
+      toast('configs.json завантажено');
+    };
+    document.getElementById('load').onclick = function () { document.getElementById('file').click(); };
+    document.getElementById('file').onchange = function (e) {
+      var f = e.target.files[0]; if (!f) return;
+      var r = new FileReader();
+      r.onload = function () {
+        try {
+          var arr = JSON.parse(r.result);
+          if (Array.isArray(arr)) { configs = arr; seq = configs.length; renderAll(); toast('Завантажено ' + arr.length + ' віджет(ів)'); }
+        } catch (err) { toast('Помилка читання JSON'); }
+      };
+      r.readAsText(f);
+    };
+    document.getElementById('reset').onclick = function () {
+      if (!confirm('Скинути всі віджети до прикладу за замовчуванням?')) return;
+      localStorage.removeItem(STORE); seq = 0; configs = defaults(); renderAll();
+    };
+
+    function defaults() {
+      seq = 0;
+      var a = blank(); a.title = 'Станція · дім'; a.type = 'home'; a.power = 10;
+      var b = blank(); b.title = 'Станція · бізнес'; b.type = 'biz'; b.power = 50;
+      b.accent = '#2dd4bf'; b.accent2 = '#0d9488';
+      return [a, b];
+    }
+
+    /* ---- init ---- */
+    try {
+      var saved = JSON.parse(localStorage.getItem(STORE));
+      if (Array.isArray(saved) && saved.length) { configs = saved; seq = saved.length; }
+    } catch (e) {}
+    if (!configs.length) configs = defaults();
+    renderAll();
+  })();
+  </script>
+</body>
+</html>
