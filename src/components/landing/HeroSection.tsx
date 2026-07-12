@@ -20,7 +20,7 @@ export const HeroSection: React.FC = () => {
   ];
 
   return (
-    <section id="home" className="relative isolate pt-[88px] pb-10 md:pt-[92px] md:pb-14 overflow-hidden border-b border-[rgba(255,255,255,.08)]">
+    <section id="home" className="ds-fit relative isolate overflow-hidden border-b border-[rgba(255,255,255,.08)]">
 
       {/* Background Image */}
       <div className="absolute inset-0 z-[-1]">
@@ -31,11 +31,11 @@ export const HeroSection: React.FC = () => {
       {/* Glow Orbs */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-[rgba(24,165,88,.08)] to-[rgba(255,199,66,.05)] blur-[140px] rounded-full pointer-events-none z-[-1]" />
 
-      <div className="max-w-[1280px] mx-auto px-5 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+      <div className="w-full max-w-[1280px] mx-auto px-5 md:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center">
 
           {/* Left Column: Copy & CTAs */}
-          <div className="lg:col-span-6 space-y-3 sm:space-y-4 text-center lg:text-left">
+          <div className="lg:col-span-6 space-y-[clamp(0.5rem,1.4vh,1rem)] text-center lg:text-left">
 
             {/* Urgent Tag */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-ink-2 border border-[rgba(255,255,255,.08)] shadow-md">
@@ -45,21 +45,21 @@ export const HeroSection: React.FC = () => {
               </span>
             </div>
 
-            {/* Main H1 */}
-            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.04]">
+            {/* Main H1 — viewport-aware so it never blows the fold on short laptops */}
+            <h1 className="font-display text-[clamp(2.2rem,1rem+1vw+1.6vh,3.6rem)] font-extrabold tracking-tight text-white leading-[1.05]">
               {tr('hero_h1_pre')}<span className="text-sun">{tr('hero_h1_span')}</span>
             </h1>
 
             {/* Subtitle */}
-            <p className="text-base sm:text-lg text-cloud font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            <p className="text-sm sm:text-base text-cloud font-normal leading-relaxed max-w-2xl mx-auto lg:mx-0">
               {tr('hero_sub')}
             </p>
 
             {/* 4 Bullets */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-left max-w-2xl mx-auto lg:mx-0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-0.5 text-left max-w-2xl mx-auto lg:mx-0">
               {bullets.map((b, i) => (
-                <div key={i} className="flex items-center gap-3 p-3 rounded-2xl bg-[rgba(13,53,39,.92)] border border-[rgba(255,255,255,.08)] backdrop-blur-sm w-full">
-                  <div className="w-8 h-8 rounded-xl bg-[rgba(24,165,88,.15)] text-emerald flex items-center justify-center shrink-0">
+                <div key={i} className="flex items-center gap-2.5 p-2.5 rounded-2xl bg-[rgba(13,53,39,.92)] border border-[rgba(255,255,255,.08)] backdrop-blur-sm w-full">
+                  <div className="w-7 h-7 rounded-xl bg-[rgba(24,165,88,.15)] text-emerald flex items-center justify-center shrink-0">
                     <b.icon className="w-4 h-4" />
                   </div>
                   <span className="text-xs font-bold text-cloud leading-snug">{b.text}</span>
@@ -68,10 +68,10 @@ export const HeroSection: React.FC = () => {
             </div>
 
             {/* CTAs — each button = 1 mini-block width */}
-            <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto lg:mx-0">
+            <div className="pt-1 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto lg:mx-0">
               <button
                 onClick={() => openLeadModal('10 kW', 'Hybrid SES', tr('lead_source_header'))}
-                className="ds-btn-primary !py-3 !px-7 !text-[13px]"
+                className="ds-btn-primary !py-2.5 !px-7 !text-[13px]"
               >
                 <span>{tr('btn_calc_ses')}</span>
                 <ArrowRight className="w-4 h-4 stroke-[3]" />
@@ -79,7 +79,7 @@ export const HeroSection: React.FC = () => {
 
               <button
                 onClick={() => openLeadModal('8 kW', 'Credit 0%', tr('lead_source_header'))}
-                className="ds-btn-secondary !py-3 !px-7 !text-[13px]"
+                className="ds-btn-secondary !py-2.5 !px-7 !text-[13px]"
               >
                 <ShieldCheck className="w-4 h-4 text-emerald" />
                 <span>→ {tr('btn_loan_check')}</span>
@@ -87,7 +87,7 @@ export const HeroSection: React.FC = () => {
             </div>
 
             {/* Microcopy Guarantee */}
-            <div className="flex items-center justify-center lg:justify-start gap-2 pt-1 text-xs font-semibold text-muted-dark">
+            <div className="flex items-center justify-center lg:justify-start gap-2 pt-0.5 text-xs font-semibold text-muted-dark">
               <CheckCircle2 className="w-4 h-4 text-emerald shrink-0" />
               <span>{tr('micro_trust')}</span>
             </div>
@@ -96,9 +96,10 @@ export const HeroSection: React.FC = () => {
 
           {/* Right Column: Energy Monitor Widget */}
           <div className="lg:col-span-6 relative flex justify-center lg:justify-end w-full">
-            <div className="w-full max-w-[420px] h-full max-h-[640px] flex items-center justify-center lg:justify-center">
+            <div className="w-full max-w-[420px] flex items-center justify-center">
               <energy-monitor
                 ref={monitorRef}
+                style={{ width: '384px', maxWidth: '100%' }}
                 type="home"
                 power="10"
                 tariff-home="4.32"
