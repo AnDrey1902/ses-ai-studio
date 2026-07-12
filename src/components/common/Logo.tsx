@@ -9,6 +9,14 @@ export const Logo: React.FC<{ className?: string; onClick?: () => void }> = ({ c
     else setView('home');
   };
 
+  // Two-tone wordmark: first part black, remainder dark green.
+  // Split at the space for two-word brands (EN "POWER SUPPLY"),
+  // otherwise after the "ЕНЕРГО"/"ЭНЕРГО" prefix (6 chars) for the compounds.
+  const brand = tr('logo_brand_tag');
+  const splitAt = brand.includes(' ') ? brand.indexOf(' ') : 6;
+  const brandFirst = brand.slice(0, splitAt);
+  const brandSecond = brand.slice(splitAt);
+
   return (
     <div 
       onClick={handleClick}
@@ -22,10 +30,11 @@ export const Logo: React.FC<{ className?: string; onClick?: () => void }> = ({ c
         </span>
       </div>
 
-      {/* Brand Typography */}
+      {/* Brand Typography — Sora (hero display face), all caps, two-tone */}
       <div className="flex flex-col justify-center leading-none">
-        <span className="font-extrabold tracking-tight text-[#22C55E] text-base md:text-lg font-sans uppercase drop-shadow-sm">
-          {tr('logo_brand_tag')}
+        <span className="font-display font-extrabold tracking-tight text-base md:text-lg uppercase">
+          <span className="text-[#07140F]">{brandFirst}</span>
+          <span className="text-emerald-deep">{brandSecond}</span>
         </span>
       </div>
     </div>

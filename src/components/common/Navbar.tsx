@@ -1,4 +1,4 @@
-import { Calculator, Menu, PhoneCall, X, MapPin, Phone, Mail, Clock } from 'lucide-react';
+import { Calculator, Menu, X, MapPin, Phone, Mail, Clock } from 'lucide-react';
 import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { CurrentView, Language } from '../../types';
@@ -51,6 +51,24 @@ export const Navbar: React.FC = () => {
               <Clock className="w-3 h-3 text-[#22C55E]" />
               <span>Пн–Сб · 9:00–19:00</span>
             </div>
+
+            {/* Language Tabs */}
+            <div className="flex items-center gap-0.5 pl-4 ml-1 border-l border-white/10 text-[11px] font-bold">
+              {languages.map((l) => (
+                <button
+                  key={l.key}
+                  onClick={() => setLang(l.key)}
+                  aria-pressed={lang === l.key}
+                  className={`px-2 py-0.5 rounded-full transition-colors ${
+                    lang === l.key
+                      ? 'bg-emerald text-white'
+                      : 'text-[#8CA79A] hover:text-white'
+                  }`}
+                >
+                  {l.label}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -62,7 +80,7 @@ export const Navbar: React.FC = () => {
           <Logo />
 
           {/* Desktop Nav */}
-          <nav className="hidden xl:flex items-center gap-1.5 bg-[#F0F5F2] p-1.5 rounded-full border border-[#E2ECE6]">
+          <nav className="hidden xl:flex items-center gap-1.5 bg-soft p-1.5 rounded-full border border-[#E2ECE6]">
             {navLinks.map((link) => {
               const isActive = view === link.view || (view === 'blog_detail' && link.view === 'blog');
               return (
@@ -71,14 +89,14 @@ export const Navbar: React.FC = () => {
                   onClick={() => handleNavClick(link.view)}
                   className={`relative px-3.5 py-2 rounded-full text-xs font-semibold tracking-wide transition-all ${
                     isActive
-                      ? 'bg-[#22C55E] text-white shadow-md shadow-[rgba(34,197,94,.2)]'
+                      ? 'ds-nav-active'
                       : 'text-[#5A6E62] hover:text-[#1A2E23] hover:bg-white'
                   }`}
                 >
                   {link.label}
                   {link.badge && (
                     <span className={`absolute -top-2 -right-2 px-1.5 py-0.5 text-[9px] rounded-full font-bold uppercase shadow-sm ${
-                      isActive ? 'bg-white text-[#22C55E]' : 'bg-[#FBBF24] text-[#07140F]'
+                      isActive ? 'bg-white text-[#0F7A40]' : 'bg-[#FBBF24] text-[#07140F]'
                     }`}>
                       {link.badge}
                     </span>
@@ -88,7 +106,7 @@ export const Navbar: React.FC = () => {
             })}
           </nav>
 
-          {/* Right Actions & Lang Switcher */}
+          {/* Right Actions */}
           <div className="hidden md:flex items-center gap-3">
             {/* Payback Calc Quick Shortcut */}
             <button
@@ -99,39 +117,21 @@ export const Navbar: React.FC = () => {
                   if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }, 100);
               }}
-              className="flex items-center gap-2 text-xs font-semibold text-[#B8860B] hover:text-[#996515] bg-[rgba(251,191,36,.1)] hover:bg-[rgba(251,191,36,.18)] px-4 py-3 rounded-full border border-[rgba(251,191,36,.25)] transition-all"
+              aria-label={tr('nav_calc_full')}
+              title={tr('nav_calc_full')}
+              className="ds-btn-sun !px-4 !py-3 !text-xs !gap-1.5"
             >
-              <Calculator className="w-7 h-7" />
+              <Calculator className="w-4 h-4" />
               <span>{tr('nav_calc')}</span>
             </button>
-
-            {/* Language Tabs */}
-            <div className="flex items-center bg-[#F0F5F2] p-1 rounded-full border border-[#E2ECE6] text-xs font-bold">
-              {languages.map((l) => (
-                <button
-                  key={l.key}
-                  onClick={() => setLang(l.key)}
-                  className={`px-2 py-1 rounded-full transition-all ${
-                    lang === l.key
-                      ? 'bg-[#22C55E] text-white shadow-sm'
-                      : 'text-[#5A6E62] hover:text-[#1A2E23]'
-                  }`}
-                >
-                  {l.label}
-                </button>
-              ))}
-            </div>
 
             {/* CTA Primary */}
             <button
               onClick={() => openLeadModal('10 kW', 'Hybrid SES', tr('lead_source_header'))}
-              className="ds-btn-primary !px-5 !py-3 !text-xs"
+              className="ds-btn-primary !px-6 !py-3 !text-xs"
             >
-              <PhoneCall className="w-7 h-7 fill-[#07140F]" />
-              <span>{tr('btn_call_me')}</span>
+              <span>{tr('btn_estimate')}</span>
             </button>
-
-
           </div>
 
           {/* Mobile menu trigger */}
@@ -141,7 +141,7 @@ export const Navbar: React.FC = () => {
                 <button
                   key={l.key}
                   onClick={() => setLang(l.key)}
-                  className={`px-2.5 py-2 min-w-[36px] min-h-[36px] rounded-full ${lang === l.key ? 'bg-[#22C55E] text-white' : 'text-[#5A6E62]'}`}
+                  className={`px-2.5 py-2 min-w-[36px] min-h-[36px] rounded-full ${lang === l.key ? 'bg-emerald text-white' : 'text-[#5A6E62]'}`}
                 >
                   {l.label}
                 </button>
@@ -168,7 +168,7 @@ export const Navbar: React.FC = () => {
                   onClick={() => handleNavClick(link.view)}
                   className={`w-full flex items-center justify-between px-4 py-3 rounded-2xl text-sm font-semibold transition-colors ${
                     view === link.view
-                      ? 'bg-[rgba(34,197,94,.12)] text-[#22C55E] border border-[rgba(34,197,94,.25)]'
+                      ? 'bg-[rgba(24,165,88,.12)] text-[#0F7A40] border border-[rgba(24,165,88,.25)]'
                       : 'text-[#1A2E23] hover:bg-[#F0F5F2]'
                   }`}
                 >
@@ -191,8 +191,7 @@ export const Navbar: React.FC = () => {
                 }}
                 className="ds-btn-primary w-full !text-sm"
               >
-                <PhoneCall className="w-5 h-5 fill-[#07140F]" />
-                <span>{tr('btn_call_me')}</span>
+                <span>{tr('btn_estimate')}</span>
               </button>
             </div>
           </div>
