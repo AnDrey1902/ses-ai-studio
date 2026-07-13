@@ -32,10 +32,19 @@ git push -u origin feature/название-задачи # 4. отправить
 #    → второй человек делает ревью → Merge → Delete branch
 ```
 
+**После мержа PR — убери за собой** (чтобы локально не копились мёртвые ветки):
+
+```bash
+git checkout master && git pull   # подтянуть смёрженное
+git fetch --prune origin          # убрать устаревшие origin/<ветка>
+git branch -d feature/твоя-ветка  # удалить локальную (merged)
+```
+
 - **Одна задача — одна ветка.** Не смешивай несвязанные изменения в одном PR.
 - **Сообщения коммитов — на английском**, в стиле Conventional Commits: `feat:`, `fix:`,
   `docs:`, `chore:`, `refactor:`, `style:` (напр. `feat: add payback calculator`).
 - **Merge делает человек**, а не автор в одиночку и не AI-ассистент: PR → ревью → кнопка *Merge* на GitHub.
+- Если `git branch -d` ругается «not fully merged» — PR смёржили режимом **Squash**; тогда безопасно удалять через `git branch -D` (содержимое уже в `master`).
 
 ## Часть 2. Одновременная работа и конфликты
 
