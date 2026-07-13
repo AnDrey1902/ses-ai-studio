@@ -2,6 +2,25 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Git workflow (MANDATORY — read first)
+
+We use **GitHub Flow**. `master` is the **only** permanent branch — always working, deploy comes from it, and it is **protected on GitHub** (direct push and `--force` are rejected). The full process, glossary, and conflict-resolution steps live in [CONTRIBUTING.md](CONTRIBUTING.md), which is the **source of truth for process**; this section is the short hard-rule version the assistant must follow.
+
+**Hard rules — no exceptions:**
+
+- **Never** commit or push directly to `master`. **Never** use `--force` / `-f`.
+- Every task runs through a short-lived branch and a Pull Request. One task → one branch.
+- **Open the PR, but never merge it.** Merge is a human action after review.
+
+**Per-task algorithm:**
+
+1. `git checkout master && git pull` — start from the freshest main.
+2. `git checkout -b feature/<short-en-slug>` — branch names: `feature/…` (new), `fix/…` (bugfix), `chore/…` (docs/config/deps).
+3. Make changes + commits. **Commit messages in English**, Conventional Commits style (`feat:`, `fix:`, `docs:`, `chore:`, `refactor:`, `style:`).
+4. Gate on `npm run build` (build must be green — this is the real check; `npm run lint` is type-check only and may be broken).
+5. `git push -u origin feature/<…>`.
+6. Open a PR (base: `master`) via the GitHub MCP; write the summary in Russian. **Do not merge** — hand it to the human.
+
 ## What this is
 
 A single-page marketing / lead-generation site for **GURU ENERGY**, a Ukrainian company selling turnkey solar power stations (СЕС). It bundles a public landing page, a blog, a shop, an AI solar-consultant chat widget (Gemini), and a lightweight admin/CRM view for captured leads. Primary content language is Ukrainian (`uk`), with `ru` and `en` translations.
