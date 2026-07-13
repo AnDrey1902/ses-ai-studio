@@ -7,18 +7,18 @@ export const AdvantagesSection: React.FC = () => {
   const { lang, tr } = useApp();
 
   return (
-    <section className="ds-section bg-[#07140F] border-b border-[rgba(255,255,255,.08)]">
+    <section id="advantages" className="ds-section bg-ink border-b border-[rgba(255,255,255,.08)] scroll-mt-20">
       <div className="max-w-[1280px] mx-auto px-5 md:px-8 space-y-[64px]">
 
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="ds-badge px-3.5 py-1.5 text-xs bg-[rgba(34,197,94,.1)] text-[#22C55E] border border-[rgba(34,197,94,.2)]">
+          <span className="ds-badge px-3.5 py-1.5 text-xs bg-[rgba(24,165,88,.1)] text-emerald border border-[rgba(24,165,88,.2)]">
             {tr('b4_badge')}
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white">
             {tr('b4_title')}
           </h2>
-          <p className="text-sm sm:text-base text-[#92A299] font-medium">
+          <p className="text-sm sm:text-base text-muted-dark font-medium">
             {tr('b4_sub')}
           </p>
         </div>
@@ -35,11 +35,11 @@ export const AdvantagesSection: React.FC = () => {
                 className="ds-card !p-[28px] space-y-4 relative overflow-hidden group"
               >
                 {/* Big number watermark */}
-                <div className="absolute -bottom-4 -right-4 font-black text-6xl font-mono text-[rgba(255,255,255,.04)] select-none group-hover:text-[rgba(34,197,94,.1)] transition-colors pointer-events-none">
+                <div className="absolute -bottom-4 -right-4 font-black text-6xl font-mono text-[rgba(255,255,255,.04)] select-none group-hover:text-[rgba(24,165,88,.1)] transition-colors pointer-events-none">
                   {adv.num}
                 </div>
 
-                <div className="w-12 h-12 rounded-2xl bg-[rgba(251,191,36,.12)] text-[#FBBF24] flex items-center justify-center font-mono font-black text-lg border border-[rgba(251,191,36,.2)] group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 rounded-2xl bg-[rgba(255,199,66,.12)] text-sun flex items-center justify-center font-mono font-black text-lg border border-[rgba(255,199,66,.2)] group-hover:scale-110 transition-transform">
                   {adv.num}
                 </div>
 
@@ -47,7 +47,7 @@ export const AdvantagesSection: React.FC = () => {
                   {titleCopy}
                 </h3>
 
-                <p className="text-xs text-[#D5DDD8] leading-relaxed pr-2">
+                <p className="text-xs text-cloud leading-relaxed pr-2">
                   {descCopy}
                 </p>
               </div>
@@ -59,19 +59,19 @@ export const AdvantagesSection: React.FC = () => {
         <div className="glass-panel !rounded-[32px] p-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           <div>
             <div className="text-3xl sm:text-4xl font-black font-mono text-white">450+</div>
-            <div className="text-xs text-[#92A299] font-semibold pt-1">{tr('b4_stat1_label')}</div>
+            <div className="text-xs text-muted-dark font-semibold pt-1">{tr('b4_stat1_label')}</div>
           </div>
           <div>
-            <div className="text-3xl sm:text-4xl font-black font-mono text-[#22C55E]">100%</div>
-            <div className="text-xs text-[#92A299] font-semibold pt-1">{tr('b4_stat2_label')}</div>
+            <div className="text-3xl sm:text-4xl font-black font-mono text-emerald">100%</div>
+            <div className="text-xs text-muted-dark font-semibold pt-1">{tr('b4_stat2_label')}</div>
           </div>
           <div>
-            <div className="text-3xl sm:text-4xl font-black font-mono text-[#FBBF24]">$3.5M+</div>
-            <div className="text-xs text-[#92A299] font-semibold pt-1">{tr('b4_stat3_label')}</div>
+            <div className="text-3xl sm:text-4xl font-black font-mono text-sun">$3.5M+</div>
+            <div className="text-xs text-muted-dark font-semibold pt-1">{tr('b4_stat3_label')}</div>
           </div>
           <div>
             <div className="text-3xl sm:text-4xl font-black font-mono text-white">25 років</div>
-            <div className="text-xs text-[#92A299] font-semibold pt-1">{tr('b4_stat4_label')}</div>
+            <div className="text-xs text-muted-dark font-semibold pt-1">{tr('b4_stat4_label')}</div>
           </div>
         </div>
 

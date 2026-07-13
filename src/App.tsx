@@ -5,6 +5,7 @@ import { Footer } from './components/common/Footer';
 import { LeadModal } from './components/common/LeadModal';
 import { AIConsultantWidget } from './components/ai/AIConsultantWidget';
 import { SchemaOrg } from './components/common/SchemaOrg';
+import heroBg from './assets/hero.webp';
 
 // Landing Sections
 import { HeroSection } from './components/landing/HeroSection';
@@ -33,9 +34,17 @@ const MainContent: React.FC = () => {
   const { view } = useApp();
 
   useEffect(() => {
-    // If it's a known landing section, scroll to it
-    const landingSections = ['home', 'services', 'prices', 'cases'];
-    
+    // 'home' means the very top of the page — show the header's top contact bar
+    // and full menu. Scrolling to the #home section instead lands just below the
+    // top bar (that bar sits above #home in the flow), so scroll to 0 here.
+    if (view === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+
+    // Other in-page landing sections scroll to their anchor (they carry
+    // scroll-mt-20 so the sticky header doesn't cover them).
+    const landingSections = ['services', 'prices', 'cases'];
     if (landingSections.includes(view)) {
       const element = document.getElementById(view);
       if (element) {
@@ -59,11 +68,34 @@ const MainContent: React.FC = () => {
   // Partial View Scroll / Focus Or Full Landing
   return (
     <main className="min-h-screen">
-      {/* 1. Hero */}
-      <HeroSection />
+      {/* 1 + 2 share ONE solar-panel backdrop: it flows out of the Hero, through
+          Pain, and dissolves into #07140F at the bottom of Pain. The photo is
+          MIRROR-tiled (alternating scaleY(-1)) so the panel texture is continuous
+          with no visible seam at any tile boundary, at any viewport width. */}
+      <div className="relative isolate overflow-hidden">
+        <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute inset-0 flex flex-col">
+            {Array.from({ length: 20 }).map((_, i) => (
+              <div
+                key={i}
+                className="w-full shrink-0"
+                style={{
+                  aspectRatio: '3 / 2',
+                  backgroundImage: `url(${heroBg})`,
+                  backgroundSize: '100% 100%',
+                  transform: i % 2 ? 'scaleY(-1)' : undefined,
+                }}
+              />
+            ))}
+          </div>
+        </div>
 
-      {/* 2. Pain vs Solutions */}
-      <PainSolutionSection />
+        {/* 1. Hero */}
+        <HeroSection />
+
+        {/* 2. Pain vs Solutions */}
+        <PainSolutionSection />
+      </div>
 
       {/* 3. Types / Services */}
       <ServicesSection />

@@ -21,6 +21,11 @@ export const Navbar: React.FC = () => {
   const handleNavClick = (targetView: CurrentView) => {
     setView(targetView);
     setMobileMenuOpen(false);
+    // Clicking "Головна" always returns to the very top — even when already on
+    // home (scrolled down), where `view` doesn't change so the App effect won't fire.
+    if (targetView === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const languages: { key: Language; label: string }[] = [

@@ -26,7 +26,7 @@ export const ServicesSection: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-5">
 
           {/* ===== РЕЗЕРВНЕ ЖИВЛЕННЯ — large left card spanning 2 rows ===== */}
-          <div className="lg:col-span-2 lg:row-span-2 group bg-gradient-to-br from-[rgba(24,165,88,.03)] to-[rgba(255,199,66,.07)] rounded-[28px] border border-line p-[32px] flex flex-col justify-between shadow-[0_4px_20px_rgba(7,20,15,.05)] relative hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(24,165,88,.1)] transition-all duration-300">
+          <div className="lg:col-span-2 lg:row-span-2 group bg-gradient-to-br from-[rgba(24,165,88,.10)] to-white rounded-[28px] border border-[rgba(24,165,88,.3)] p-[32px] flex flex-col justify-between shadow-[0_4px_20px_rgba(7,20,15,.05)] relative hover:-translate-y-1 hover:border-[rgba(24,165,88,.55)] hover:shadow-[0_20px_60px_rgba(24,165,88,.14)] transition-all duration-300">
             {/* Badge */}
             <div className="absolute top-5 right-6 px-3 py-1 rounded-full bg-sun text-ink font-black text-[10px] uppercase tracking-wider shadow-md">
               {tr('svc_popular_badge')}
@@ -78,7 +78,7 @@ export const ServicesSection: React.FC = () => {
           </div>
 
           {/* ===== СОНЯЧНІ ЕЛЕКТРОСТАНЦІЇ — top right ===== */}
-          <div className="lg:col-span-3 group bg-gradient-to-bl from-[rgba(255,199,66,.08)] to-[rgba(24,165,88,.03)] rounded-[28px] border border-line p-[28px] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-[0_4px_20px_rgba(7,20,15,.05)] hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(255,199,66,.18)] transition-all duration-300">
+          <div className="lg:col-span-3 group bg-gradient-to-bl from-[rgba(255,178,0,.13)] to-white rounded-[28px] border border-[rgba(245,158,11,.28)] p-[28px] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-[0_4px_20px_rgba(7,20,15,.05)] hover:-translate-y-1 hover:border-[rgba(24,165,88,.55)] hover:shadow-[0_20px_60px_rgba(255,199,66,.18)] transition-all duration-300">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-2xl bg-sun flex items-center justify-center shrink-0 shadow-[0_4px_14px_rgba(255,199,66,.3)] group-hover:scale-110 group-hover:shadow-[0_6px_20px_rgba(255,199,66,.4)] transition-all duration-300">
                 <Sun className="w-6 h-6 text-white" />
@@ -105,7 +105,7 @@ export const ServicesSection: React.FC = () => {
           <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-5">
 
             {/* Зелений тариф */}
-            <div className="group bg-gradient-to-br from-[rgba(24,165,88,.03)] to-[rgba(255,199,66,.10)] rounded-[28px] border border-line p-[28px] flex flex-col justify-between shadow-[0_4px_20px_rgba(7,20,15,.05)] hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(24,165,88,.1)] transition-all duration-300">
+            <div className="group bg-white rounded-[28px] border border-line p-[28px] flex flex-col justify-between shadow-[0_4px_20px_rgba(7,20,15,.05)] hover:-translate-y-1 hover:border-[rgba(24,165,88,.55)] hover:shadow-[0_20px_60px_rgba(24,165,88,.14)] transition-all duration-300">
               <div className="space-y-4">
                 <div className="w-12 h-12 rounded-2xl bg-emerald flex items-center justify-center shadow-[0_4px_14px_rgba(24,165,88,.3)] group-hover:scale-110 group-hover:shadow-[0_6px_20px_rgba(24,165,88,.4)] transition-all duration-300">
                   <Leaf className="w-6 h-6 text-white" />
@@ -127,7 +127,7 @@ export const ServicesSection: React.FC = () => {
             </div>
 
             {/* Зарядні станції EV */}
-            <div className="group bg-gradient-to-bl from-white to-[rgba(255,199,66,.13)] rounded-[28px] border border-line p-[28px] flex flex-col justify-between shadow-[0_4px_20px_rgba(7,20,15,.05)] hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(255,199,66,.18)] transition-all duration-300">
+            <div className="group bg-white rounded-[28px] border border-line p-[28px] flex flex-col justify-between shadow-[0_4px_20px_rgba(7,20,15,.05)] hover:-translate-y-1 hover:border-[rgba(24,165,88,.55)] hover:shadow-[0_20px_60px_rgba(24,165,88,.14)] transition-all duration-300">
               <div className="space-y-4">
                 <div className="w-12 h-12 rounded-2xl bg-sun flex items-center justify-center shadow-[0_4px_14px_rgba(255,199,66,.3)] group-hover:scale-110 group-hover:shadow-[0_6px_20px_rgba(255,199,66,.4)] transition-all duration-300">
                   <BatteryCharging className="w-6 h-6 text-white" />
@@ -154,7 +154,7 @@ export const ServicesSection: React.FC = () => {
           <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-5">
 
             {/* Сервіс та обслуговування */}
-            <div className="group bg-gradient-to-br from-white to-[rgba(255,199,66,.12)] rounded-[28px] border border-line p-[28px] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-[0_4px_20px_rgba(7,20,15,.05)] hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(255,199,66,.18)] transition-all duration-300">
+            <div className="group bg-white rounded-[28px] border border-line p-[28px] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-[0_4px_20px_rgba(7,20,15,.05)] hover:-translate-y-1 hover:border-[rgba(24,165,88,.55)] hover:shadow-[0_20px_60px_rgba(24,165,88,.14)] transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-2xl bg-sun flex items-center justify-center shrink-0 shadow-[0_4px_14px_rgba(255,199,66,.3)] group-hover:scale-110 group-hover:shadow-[0_6px_20px_rgba(255,199,66,.4)] transition-all duration-300">
                   <Wrench className="w-6 h-6 text-white" />
@@ -178,7 +178,7 @@ export const ServicesSection: React.FC = () => {
             </div>
 
             {/* Проектування та аудит */}
-            <div className="group bg-gradient-to-bl from-white to-[rgba(255,199,66,.12)] rounded-[28px] border border-line p-[28px] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-[0_4px_20px_rgba(7,20,15,.05)] hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(255,199,66,.18)] transition-all duration-300">
+            <div className="group bg-white rounded-[28px] border border-line p-[28px] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-[0_4px_20px_rgba(7,20,15,.05)] hover:-translate-y-1 hover:border-[rgba(24,165,88,.55)] hover:shadow-[0_20px_60px_rgba(24,165,88,.14)] transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-2xl bg-sun flex items-center justify-center shrink-0 shadow-[0_4px_14px_rgba(255,199,66,.3)] group-hover:scale-110 group-hover:shadow-[0_6px_20px_rgba(255,199,66,.4)] transition-all duration-300">
                   <FileSearch className="w-6 h-6 text-white" />

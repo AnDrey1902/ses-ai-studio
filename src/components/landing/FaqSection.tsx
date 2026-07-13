@@ -13,19 +13,19 @@ export const FaqSection: React.FC = () => {
   };
 
   return (
-    <section className="ds-section bg-[#07140F] border-b border-[rgba(255,255,255,.08)]">
+    <section id="faq" className="ds-section bg-ink border-b border-[rgba(255,255,255,.08)] scroll-mt-20">
       <SchemaOrg type="faq" data={{ faqs: FAQS.map(f => ({ question: f.question[lang] || f.question.uk, answer: f.answer[lang] || f.answer.uk })) }} />
       <div className="max-w-4xl mx-auto px-5 md:px-8 space-y-[64px]">
 
         {/* Section Heading */}
         <div className="text-center space-y-4">
-          <span className="ds-badge px-3.5 py-1.5 text-xs bg-[rgba(34,197,94,.1)] text-[#22C55E] border border-[rgba(34,197,94,.2)]">
+          <span className="ds-badge px-3.5 py-1.5 text-xs bg-[rgba(24,165,88,.1)] text-emerald border border-[rgba(24,165,88,.2)]">
             ВІДПОВІДІ НА ЗАПИТАННЯ
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white">
             {tr('b10_title')}
           </h2>
-          <p className="text-sm sm:text-base text-[#92A299] font-medium">
+          <p className="text-sm sm:text-base text-muted-dark font-medium">
             {tr('b10_sub')}
           </p>
         </div>
@@ -44,7 +44,7 @@ export const FaqSection: React.FC = () => {
                 itemProp="mainEntity"
                 itemType="https://schema.org/Question"
                 className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
-                  isOpen ? 'bg-[#10261C] border-[rgba(34,197,94,.4)] shadow-xl' : 'bg-[rgba(24,44,33,.92)] border-[rgba(255,255,255,.08)] hover:border-[rgba(255,255,255,.15)]'
+                  isOpen ? 'bg-ink-2 border-[rgba(24,165,88,.4)] shadow-xl' : 'bg-[rgba(24,44,33,.92)] border-[rgba(255,255,255,.08)] hover:border-[rgba(255,255,255,.15)]'
                 }`}
               >
                 <button
@@ -52,7 +52,7 @@ export const FaqSection: React.FC = () => {
                   className="w-full px-6 py-5 flex items-center justify-between text-left gap-4 text-sm sm:text-base font-extrabold text-white focus:outline-none"
                 >
                   <span itemProp="name">{qCopy}</span>
-                  <div className={`p-1.5 rounded-xl bg-[rgba(255,255,255,.08)] text-[#22C55E] transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180 bg-[rgba(34,197,94,.2)]' : ''}`}>
+                  <div className={`p-1.5 rounded-xl bg-[rgba(255,255,255,.08)] text-emerald transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180 bg-[rgba(24,165,88,.2)]' : ''}`}>
                     <ChevronDown className="w-4 h-4" />
                   </div>
                 </button>
@@ -62,13 +62,13 @@ export const FaqSection: React.FC = () => {
                     itemScope
                     itemProp="acceptedAnswer"
                     itemType="https://schema.org/Answer"
-                    className="px-6 pb-6 pt-2 text-xs sm:text-sm text-[#D5DDD8] leading-relaxed border-t border-[rgba(255,255,255,.08)] space-y-4 animate-in fade-in duration-200"
+                    className="px-6 pb-6 pt-2 text-xs sm:text-sm text-cloud leading-relaxed border-t border-[rgba(255,255,255,.08)] space-y-4 animate-in fade-in duration-200"
                   >
                     <p itemProp="text">{aCopy}</p>
                     <div className="pt-2">
                       <button
                         onClick={() => openLeadModal('10 кВт', 'FAQ Питання', `FAQ Запитання #${idx+1}`)}
-                        className="text-xs font-bold text-[#22C55E] hover:underline inline-flex items-center gap-1"
+                        className="text-xs font-bold text-emerald hover:underline inline-flex items-center gap-1"
                       >
                         <span>Задати додаткове запитання інженеру по телефону →</span>
                       </button>
@@ -82,9 +82,9 @@ export const FaqSection: React.FC = () => {
 
         {/* Still have questions card */}
         <div className="ds-card text-center space-y-4">
-          <HelpCircle className="w-8 h-8 text-[#22C55E] mx-auto" />
+          <HelpCircle className="w-8 h-8 text-emerald mx-auto" />
           <h3 className="text-lg font-extrabold text-white">Не знайшли відповіді на своє питання?</h3>
-          <p className="text-xs text-[#92A299] max-w-md mx-auto">Наші технічні консультанти готові пояснити будь-які інженерні та фінансові тонкощі підключення СЕС.</p>
+          <p className="text-xs text-muted-dark max-w-md mx-auto">Наші технічні консультанти готові пояснити будь-які інженерні та фінансові тонкощі підключення СЕС.</p>
           <button
             onClick={() => openLeadModal('10 кВт', 'Питання з FAQ', 'Кнопка під FAQ')}
             className="ds-btn-primary !px-6 !py-3 !text-xs"

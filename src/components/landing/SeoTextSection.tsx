@@ -7,10 +7,10 @@ export const SeoTextSection: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <section className="py-16 md:py-24 bg-[#F8FAF9] border-b border-[#E2ECE6] text-[#5A6E62]">
+    <section id="seo-text" className="py-16 md:py-24 bg-soft border-b border-line text-muted scroll-mt-20">
       <div className="max-w-4xl mx-auto px-5 md:px-8 space-y-6">
 
-        <h2 className="text-xl sm:text-2xl font-extrabold text-[#1A2E23] tracking-tight">
+        <h2 className="text-xl sm:text-2xl font-extrabold text-body tracking-tight">
           {lang === 'en'
             ? 'Turnkey Solar Power Stations in Ukraine: Blackout Protection and Green Tariff Investment'
             : lang === 'ru'
@@ -18,7 +18,7 @@ export const SeoTextSection: React.FC = () => {
             : 'Сонячні електростанції під ключ в Україні: автономія під час блекаутів та інвестиції в Зелений тариф'}
         </h2>
 
-        <div className={`space-y-4 text-xs sm:text-sm leading-relaxed text-[#5A6E62] font-normal text-justify transition-all duration-500 ${isExpanded ? '' : 'max-h-[180px] overflow-hidden relative'}`}>
+        <div className={`space-y-4 text-xs sm:text-sm leading-relaxed text-muted font-normal text-justify transition-all duration-500 ${isExpanded ? '' : 'max-h-[180px] overflow-hidden relative'}`}>
           <p>
             {lang === 'en' ? (
               <>
@@ -68,14 +68,14 @@ export const SeoTextSection: React.FC = () => {
           </p>
 
           {!isExpanded && (
-            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#F8FAF9] to-transparent pointer-events-none" />
+            <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-soft to-transparent pointer-events-none" />
           )}
         </div>
 
         <div className="text-center pt-2">
           <button
             onClick={() => setIsExpanded(!isExpanded)}
-            className="inline-flex items-center gap-2 text-sm font-bold text-[#22C55E] hover:text-[#16A34A] transition-colors"
+            className="inline-flex items-center gap-2 text-sm font-bold text-emerald hover:text-emerald-deep transition-colors"
           >
             <span>{isExpanded ? tr('seo_collapse') : tr('seo_read_more')}</span>
             <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`} />

@@ -39,7 +39,7 @@ export const ContactFormSection: React.FC = () => {
   };
 
   return (
-    <section className="py-20 md:py-32 bg-gradient-to-b from-ink via-ink-2 to-ink border-b border-[rgba(255,255,255,.08)] relative">
+    <section id="contact-form" className="py-20 md:py-32 bg-gradient-to-b from-ink via-ink-2 to-ink border-b border-[rgba(255,255,255,.08)] relative scroll-mt-20">
       <div className="max-w-[1280px] mx-auto px-5 md:px-8">
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
