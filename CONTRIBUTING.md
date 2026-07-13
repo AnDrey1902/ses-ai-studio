@@ -46,6 +46,41 @@ git branch -d feature/твоя-ветка  # удалить локальную (
 - **Merge делает человек**, а не автор в одиночку и не AI-ассистент: PR → ревью → кнопка *Merge* на GitHub.
 - Если `git branch -d` ругается «not fully merged» — PR смёржили режимом **Squash**; тогда безопасно удалять через `git branch -D` (содержимое уже в `master`).
 
+## Быстрый режим (git-алиасы)
+
+Чтобы не набирать всю цепочку вручную, рутина завёрнута в пять команд:
+
+| Команда | Что делает |
+|---------|-----------|
+| `git start <ветка>` | Начало задачи: свежий `master` + `pull` + `prune` + новая ветка. |
+| `git save "msg"` | `add -A` + `commit`. По ходу подзадач жми сколько нужно. |
+| `git ship "msg"` | Коммит остатка + `push` + создать Pull Request. |
+| `git land` | (соло) squash-merge PR + удалить ветку + вернуться на чистый `master`. |
+| `git sync` | Подтянуть `master` + prune + снести локальные ветки, уже слитые и удалённые на GitHub. |
+
+Типичная сессия: `git start feature/x` → работа, изредка `git save "…"` → `git ship "feat: x"` → `git land`.
+Две команды по краям, между ними — просто работа. **Одна сессия = одна ветка = один PR** —
+не по отдельному PR на каждую мелкую правку, а все связанные подзадачи в одной ветке.
+
+**Разовая настройка** (один раз на машину):
+
+1. Поставить GitHub CLI: `winget install --id GitHub.cli -e` (Windows).
+2. Авторизовать: `gh auth login` → GitHub.com → HTTPS → *Login with a web browser*.
+3. Вставить блок в свой глобальный `~/.gitconfig`:
+
+```ini
+[alias]
+	start = "!f() { b=$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null); b=${b#origin/}; b=${b:-master}; git checkout \"$b\" && git pull --ff-only && git fetch --prune && git switch -c \"$1\"; }; f"
+	save = "!f() { git add -A && git commit -m \"$1\"; }; f"
+	ship = "!f() { git add -A; git diff --cached --quiet || git commit -m \"${1:-update}\"; git push -u origin HEAD && gh pr create --fill; }; f"
+	land = "!f() { gh pr merge --squash --delete-branch; b=$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null); b=${b#origin/}; b=${b:-master}; git checkout \"$b\" && git pull --ff-only && git fetch --prune; }; f"
+	sync = "!f() { b=$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null); b=${b#origin/}; b=${b:-master}; git checkout \"$b\" && git pull --ff-only && git fetch --prune && git for-each-ref --format='%(refname:short) %(upstream:track)' refs/heads | while read n t; do [ \"$t\" = '[gone]' ] && git branch -D \"$n\"; done; true; }; f"
+```
+
+`git ship` и `git land` используют `gh` — без него `start`/`save`/`sync` работают, а PR
+создаётся/мержится кнопкой на GitHub. `git land` рассчитан на self-merge (когда ревьюит
+сам автор); при ревью напарником он жмёт *Merge* на GitHub, а автор потом делает `git sync`.
+
 ## Часть 2. Одновременная работа и конфликты
 
 Классическая ситуация: двое взяли одинаковый `master`, сделали разные задачи. Первый уже
