@@ -9,7 +9,8 @@ We use **GitHub Flow**. `master` is the **only** permanent branch — always wor
 **Hard rules — no exceptions:**
 
 - **Never** commit or push directly to `master`. **Never** use `--force` / `-f`.
-- Every task runs through a short-lived branch and a Pull Request. One task → one branch.
+- Every task runs through a short-lived branch and a Pull Request.
+- **Batch related work: one session/task (with its subtasks) = one branch = one PR.** Do NOT spin up a new branch+PR per tiny edit — keep committing to the same branch and update the one open PR. (Don't mix *unrelated* tasks in one PR either.)
 - **Open the PR, but never merge it.** Merge is a human action after review.
 
 **Per-task algorithm:**
@@ -20,6 +21,9 @@ We use **GitHub Flow**. `master` is the **only** permanent branch — always wor
 4. Gate on `npm run build` (build must be green — this is the real check; `npm run lint` is type-check only and may be broken).
 5. `git push -u origin feature/<…>`.
 6. Open a PR (base: `master`) via the GitHub MCP; write the summary in Russian. **Do not merge** — hand it to the human.
+7. **After the human merges**, clean up so only `master` remains locally: `git checkout master && git pull` → `git fetch --prune` → `git branch -d <branch>` (use `-D` if the PR was squash-merged — content is already in `master`).
+
+Human devs have quick-mode aliases for this exact flow — `git start` / `git save` / `git ship` / `git land` / `git sync` (documented in [CONTRIBUTING.md](CONTRIBUTING.md) § «Быстрый режим»). The assistant sticks to plain git + the GitHub MCP and does **not** depend on `gh` being installed or authenticated.
 
 ## What this is
 
