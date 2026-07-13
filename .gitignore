@@ -16,6 +16,11 @@ server.cjs.map
 
 .vercel
 
-# Local tooling (Claude Code / impeccable skill)
+# Local tooling (Claude Code / impeccable skill / jolli memory)
 .claude/
 .impeccable/
+.jolli/
+
+# Dev server logs
+dev-server.err
+*.err
