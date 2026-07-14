@@ -154,8 +154,8 @@ export const PricesSection: React.FC = () => {
                           pkg.badgeType === 'popular'
                             ? ''
                             : pkg.badgeType === 'bestseller'
-                            ? '!bg-sun hover:!bg-amber !shadow-[0_12px_30px_rgba(255,199,66,.35)]'
-                            : '!bg-[rgba(255,255,255,.08)] hover:!bg-[rgba(255,255,255,.12)] !text-white !shadow-none'
+                            ? 'ds-btn-sun !bg-[var(--grad-sun)] !shadow-[0_12px_30px_rgba(255,199,66,.35)]'
+                            : '!bg-none !bg-[rgba(255,255,255,.12)] hover:!bg-[rgba(255,255,255,.16)] !text-white !shadow-none hover:!shadow-none'
                         }`}
                       >
                         {tr('prices_btn')}
