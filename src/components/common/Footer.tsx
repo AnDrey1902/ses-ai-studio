@@ -16,12 +16,12 @@ export const Footer: React.FC = () => {
       {/* Subtle bottom glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[rgba(34,197,94,.05)] blur-[120px] pointer-events-none -z-10" />
 
-      <div className="max-w-[1280px] mx-auto px-5 md:px-8">
+      <div className="max-w-[1440px] mx-auto px-5 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-[rgba(255,255,255,.08)]">
 
           {/* Col 1: Brand & Info */}
           <div className="lg:col-span-2 space-y-4">
-            <Logo />
+            <Logo dark />
             <p className="text-xs text-[#92A299] max-w-sm leading-relaxed pt-2">
               {tr('footer_desc')}
             </p>

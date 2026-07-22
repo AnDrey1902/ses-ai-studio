@@ -38,7 +38,7 @@
   --r-sm: 12px; --r-md: 18px; --r-lg: 26px; --r-pill: 999px;
   --gap: clamp(1rem, 3vw, 2rem);
   --section-pad: clamp(1.8rem, 2.6vw + 2.8vh, 5rem);
-  --maxw: 1280px;
+  --maxw: 1440px;
   --title-fs: clamp(1.55rem, 1.4vw + 1.6vh + .6rem, 2.7rem);
   /* NOTE: prefixed --ds-shadow-* (NOT --shadow-*) so we don't override
      Tailwind v4's own --shadow-* theme namespace that backs shadow-md/-lg
@@ -189,16 +189,16 @@
    vertically centers its content; below lg it falls back to natural stacked height.
    Do NOT use on large/content-heavy sections that legitimately span 1.5–2 screens. */
 .ds-fit {
-  padding-top: 1.5rem;    /* 24px — mobile (8-pt grid) */
-  padding-bottom: 1.5rem;
+  min-height: calc(100svh - 84px);
+  display: flex;
+  align-items: center;
+  padding-top: 1rem;    /* 16px — tighter */
+  padding-bottom: 1rem;
 }
 @media (min-width: 1024px) {
   .ds-fit {
-    min-height: calc(100svh - 84px); /* 80px sticky header (h-20) + 1px border + hairline buffer */
-    display: flex;
-    align-items: flex-start;         /* content anchored to top → predictable, grid-clean offset */
-    padding-top: 2rem;               /* 32px (8-pt grid) */
-    padding-bottom: 2rem;
+    padding-top: 1.5rem;               /* 24px */
+    padding-bottom: 1.5rem;
   }
 }
 

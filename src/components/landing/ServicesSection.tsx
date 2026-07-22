@@ -7,7 +7,7 @@ export const ServicesSection: React.FC = () => {
 
   return (
     <section id="services" className="ds-section bg-soft border-b border-line scroll-mt-20">
-      <div className="max-w-[1280px] mx-auto px-5 md:px-8 space-y-8">
+      <div className="max-w-[1440px] mx-auto px-5 md:px-8 space-y-8">
 
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto space-y-4">

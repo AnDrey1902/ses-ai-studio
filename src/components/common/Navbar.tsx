@@ -38,7 +38,7 @@ export const Navbar: React.FC = () => {
     <>
       {/* Mini Contact Bar */}
       <div className="bg-[#07140F] text-[#C5D4CB] text-[11px] hidden md:block">
-        <div className="max-w-[1280px] mx-auto px-5 md:px-8 h-9 flex items-center justify-between">
+        <div className="max-w-[1440px] mx-auto px-5 md:px-8 h-9 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <MapPin className="w-3 h-3 text-[#22C55E]" />
             <span>м. Київ, вул. Сонячна, 24 · працюємо по всій Україні</span>
@@ -80,7 +80,7 @@ export const Navbar: React.FC = () => {
 
       {/* Main Header */}
       <header className="sticky top-0 z-50 bg-white border-b border-[#E8ECE9] shadow-[0_1px_3px_rgba(0,0,0,.04)] transition-all">
-        <div className="max-w-[1280px] mx-auto px-5 md:px-8 h-20 flex items-center justify-between gap-4">
+        <div className="max-w-[1440px] mx-auto px-5 md:px-8 h-20 flex items-center justify-between gap-4">
           {/* Logo */}
           <Logo />
 

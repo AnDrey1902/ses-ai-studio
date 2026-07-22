@@ -10,21 +10,16 @@ export const PainSolutionSection: React.FC = () => {
     <section
       id="pain-solution"
       aria-labelledby="pain-solution-title"
-      className="ds-section relative isolate border-b border-[rgba(255,255,255,.08)] scroll-mt-20"
+      className="ds-section bg-soft border-b border-line scroll-mt-20"
     >
-      {/* Darkening over the shared solar-panel backdrop (owned by App): starts at
-          the Hero's bg-ink/65 tone so the boundary is seamless, then dissolves
-          into solid #07140F by the time the cards begin. */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[rgba(10,42,30,.65)] from-0% via-[rgba(9,24,17,.74)] via-72% to-[#07140F] to-96%" />
-
-      <div className="max-w-[1280px] mx-auto px-5 md:px-8 space-y-[64px]">
+      <div className="max-w-[1440px] mx-auto px-5 md:px-8 space-y-[64px]">
 
         {/* Section Heading */}
         <div id="pain-solution-heading" className="text-center max-w-3xl mx-auto space-y-4">
-          <h2 id="pain-solution-title" className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+          <h2 id="pain-solution-title" className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-body">
             {tr('b2_title')}
           </h2>
-          <p className="text-sm sm:text-base text-muted-dark font-medium">
+          <p className="text-sm sm:text-base text-muted font-medium">
             {tr('b2_sub')}
           </p>
         </div>
@@ -38,23 +33,23 @@ export const PainSolutionSection: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="ds-card !p-[28px]"
+                className="bg-white rounded-[28px] border border-line p-[28px] shadow-[0_4px_20px_rgba(26,46,35,.05)] hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(255,199,66,.08)] transition-all duration-300"
               >
                 <div className="space-y-4">
                   {/* Badge & Stat */}
                   <div className="flex items-center justify-between">
-                    <span className="ds-badge px-3 py-1 text-[10px] bg-[rgba(255,199,66,.12)] text-sun border border-[rgba(255,199,66,.25)]">
+                    <span className="ds-badge px-3 py-1 text-[10px] bg-[rgba(255,199,66,.12)] text-[#B8860B] border border-[rgba(255,199,66,.2)]">
                       {tr('b2_pain_label')}{idx + 1}
                     </span>
-                    <span className="font-mono text-xs font-black text-emerald bg-[rgba(24,165,88,.1)] px-2.5 py-1 rounded-xl">
+                    <span className="font-mono text-xs font-black text-emerald bg-[rgba(24,165,88,.1)] px-2.5 py-1 rounded-xl border border-[rgba(24,165,88,.2)]">
                       {item.stat}
                     </span>
                   </div>
 
                   {/* Pain Quote */}
-                  <div className="flex items-start gap-3 p-4 rounded-2xl bg-[#07140F]/60 border border-red-500/15">
+                  <div className="flex items-start gap-3 p-4 rounded-2xl bg-[rgba(239,68,68,.06)] border border-[rgba(239,68,68,.15)]">
                     <AlertTriangle className="w-5 h-5 text-sun shrink-0 mt-0.5" />
-                    <p className="text-xs sm:text-sm italic font-medium text-cloud leading-relaxed">
+                    <p className="text-xs sm:text-sm italic font-medium text-body leading-relaxed">
                       {painCopy}
                     </p>
                   </div>
@@ -65,7 +60,7 @@ export const PainSolutionSection: React.FC = () => {
                       <CheckCircle2 className="w-4 h-4" />
                       <span>{tr('b2_solution_label')}</span>
                     </div>
-                    <p className="text-xs sm:text-sm font-semibold text-white leading-relaxed pl-6">
+                    <p className="text-xs sm:text-sm font-semibold text-body leading-relaxed pl-6">
                       {solCopy}
                     </p>
                   </div>
@@ -76,10 +71,10 @@ export const PainSolutionSection: React.FC = () => {
         </div>
 
         {/* Bottom Callout Banner */}
-        <div id="pain-solution-callout" className="bg-gradient-to-r from-[rgba(24,165,88,.15)] via-[#10261C] to-[rgba(255,199,66,.15)] rounded-[32px] p-8 border border-[rgba(255,255,255,.08)] flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+        <div id="pain-solution-callout" className="bg-gradient-to-r from-[rgba(24,165,88,.08)] via-white to-[rgba(255,199,66,.08)] rounded-[32px] p-8 border border-line flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left shadow-[0_4px_20px_rgba(26,46,35,.05)]">
           <div className="space-y-1">
-            <h4 className="text-lg font-extrabold text-white">{tr('b2_callout_title')}</h4>
-            <p className="text-xs text-muted-dark">{tr('b2_callout_desc')}</p>
+            <h4 className="text-lg font-extrabold text-body">{tr('b2_callout_title')}</h4>
+            <p className="text-xs text-muted">{tr('b2_callout_desc')}</p>
           </div>
           <button
             onClick={() => openLeadModal('10 кВт', 'Консультація інженера', 'Банер Болі Консультація')}

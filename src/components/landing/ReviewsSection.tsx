@@ -22,19 +22,19 @@ export const ReviewsSection: React.FC = () => {
   }, []);
 
   return (
-    <section id="reviews" className="ds-section bg-ink border-b border-[rgba(255,255,255,.08)] scroll-mt-20">
+    <section id="reviews" className="ds-section bg-soft border-b border-line scroll-mt-20">
       <SchemaOrg type="reviews" data={{ reviews: REVIEWS.map(r => ({ author: r.name, rating: r.rating, text: r.text[lang] || r.text.uk })) }} />
-      <div className="max-w-[1280px] mx-auto px-5 md:px-8 space-y-[64px]">
+      <div className="max-w-[1440px] mx-auto px-5 md:px-8 space-y-[64px]">
 
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="ds-badge px-3.5 py-1.5 text-xs bg-[rgba(24,165,88,.1)] text-emerald border border-[rgba(24,165,88,.2)]">
+          <span className="ds-badge px-3.5 py-1.5 text-xs bg-[rgba(24,165,88,.1)] text-emerald-deep border border-[rgba(24,165,88,.2)]">
             РЕПУТАЦІЯ В ЦИФРАХ
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-body">
             {tr('b8_title')}
           </h2>
-          <p className="text-sm sm:text-base text-muted-dark font-medium">
+          <p className="text-sm sm:text-base text-muted font-medium">
             {tr('b8_sub')}
           </p>
         </div>
@@ -53,7 +53,7 @@ export const ReviewsSection: React.FC = () => {
             return (
               <div
                 key={rev.id}
-                className="snap-center shrink-0 w-[85vw] md:w-auto ds-card !p-[28px] flex flex-col justify-between space-y-6"
+                className="snap-center shrink-0 w-[85vw] md:w-auto bg-white rounded-[28px] border border-line p-[28px] flex flex-col justify-between space-y-6 shadow-[0_4px_20px_rgba(26,46,35,.05)] hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(255,199,66,.08)] transition-all duration-300"
               >
                 <div className="space-y-4">
                   {/* Stars & Power */}
@@ -63,19 +63,19 @@ export const ReviewsSection: React.FC = () => {
                         <Star key={i} className="w-4 h-4 fill-sun text-sun" />
                       ))}
                     </div>
-                    <span className="text-xs font-mono font-extrabold text-emerald bg-[rgba(24,165,88,.1)] px-2.5 py-1 rounded-xl">
+                    <span className="text-xs font-mono font-extrabold text-emerald bg-[rgba(24,165,88,.1)] px-2.5 py-1 rounded-xl border border-[rgba(24,165,88,.2)]">
                       {rev.power}
                     </span>
                   </div>
 
                   {/* Text */}
-                  <p className="text-xs sm:text-sm text-cloud font-normal leading-relaxed pt-2">
+                  <p className="text-xs sm:text-sm text-body font-normal leading-relaxed pt-2">
                     «{textCopy}»
                   </p>
                 </div>
 
                 {/* Author Info */}
-                <div className="flex items-center gap-3 pt-4 border-t border-[rgba(255,255,255,.08)]">
+                <div className="flex items-center gap-3 pt-4 border-t border-line">
                   <img
                     src={rev.avatar}
                     alt={rev.name}
@@ -83,8 +83,8 @@ export const ReviewsSection: React.FC = () => {
                     className="w-12 h-12 rounded-full object-cover border-2 border-[rgba(24,165,88,.4)]"
                   />
                   <div>
-                    <h4 className="text-sm font-extrabold text-white leading-tight">{rev.name}</h4>
-                    <p className="text-[11px] font-semibold text-muted-dark">{cityCopy} · <span className="text-disabled">{typeCopy}</span></p>
+                    <h4 className="text-sm font-extrabold text-body leading-tight">{rev.name}</h4>
+                    <p className="text-[11px] font-semibold text-muted">{cityCopy} · <span className="text-disabled">{typeCopy}</span></p>
                   </div>
                 </div>
 
@@ -98,7 +98,7 @@ export const ReviewsSection: React.FC = () => {
           {REVIEWS.map((_, i) => (
             <span
               key={i}
-              className={`w-2 h-2 rounded-full transition-all ${i === activeIdx ? 'bg-emerald w-6' : 'bg-[rgba(255,255,255,.15)]'}`}
+              className={`w-2 h-2 rounded-full transition-all ${i === activeIdx ? 'bg-emerald w-6' : 'bg-line'}`}
             />
           ))}
         </div>

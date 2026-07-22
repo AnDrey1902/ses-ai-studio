@@ -33,30 +33,30 @@ export const PricesSection: React.FC = () => {
   ];
 
   return (
-    <section id="prices" className="ds-section bg-ink border-b border-[rgba(255,255,255,.08)] scroll-mt-20">
-      <div className="max-w-[1280px] mx-auto px-5 md:px-8 space-y-[64px]">
+    <section id="prices" className="ds-section bg-soft border-b border-line scroll-mt-20">
+      <div className="max-w-[1440px] mx-auto px-5 md:px-8 space-y-[64px]">
 
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="ds-badge px-3.5 py-1.5 text-xs bg-[rgba(24,165,88,.1)] text-emerald border border-[rgba(24,165,88,.2)]">
+          <span className="ds-badge px-3.5 py-1.5 text-xs bg-[rgba(24,165,88,.1)] text-emerald-deep border border-[rgba(24,165,88,.2)]">
             {tr('prices_badge')}
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-body">
             {tr('b6_title')}
           </h2>
-          <p className="text-sm sm:text-base text-muted-dark font-medium">
+          <p className="text-sm sm:text-base text-muted font-medium">
             {tr('b6_sub')}
           </p>
 
           {/* Tabs switch */}
           <div className="pt-4 flex justify-center">
-            <div className="inline-flex p-1.5 rounded-full bg-ink-2 border border-[rgba(255,255,255,.08)] shadow-inner">
+            <div className="inline-flex p-1.5 rounded-full bg-white border border-line shadow-inner">
               <button
                 onClick={() => setActiveTab('packages')}
                 className={`px-6 py-3 rounded-full text-xs font-extrabold tracking-wide uppercase transition-all ${
                   activeTab === 'packages'
-                    ? 'bg-emerald text-ink shadow-md shadow-[rgba(24,165,88,.2)]'
-                    : 'text-muted-dark hover:text-white'
+                    ? 'bg-emerald text-white shadow-md shadow-[rgba(24,165,88,.2)]'
+                    : 'text-muted hover:text-body'
                 }`}
               >
                 {tr('tab_packages')}
@@ -65,8 +65,8 @@ export const PricesSection: React.FC = () => {
                 onClick={() => setActiveTab('credits')}
                 className={`px-6 py-3 rounded-full text-xs font-extrabold tracking-wide uppercase transition-all flex items-center gap-1.5 ${
                   activeTab === 'credits'
-                    ? 'bg-emerald text-ink shadow-md shadow-[rgba(24,165,88,.2)]'
-                    : 'text-muted-dark hover:text-white'
+                    ? 'bg-emerald text-white shadow-md shadow-[rgba(24,165,88,.2)]'
+                    : 'text-muted hover:text-body'
                 }`}
               >
                 <ShieldCheck className="w-4 h-4" />
@@ -88,7 +88,7 @@ export const PricesSection: React.FC = () => {
                 return (
                   <div
                     key={pkg.id}
-                    className={`ds-card !p-[28px] flex flex-col justify-between relative ${
+                    className={`bg-white rounded-[28px] border border-line p-[28px] flex flex-col justify-between relative shadow-[0_4px_20px_rgba(26,46,35,.05)] hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(255,199,66,.08)] transition-all duration-300 ${
                       pkg.badgeType === 'popular'
                         ? '!border-[rgba(24,165,88,.6)] shadow-[0_20px_60px_rgba(24,165,88,.15)] scale-[1.02]'
                         : pkg.badgeType === 'bestseller'
@@ -110,25 +110,25 @@ export const PricesSection: React.FC = () => {
                     <div className="space-y-5">
                       <div className="space-y-1">
                         <span className="text-xs font-mono font-bold text-emerald">{pkg.kw} {tr('prices_kw_h').replace('·год', '').replace('·ч', '').replace('kWh', 'kW')} {tr('form_submit').includes('Розрахунок') || tr('form_submit').includes('смету') ? (lang === 'en' ? 'Turnkey' : 'Під ключ') : 'Turnkey'}</span>
-                        <h3 className="text-2xl font-extrabold text-white">{nameCopy}</h3>
-                        <p className="text-xs text-muted-dark font-medium">{subCopy}</p>
+                        <h3 className="text-2xl font-extrabold text-body">{nameCopy}</h3>
+                        <p className="text-xs text-muted font-medium">{subCopy}</p>
                       </div>
 
                       {/* Price box */}
-                      <div className="p-4 rounded-2xl bg-ink border border-[rgba(255,255,255,.08)] flex items-baseline justify-between">
+                      <div className="p-4 rounded-2xl bg-soft border border-line flex items-baseline justify-between">
                         <div>
-                          <div className="text-[10px] text-disabled font-bold uppercase">{tr('prices_contract_price')}</div>
-                          <div className="text-3xl font-black text-white font-mono">${pkg.priceUsd.toLocaleString()}</div>
-                          <div className="text-[10px] text-muted-dark font-mono">≈ {pkg.priceUah.toLocaleString()} {lang === 'en' ? 'UAH' : 'грн'}</div>
+                          <div className="text-[10px] text-muted font-bold uppercase">{tr('prices_contract_price')}</div>
+                          <div className="text-3xl font-black text-body font-mono">${pkg.priceUsd.toLocaleString()}</div>
+                          <div className="text-[10px] text-muted font-mono">≈ {pkg.priceUah.toLocaleString()} {lang === 'en' ? 'UAH' : 'грн'}</div>
                         </div>
                         <div className="text-right">
-                          <div className="text-[10px] text-disabled font-bold uppercase">{tr('prices_payback_label')}</div>
+                          <div className="text-[10px] text-muted font-bold uppercase">{tr('prices_payback_label')}</div>
                           <div className="text-xl font-extrabold text-emerald font-mono">{paybackCopy}</div>
                         </div>
                       </div>
 
                       {/* Specs */}
-                      <ul className="space-y-2.5 text-xs text-cloud font-medium">
+                      <ul className="space-y-2.5 text-xs text-body font-medium">
                         <li className="flex items-start gap-2">
                           <Zap className="w-4 h-4 text-emerald shrink-0 mt-0.5" />
                           <span><strong>{tr('prices_inverter')}</strong> {pkg.inverter}</span>
@@ -141,7 +141,7 @@ export const PricesSection: React.FC = () => {
                           <Zap className="w-4 h-4 text-emerald shrink-0 mt-0.5" />
                           <span><strong>{tr('prices_battery')}</strong> {pkg.battery}</span>
                         </li>
-                        <li className="flex items-start gap-2 text-sun font-bold font-mono pt-1">
+                        <li className="flex items-start gap-2 text-[#B8860B] font-bold font-mono pt-1">
                           <span>{tr('prices_generation_year')} {pkg.generationYear.toLocaleString()} {tr('prices_kw_h')}</span>
                         </li>
                       </ul>
@@ -155,7 +155,7 @@ export const PricesSection: React.FC = () => {
                             ? ''
                             : pkg.badgeType === 'bestseller'
                             ? 'ds-btn-sun !bg-[var(--grad-sun)] !shadow-[0_12px_30px_rgba(255,199,66,.35)]'
-                            : '!bg-none !bg-[rgba(255,255,255,.12)] hover:!bg-[rgba(255,255,255,.16)] !text-white !shadow-none hover:!shadow-none'
+                            : '!bg-none !bg-soft hover:!bg-emerald !text-body hover:!text-white !shadow-none hover:!shadow-none !font-bold'
                         }`}
                       >
                         {tr('prices_btn')}
@@ -167,14 +167,14 @@ export const PricesSection: React.FC = () => {
             </div>
 
             {/* What is Included / Excluded & Payment Terms */}
-            <div className="ds-card !p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div className="bg-white rounded-[28px] border border-line p-8 grid grid-cols-1 lg:grid-cols-12 gap-8 shadow-[0_4px_20px_rgba(26,46,35,.05)]">
               {/* Included */}
               <div className="lg:col-span-7 space-y-4">
-                <h4 className="text-base font-extrabold text-white flex items-center gap-2">
+                <h4 className="text-base font-extrabold text-body flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald" />
                   <span>{tr('prices_included_title')}</span>
                 </h4>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-cloud">
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-body">
                   {includedItems.map((inc, idx) => (
                     <li key={idx} className="flex items-start gap-2">
                       <Check className="w-4 h-4 text-emerald shrink-0 mt-0.5" />
@@ -185,13 +185,13 @@ export const PricesSection: React.FC = () => {
               </div>
 
               {/* Excluded & Payment terms */}
-              <div className="lg:col-span-5 space-y-6 border-t lg:border-t-0 lg:border-l border-[rgba(255,255,255,.08)] pt-6 lg:pt-0 lg:pl-8 flex flex-col justify-between">
+              <div className="lg:col-span-5 space-y-6 border-t lg:border-t-0 lg:border-l border-line pt-6 lg:pt-0 lg:pl-8 flex flex-col justify-between">
                 <div className="space-y-3">
-                  <h4 className="text-base font-extrabold text-cloud flex items-center gap-2">
+                  <h4 className="text-base font-extrabold text-body flex items-center gap-2">
                     <X className="w-4 h-4 text-red-400" />
                     <span>{tr('prices_excluded_title')}</span>
                   </h4>
-                  <ul className="space-y-2 text-xs text-muted-dark">
+                  <ul className="space-y-2 text-xs text-muted">
                     {excludedItems.map((exc, idx) => (
                       <li key={idx} className="flex items-start gap-2">
                         <span className="text-red-400 font-bold">·</span>
@@ -201,12 +201,12 @@ export const PricesSection: React.FC = () => {
                   </ul>
                 </div>
 
-                <div className="p-4 rounded-2xl bg-ink border border-[rgba(255,199,66,.2)] space-y-1.5">
-                  <div className="text-xs font-extrabold text-sun flex items-center gap-1.5">
+                <div className="p-4 rounded-2xl bg-soft border border-[rgba(255,199,66,.2)] space-y-1.5">
+                  <div className="text-xs font-extrabold text-[#B8860B] flex items-center gap-1.5">
                     <CreditCard className="w-4 h-4" />
                     <span>{tr('prices_payment_title')}</span>
                   </div>
-                  <p className="text-xs text-cloud font-mono font-semibold">
+                  <p className="text-xs text-body font-mono font-semibold">
                     <strong>50%</strong> — {lang === 'en' ? 'Deposit for equipment in stock' : (lang === 'uk' ? 'Передплата за обладнання на складі' : 'Предоплата за оборудование на складе')}<br/>
                     <strong>40%</strong> — {lang === 'en' ? 'After delivery to site' : (lang === 'uk' ? 'Після доставки на об\'єкт' : 'После доставки на объект')}<br/>
                     <strong>10%</strong> — {lang === 'en' ? 'After commissioning & tests' : (lang === 'uk' ? 'Після пусконаладки та тестів' : 'После пусконаладки и тестов')}
@@ -218,9 +218,9 @@ export const PricesSection: React.FC = () => {
         ) : (
           <div className="space-y-10 animate-in fade-in duration-300">
             {/* Credit Table */}
-            <div className="overflow-x-auto rounded-[28px] border border-[rgba(255,255,255,.08)] bg-ink-2 shadow-2xl">
+            <div className="overflow-x-auto rounded-[28px] border border-line bg-white shadow-[0_4px_20px_rgba(26,46,35,.05)]">
               <table className="w-full text-left text-xs">
-                <thead className="bg-ink text-cloud uppercase tracking-wider font-extrabold border-b border-[rgba(255,255,255,.08)]">
+                <thead className="bg-soft text-muted uppercase tracking-wider font-extrabold border-b border-line">
                   <tr>
                     <th className="p-5">{tr('prices_credit_bank')}</th>
                     <th className="p-5">{tr('prices_credit_rate')}</th>
@@ -230,18 +230,18 @@ export const PricesSection: React.FC = () => {
                     <th className="p-5 text-right">{tr('prices_credit_action')}</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[rgba(255,255,255,.08)] font-medium text-cloud">
+                <tbody className="divide-y divide-line font-medium text-body">
                   {creditPrograms.map((cp, idx) => (
-                    <tr key={idx} className="hover:bg-[rgba(255,255,255,.03)] transition-colors">
-                      <td className="p-5 font-bold text-white text-sm">{cp.bank}<div className="text-[10px] text-muted-dark font-normal">{cp.target}</div></td>
+                    <tr key={idx} className="hover:bg-soft transition-colors">
+                      <td className="p-5 font-bold text-body text-sm">{cp.bank}<div className="text-[10px] text-muted font-normal">{cp.target}</div></td>
                       <td className="p-5 font-mono font-black text-emerald text-sm">{cp.rate}</td>
                       <td className="p-5 font-mono">{cp.term}</td>
-                      <td className="p-5 font-mono font-bold text-sun">{cp.downpay}</td>
+                      <td className="p-5 font-mono font-bold text-[#B8860B]">{cp.downpay}</td>
                       <td className="p-5 font-mono font-bold">{cp.maxSum}</td>
                       <td className="p-5 text-right">
                         <button
                           onClick={() => openLeadModal('10 kW', `Credit: ${cp.bank}`, `Credit Table: ${cp.bank}`)}
-                          className="ds-btn-primary !px-4 !py-2 !text-xs uppercase !bg-[rgba(255,255,255,.08)] hover:!bg-emerald !text-cloud hover:!text-ink !shadow-none"
+                          className="ds-btn-primary !px-4 !py-2 !text-xs uppercase"
                         >
                           {tr('prices_credit_btn')}
                         </button>

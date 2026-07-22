@@ -37,7 +37,7 @@ export const BlogPage: React.FC = () => {
 
   return (
     <div className="pt-[104px] pb-24 md:pb-32">
-      <div className="max-w-[1280px] mx-auto px-5 md:px-8 space-y-12">
+      <div className="max-w-[1440px] mx-auto px-5 md:px-8 space-y-12">
 
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
