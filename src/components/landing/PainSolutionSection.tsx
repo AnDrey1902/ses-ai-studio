@@ -70,9 +70,11 @@ export const PainSolutionSection: React.FC = () => {
       className="ds-section relative isolate border-b border-[rgba(255,255,255,.08)] scroll-mt-20"
     >
       {/* Darkening over the shared solar-panel backdrop (owned by App): starts at
-          the Hero's bg-ink/65 tone so the boundary is seamless, then dissolves
-          into solid #07140F by the time the cards begin. */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[rgba(10,42,30,.65)] from-0% via-[rgba(9,24,17,.74)] via-72% to-[#07140F] to-96%" />
+          the Hero's own overlay tone so the boundary is seamless, then dissolves
+          into solid #060E0B by the time the lower cards begin. The base is a
+          near-neutral dark, NOT a green wash — the cards are green, and a green
+          backdrop makes them blend into it. */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[rgba(7,16,14,.62)] from-0% via-[rgba(6,14,11,.84)] via-62% to-[#060E0B] to-96%" />
 
       <div className="max-w-[1280px] mx-auto px-5 md:px-8 space-y-12 md:space-y-16">
 

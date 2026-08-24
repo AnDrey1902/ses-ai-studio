@@ -28,7 +28,7 @@ export const HeroSection: React.FC = () => {
     <section id="home" className="ds-fit relative isolate overflow-hidden">
 
       {/* Darkening over the shared solar-panel backdrop (owned by App, spans Hero+Pain) */}
-      <div className="absolute inset-0 z-[-1] bg-ink/65" />
+      <div className="absolute inset-0 z-[-1] bg-[rgba(7,16,14,.62)]" />
 
       {/* Glow Orbs */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-tr from-[rgba(24,165,88,.08)] to-[rgba(255,199,66,.05)] blur-[140px] rounded-full pointer-events-none z-[-1]" />

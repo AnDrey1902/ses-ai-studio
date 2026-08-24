@@ -5,7 +5,7 @@ import { Footer } from './components/common/Footer';
 import { LeadModal } from './components/common/LeadModal';
 import { AIConsultantWidget } from './components/ai/AIConsultantWidget';
 import { SchemaOrg } from './components/common/SchemaOrg';
-import heroBg from './assets/hero.webp';
+import heroBg from './assets/solar-farm.webp';
 
 // Landing Sections
 import { HeroSection } from './components/landing/HeroSection';
