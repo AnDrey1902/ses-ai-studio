@@ -73,8 +73,12 @@ export const PainSolutionSection: React.FC = () => {
           the Hero's own overlay tone so the boundary is seamless, then dissolves
           into solid #060E0B by the time the lower cards begin. The base is a
           near-neutral dark, NOT a green wash — the cards are green, and a green
-          backdrop makes them blend into it. */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-[rgba(7,16,14,.62)] from-0% via-[rgba(6,14,11,.84)] via-62% to-[#060E0B] to-96%" />
+          backdrop makes them blend into it.
+          The ramp deliberately stays near the Hero's own opacity for the whole
+          upper half, so the panel texture carries through the grid instead of
+          dying halfway down; it only resolves to solid at the very bottom edge,
+          where the section hands off to the light Services band. */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,rgba(7,16,14,.62)_0%,rgba(7,16,14,.65)_55%,rgba(6,14,11,.78)_84%,#060E0B_100%)]" />
 
       <div className="max-w-[1280px] mx-auto px-5 md:px-8 space-y-12 md:space-y-16">
 
