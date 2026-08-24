@@ -49,6 +49,7 @@ still on the old dark-green/`#22C55E` palette.
 | `--color-muted` | `#54665D` | Вторичный текст на светлом (~5.4:1) |
 | `--color-cloud` | `#CFE0D7` | Body-текст на тёмном |
 | `--color-muted-dark` | `#9FBCAE` | Вторичный текст на тёмном |
+| `--color-muted-cool` | `#A9B7BC` | Вторичный текст на тёмном **зелёной** поверхности (нейтральный хюа, ~6.6:1). `muted-dark` лежит в том же зелёном семействе, что и заливки карточек, и на них сливается; `muted-cool` отделяется сменой хюа, оставаясь тише белого. Используется для цитат-болей в `PainSolutionSection` |
 | `--color-disabled` | `#6F857A` | Placeholder / disabled |
 
 ### Back-compat aliases

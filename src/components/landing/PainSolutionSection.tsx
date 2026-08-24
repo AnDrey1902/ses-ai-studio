@@ -107,7 +107,7 @@ export const PainSolutionSection: React.FC = () => {
                   {/* Text column — the extra width goes here, not into extra height */}
                   <div className="flex-1 flex flex-col justify-center space-y-5">
                     {/* Pain — quiet, unboxed (the copy already carries its own guillemets) */}
-                    <p className="text-[15px] lg:text-base italic leading-relaxed text-muted-dark">
+                    <p className="text-[15px] lg:text-base italic leading-relaxed text-muted-cool">
                       {painCopy}
                     </p>
 
@@ -135,7 +135,7 @@ export const PainSolutionSection: React.FC = () => {
 
             return (
               <article key={idx} className={`${CARD_BASE} ${CARD_REGULAR}`}>
-                <p className="text-[15px] italic leading-relaxed text-muted-dark">
+                <p className="text-[15px] italic leading-relaxed text-muted-cool">
                   {painCopy}
                 </p>
 

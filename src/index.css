@@ -26,6 +26,8 @@
   --color-muted: #54665D;       /* muted on light (~5.4:1) */
   --color-cloud: #CFE0D7;       /* body text on dark */
   --color-muted-dark: #9FBCAE;  /* muted on dark */
+  --color-muted-cool: #A9B7BC;  /* muted on dark, NEUTRAL hue — for quiet copy sitting on a green
+                                   surface, where muted-dark blends into the fill (~6.6:1) */
   --color-disabled: #6F857A;    /* placeholder / disabled */
 
   /* Back-compat aliases (old token names still referenced anywhere) */
