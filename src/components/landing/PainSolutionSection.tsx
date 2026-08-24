@@ -3,28 +3,54 @@ import { useApp } from '../../context/AppContext';
 import { PAIN_SOLUTIONS } from '../../data/mockData';
 import { CheckCircle2 } from 'lucide-react';
 
-/* Shared card chrome: glass fill lifted off the #07140F base by a top light edge
-   (inset 0 1px 0) + a deep drop shadow. The fill is translucent so the shared
-   solar-panel backdrop still reads through the upper cards. */
+/* Shared card chrome: glass fill lifted off the dark base by a top light edge
+   (inset 0 1px 0) + a deep drop shadow.
+
+   Two fill states. RESTING is ~30% more transparent than SETTLED, so the shared
+   solar-panel backdrop reads through the whole grid; SETTLED is the denser fill
+   the card had before. A mouse settles a card on :hover; touch has no hover, so
+   a tap sets it instead (see `settled` state below) and a second tap releases it.
+   Only background-color / border-color / box-shadow change, never the gradient
+   tint — gradients cannot be interpolated, so animating the flat colour under a
+   fixed tint layer is what keeps the transition smooth. */
 const CARD_BASE =
   'group relative flex flex-col rounded-[26px] backdrop-blur-xl border ' +
-  'transition-[transform,border-color,box-shadow] duration-[250ms] ease-out hover:-translate-y-1';
+  'transition-[transform,border-color,box-shadow,background-color] duration-[250ms] ease-out hover:-translate-y-1';
 
-const CARD_REGULAR =
-  'p-6 bg-[rgba(23,74,54,.68)] border-white/[.07] ' +
-  'shadow-[0_24px_60px_rgba(0,0,0,.45),inset_0_1px_0_rgba(255,255,255,.07)] ' +
-  'hover:border-[rgba(24,165,88,.40)] ' +
-  'hover:shadow-[0_0_0_1px_rgba(24,165,88,.25),0_24px_60px_rgba(24,165,88,.12)]';
+const REGULAR_RESTING =
+  'bg-[rgba(23,74,54,.48)] border-white/[.14] ' +
+  'shadow-[0_24px_60px_rgba(0,0,0,.45),inset_0_1px_0_rgba(255,255,255,.10)]';
+const REGULAR_SETTLED =
+  'bg-[rgba(23,74,54,.68)] border-[rgba(24,165,88,.55)] ' +
+  'shadow-[0_0_0_1px_rgba(24,165,88,.30),0_24px_60px_rgba(24,165,88,.14),inset_0_1px_0_rgba(255,255,255,.10)]';
+const REGULAR_HOVER =
+  'hover:bg-[rgba(23,74,54,.68)] hover:border-[rgba(24,165,88,.55)] ' +
+  'hover:shadow-[0_0_0_1px_rgba(24,165,88,.30),0_24px_60px_rgba(24,165,88,.14),inset_0_1px_0_rgba(255,255,255,.10)]';
+
+/* Accent tiles (the anchor card and the callout) carry a fixed emerald tint as a
+   background-IMAGE on top of the animated background-COLOR. */
+const ACCENT_TINT = 'bg-[linear-gradient(135deg,rgba(24,165,88,.16)_0%,transparent_62%)]';
+const ACCENT_RESTING =
+  'bg-[rgba(26,92,62,.48)] border-[rgba(24,165,88,.45)] ' +
+  'shadow-[0_24px_60px_rgba(0,0,0,.45),inset_0_1px_0_rgba(255,255,255,.12)]';
+const ACCENT_SETTLED =
+  'bg-[rgba(26,92,62,.69)] border-[rgba(24,165,88,.70)] ' +
+  'shadow-[0_0_0_1px_rgba(24,165,88,.32),0_28px_70px_rgba(24,165,88,.18),inset_0_1px_0_rgba(255,255,255,.12)]';
+const ACCENT_HOVER =
+  'hover:bg-[rgba(26,92,62,.69)] hover:border-[rgba(24,165,88,.70)] ' +
+  'hover:shadow-[0_0_0_1px_rgba(24,165,88,.32),0_28px_70px_rgba(24,165,88,.18),inset_0_1px_0_rgba(255,255,255,.12)]';
 
 /* The anchor card is two cells WIDE but the same height as every other tile, so it
    stays readable without scrolling. The extra width buys a horizontal split at lg
    (copy left, payoff figure right) instead of extra height. */
-const CARD_FEATURED =
-  'lg:col-span-2 p-6 gap-6 lg:flex-row lg:gap-8 ' +
-  'bg-gradient-to-br from-[rgba(30,110,70,.72)] to-[rgba(23,74,54,.66)] border-[rgba(24,165,88,.30)] ' +
-  'shadow-[0_24px_60px_rgba(0,0,0,.45),inset_0_1px_0_rgba(255,255,255,.09)] ' +
-  'hover:border-[rgba(24,165,88,.55)] ' +
-  'hover:shadow-[0_0_0_1px_rgba(24,165,88,.28),0_28px_70px_rgba(24,165,88,.16)]';
+const CARD_FEATURED = 'lg:col-span-2 gap-6 lg:flex-row lg:gap-8';
+
+/* Resting → settled classes never appear together, so there is no
+   same-property collision for Tailwind's layer order to resolve. */
+const fillFor = (settled: boolean, accent = false) =>
+  accent
+    ? `${ACCENT_TINT} ${settled ? ACCENT_SETTLED : `${ACCENT_RESTING} ${ACCENT_HOVER}`}`
+    : settled ? REGULAR_SETTLED : `${REGULAR_RESTING} ${REGULAR_HOVER}`;
 
 /* Leading numeric token of a stat ("-85%" in "-85% витрат", "10" in "10 років гарантії"). */
 const STAT_NUMERIC = /^([+\-−]?\d[\d\s.,]*%?)\s*(.*)$/;
@@ -57,8 +83,20 @@ const StatFigure: React.FC<{ value: string; featured?: boolean }> = ({ value, fe
   );
 };
 
+const CALLOUT_KEY = -1;
+
 export const PainSolutionSection: React.FC = () => {
   const { lang, tr, openLeadModal } = useApp();
+
+  // Touch devices have no hover, so a tap settles a tile instead; tapping it
+  // again (or another tile) releases it. Mouse pointers fall through to :hover.
+  const [settled, setSettled] = React.useState<number | null>(null);
+  const tapToSettle = (key: number) => ({
+    onPointerDown: (e: React.PointerEvent) => {
+      if (e.pointerType === 'mouse') return;
+      setSettled(prev => (prev === key ? null : key));
+    },
+  });
 
   // "<боль> vs <решение>" — разводим две половины заголовка типографикой.
   const [painHalf, solutionHalf] = tr('b2_title').split(/\s+vs\s+/i);
@@ -109,7 +147,11 @@ export const PainSolutionSection: React.FC = () => {
 
             if (featured) {
               return (
-                <article key={idx} className={`${CARD_BASE} ${CARD_FEATURED}`}>
+                <article
+                  key={idx}
+                  {...tapToSettle(idx)}
+                  className={`${CARD_BASE} ${CARD_FEATURED} p-6 ${fillFor(settled === idx, true)}`}
+                >
                   {/* Text column — the extra width goes here, not into extra height */}
                   <div className="flex-1 flex flex-col justify-center space-y-5">
                     {/* Pain — quiet, unboxed (the copy already carries its own guillemets) */}
@@ -117,7 +159,7 @@ export const PainSolutionSection: React.FC = () => {
                       {painCopy}
                     </p>
 
-                    <div aria-hidden className="h-px bg-[rgba(24,165,88,.22)]" />
+                    <div aria-hidden className="h-px bg-[rgba(24,165,88,.38)]" />
 
                     {/* Solution — the dominant half. The brand label lives here only,
                         so it reads once per section instead of six times. */}
@@ -132,7 +174,7 @@ export const PainSolutionSection: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center lg:w-[30%] lg:shrink-0 lg:border-l lg:border-[rgba(24,165,88,.22)] lg:pl-8">
+                  <div className="flex items-center lg:w-[30%] lg:shrink-0 lg:border-l lg:border-[rgba(24,165,88,.38)] lg:pl-8">
                     <StatFigure value={item.stat} featured />
                   </div>
                 </article>
@@ -140,12 +182,16 @@ export const PainSolutionSection: React.FC = () => {
             }
 
             return (
-              <article key={idx} className={`${CARD_BASE} ${CARD_REGULAR}`}>
+              <article
+                key={idx}
+                {...tapToSettle(idx)}
+                className={`${CARD_BASE} p-6 ${fillFor(settled === idx)}`}
+              >
                 <p className="text-[15px] italic leading-relaxed text-muted-cool">
                   {painCopy}
                 </p>
 
-                <div aria-hidden className="my-5 h-px bg-white/[.07]" />
+                <div aria-hidden className="my-5 h-px bg-white/[.14]" />
 
                 <div className="flex gap-3">
                   <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5 text-emerald" />
@@ -165,7 +211,8 @@ export const PainSolutionSection: React.FC = () => {
               another full-width band under it, which kept the section shorter. */}
           <div
             id="pain-solution-callout"
-            className="relative isolate overflow-hidden rounded-[26px] border p-6 md:col-span-2 flex flex-col justify-center gap-5 sm:flex-row sm:items-center sm:justify-between backdrop-blur-xl bg-gradient-to-br from-[rgba(30,110,70,.72)] to-[rgba(23,74,54,.66)] border-[rgba(24,165,88,.30)] shadow-[0_24px_60px_rgba(0,0,0,.45),inset_0_1px_0_rgba(255,255,255,.09)]"
+            {...tapToSettle(CALLOUT_KEY)}
+            className={`relative isolate overflow-hidden rounded-[26px] border p-6 md:col-span-2 flex flex-col justify-center gap-5 sm:flex-row sm:items-center sm:justify-between backdrop-blur-xl transition-[border-color,box-shadow,background-color] duration-[250ms] ease-out ${fillFor(settled === CALLOUT_KEY, true)}`}
           >
             <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 -z-10 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(255,199,66,.20),transparent_70%)] blur-2xl" />
             <div className="space-y-1">
