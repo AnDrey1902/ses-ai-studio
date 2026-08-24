@@ -16,8 +16,11 @@ const CARD_REGULAR =
   'hover:border-[rgba(24,165,88,.40)] ' +
   'hover:shadow-[0_0_0_1px_rgba(24,165,88,.25),0_24px_60px_rgba(24,165,88,.12)]';
 
+/* The anchor card is two cells WIDE but the same height as every other tile, so it
+   stays readable without scrolling. The extra width buys a horizontal split at lg
+   (copy left, payoff figure right) instead of extra height. */
 const CARD_FEATURED =
-  'md:col-span-2 lg:row-span-2 overflow-hidden p-7 md:p-9 gap-8 lg:flex-row lg:gap-10 ' +
+  'lg:col-span-2 p-6 gap-6 lg:flex-row lg:gap-8 ' +
   'bg-gradient-to-br from-[rgba(30,110,70,.72)] to-[rgba(23,74,54,.66)] border-[rgba(24,165,88,.30)] ' +
   'shadow-[0_24px_60px_rgba(0,0,0,.45),inset_0_1px_0_rgba(255,255,255,.09)] ' +
   'hover:border-[rgba(24,165,88,.55)] ' +
@@ -42,7 +45,7 @@ const StatFigure: React.FC<{ value: string; featured?: boolean }> = ({ value, fe
 
   return (
     <p className={featured ? 'flex flex-col items-start gap-2' : 'flex items-baseline gap-2 flex-wrap'}>
-      <span className={`font-mono font-black leading-none text-sun ${featured ? 'text-7xl md:text-8xl' : 'text-[32px]'}`}>
+      <span className={`font-mono font-black leading-none text-sun ${featured ? 'text-6xl' : 'text-[32px]'}`}>
         {parts[1]}
       </span>
       {parts[2] && (
@@ -89,8 +92,9 @@ export const PainSolutionSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Bento grid: the strongest pain leads as a 2x2 anchor, the rest fill a 3-col grid.
-            2 (span) x 2 (rows) + 5 regular = 9 cells = exactly 3 full rows at lg. */}
+        {/* Bento grid, uniform row height so every tile is readable without scrolling.
+            lg: anchor(2) + 5 singles + callout(2) = 9 cells = 3 full rows, no holes.
+            md: anchor drops to 1 cell → 6 singles + callout(2) = 8 = 4 full rows. */}
         <div id="pain-solution-grid" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {PAIN_SOLUTIONS.map((item, idx) => {
             const painCopy = item.pain[lang] || item.pain.uk;
@@ -100,14 +104,10 @@ export const PainSolutionSection: React.FC = () => {
             if (featured) {
               return (
                 <article key={idx} className={`${CARD_BASE} ${CARD_FEATURED}`}>
-                  {/* Solar glow behind the figure — earns the extra height of the 2x2 cell */}
-                  <div aria-hidden className="pointer-events-none absolute right-[4%] top-1/2 hidden h-80 w-80 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(255,199,66,.12),transparent_70%)] blur-2xl lg:block" />
-
-                  {/* Text column: the anchor card is 2 cells wide, so pain + solution
-                      read on the left and the payoff figure owns the right column. */}
-                  <div className="flex-1 flex flex-col justify-center space-y-6">
+                  {/* Text column — the extra width goes here, not into extra height */}
+                  <div className="flex-1 flex flex-col justify-center space-y-5">
                     {/* Pain — quiet, unboxed (the copy already carries its own guillemets) */}
-                    <p className="text-lg md:text-xl italic leading-relaxed text-muted-dark">
+                    <p className="text-[15px] lg:text-base italic leading-relaxed text-muted-dark">
                       {painCopy}
                     </p>
 
@@ -115,18 +115,18 @@ export const PainSolutionSection: React.FC = () => {
 
                     {/* Solution — the dominant half. The brand label lives here only,
                         so it reads once per section instead of six times. */}
-                    <div className="space-y-3">
+                    <div className="space-y-2">
                       <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wide text-emerald">
                         <CheckCircle2 className="w-4 h-4" />
                         <span>{tr('b2_solution_label')}</span>
                       </div>
-                      <p className="text-base md:text-lg font-semibold leading-relaxed text-white max-w-[52ch]">
+                      <p className="text-[15px] lg:text-base font-semibold leading-relaxed text-white">
                         {solCopy}
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-center lg:w-[32%] lg:shrink-0 lg:border-l lg:border-[rgba(24,165,88,.22)] lg:pl-10">
+                  <div className="flex items-center lg:w-[30%] lg:shrink-0 lg:border-l lg:border-[rgba(24,165,88,.22)] lg:pl-8">
                     <StatFigure value={item.stat} featured />
                   </div>
                 </article>
@@ -154,24 +154,25 @@ export const PainSolutionSection: React.FC = () => {
               </article>
             );
           })}
-        </div>
 
-        {/* Bottom Callout Banner */}
-        <div
-          id="pain-solution-callout"
-          className="relative isolate overflow-hidden rounded-[26px] bg-ink-2 border border-white/[.08] p-8 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left"
-        >
-          <div aria-hidden className="pointer-events-none absolute -right-24 -top-24 -z-10 h-72 w-72 rounded-full bg-[radial-gradient(circle,rgba(255,199,66,.20),transparent_70%)] blur-2xl" />
-          <div className="space-y-1">
-            <h4 className="text-lg font-extrabold text-white text-balance">{tr('b2_callout_title')}</h4>
-            <p className="text-sm text-muted-dark">{tr('b2_callout_desc')}</p>
-          </div>
-          <button
-            onClick={() => openLeadModal('10 кВт', 'Консультація інженера', 'Банер Болі Консультація')}
-            className="ds-btn-sun shrink-0"
+          {/* Callout tile — fills the grid's remaining two cells instead of adding
+              another full-width band under it, which kept the section shorter. */}
+          <div
+            id="pain-solution-callout"
+            className="relative isolate overflow-hidden rounded-[26px] border p-6 md:col-span-2 flex flex-col justify-center gap-5 sm:flex-row sm:items-center sm:justify-between backdrop-blur-xl bg-gradient-to-br from-[rgba(30,110,70,.72)] to-[rgba(23,74,54,.66)] border-[rgba(24,165,88,.30)] shadow-[0_24px_60px_rgba(0,0,0,.45),inset_0_1px_0_rgba(255,255,255,.09)]"
           >
-            {tr('b2_callout_btn')}
-          </button>
+            <div aria-hidden className="pointer-events-none absolute -right-20 -top-20 -z-10 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(255,199,66,.20),transparent_70%)] blur-2xl" />
+            <div className="space-y-1">
+              <h4 className="text-lg font-extrabold text-white text-balance">{tr('b2_callout_title')}</h4>
+              <p className="text-sm text-muted-dark">{tr('b2_callout_desc')}</p>
+            </div>
+            <button
+              onClick={() => openLeadModal('10 кВт', 'Консультація інженера', 'Банер Болі Консультація')}
+              className="ds-btn-sun shrink-0 self-start sm:self-auto"
+            >
+              {tr('b2_callout_btn')}
+            </button>
+          </div>
         </div>
 
       </div>
